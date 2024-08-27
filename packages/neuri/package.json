@@ -1,0 +1,64 @@
+{
+  "name": "neuri",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
+  "author": {
+    "name": "Lingtic.io Neuri Team",
+    "email": "neuridev@lingtic.io",
+    "url": "https://github.com/neuridev"
+  },
+  "license": "MIT",
+  "homepage": "https://docs.neuri.dev/pages/en/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neuridev/neuri-js.git",
+    "directory": "packages/neuri"
+  },
+  "keywords": [
+    "guiiai",
+    "llm",
+    "openai",
+    "lingtic",
+    "neuri"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./agents/fs": {
+      "types": "./dist/agents/fs/index.d.ts",
+      "import": "./dist/agents/fs/index.mjs"
+    }
+  },
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "stub": "unbuild --stub",
+    "build": "unbuild",
+    "package:publish": "pnpm build && pnpm publish --access public --no-git-checks"
+  },
+  "dependencies": {
+    "@guiiai/logg": "^1.0.3",
+    "@shikijs/core": "^1.14.1",
+    "defu": "^6.1.4",
+    "execa": "^9.3.1",
+    "ignore": "^5.3.2",
+    "json-schema": "^0.4.0",
+    "nanoid": "^5.0.7",
+    "openai": "^4.54.0",
+    "shiki": "^1.14.1"
+  },
+  "devDependencies": {
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^20.11.17"
+  }
+}
