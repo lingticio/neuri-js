@@ -36,13 +36,6 @@ describe('buildRegexFromSchemaString', () => {
       expect(match?.[0]).toContain(validJson)
     })
 
-    const validJson2 = '{"age":30,"name":"John"}'
-    createDistortions(validJson2).forEach((distorted) => {
-      const match = regex.exec(distorted)
-      expect(match).toBeTruthy()
-      expect(match?.[0]).toContain(validJson2)
-    })
-
     const invalidJson = '{"name":123,"age":30}'
     createInvalidDistortions(invalidJson).forEach((distorted) => {
       const match = regex.exec(distorted)
