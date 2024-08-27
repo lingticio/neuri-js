@@ -1,5 +1,5 @@
-import { rm, writeFile } from 'node:fs/promises'
-import { describe, expect, it } from 'vitest'
+import { writeFile } from 'node:fs/promises'
+import { describe, it } from 'vitest'
 
 import { extractByTextMateGrammar } from './textmate'
 

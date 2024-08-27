@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { defineCallable, defineCallableComponent } from './callable'
 
 describe('callable', () => {
