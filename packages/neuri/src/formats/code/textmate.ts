@@ -6,7 +6,7 @@ import { bundledLanguages } from 'shiki'
 let wasmLoaded = false
 let shiki: ShikiInternal
 
-export async function ensureLoadWASM() {
+async function ensureLoadWASM() {
   if (wasmLoaded)
     return
 
@@ -14,7 +14,7 @@ export async function ensureLoadWASM() {
   wasmLoaded = true
 }
 
-export async function ensureShikiInternal() {
+async function ensureShikiInternal() {
   if (shiki != null)
     return
 
@@ -29,7 +29,35 @@ export async function ensureShikiInternal() {
   })
 }
 
-export async function extractByTextMateGrammar(lang: BundledLanguage, extractFrom: string) {
+export interface IToken {
+  startIndex: number
+  readonly endIndex: number
+  readonly scopes: string[]
+}
+
+/**
+ * **IMPORTANT** - Immutable!
+ */
+export interface StateStack {
+  _stackElementBrand: void
+  readonly depth: number
+  clone: () => StateStack
+  equals: (other: StateStack) => boolean
+}
+
+export interface ITokenizeLineResult {
+  readonly tokens: IToken[]
+  /**
+   * The `prevState` to be passed on to the next line tokenization.
+   */
+  readonly ruleStack: StateStack
+  /**
+   * Did tokenization stop early due to reaching the time limit.
+   */
+  readonly stoppedEarly: boolean
+}
+
+export async function extractByTextMateGrammar(lang: BundledLanguage, extractFrom: string): Promise<ITokenizeLineResult> {
   await ensureLoadWASM()
   await ensureShikiInternal()
 

@@ -6,13 +6,13 @@
   "author": {
     "name": "Lingtic.io Neuri Team",
     "email": "neuridev@lingtic.io",
-    "url": "https://github.com/neuridev"
+    "url": "https://github.com/lingticio"
   },
   "license": "MIT",
-  "homepage": "https://docs.neuri.dev/pages/en/",
+  "homepage": "https://docs.lingtic.io/pages/en/neuri",
   "repository": {
     "type": "git",
-    "url": "https://github.com/neuridev/neuri-js.git",
+    "url": "https://github.com/lingticio/neuri-js.git",
     "directory": "packages/neuri"
   },
   "keywords": [
@@ -30,6 +30,14 @@
     "./agents/fs": {
       "types": "./dist/agents/fs/index.d.ts",
       "import": "./dist/agents/fs/index.mjs"
+    },
+    "./formats/json": {
+      "types": "./dist/formats/json/index.d.ts",
+      "import": "./dist/formats/json/index.mjs"
+    },
+    "./formats/code/textmate": {
+      "types": "./dist/formats/code/textmate.d.ts",
+      "import": "./dist/formats/code/textmate.mjs"
     }
   },
   "module": "dist/index.mjs",

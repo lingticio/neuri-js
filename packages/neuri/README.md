@@ -24,4 +24,4 @@ pnpm add neuri -D
 
 ## Documentation
 
-Please refer to [Neuri](https://docs.neuri.dev/pages/en/getting-started/) for more information.
+Please refer to [Neuri](https://docs.lingtic.io/pages/en/neuri/getting-started/) for more information.
