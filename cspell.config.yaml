@@ -12,6 +12,7 @@ words:
   - openai
   - shiki
   - shikijs
+  - Streamable
   - testdata
 ignoreWords: []
 import: []
