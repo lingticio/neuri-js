@@ -40,10 +40,12 @@
     "@antfu/eslint-config": "^2.12.2",
     "@antfu/ni": "^0.21.12",
     "@types/node": "^20.12.5",
+    "bumpp": "^9.5.2",
     "eslint": "^8.57.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.4.4",
     "unbuild": "^2.0.0",
+    "vite": "^5.3.5",
     "vitest": "^1.5.0"
   },
   "workspaces": [
