@@ -1,7 +1,7 @@
 import type { JSONSchema7 } from 'json-schema'
 import Ajv from 'ajv'
 import type { Token } from './jsonParser'
-import { TokenType, createJSONParser } from './jsonParser'
+import { createJSONParser } from './jsonParser'
 
 type JSONValue = string | number | boolean | null | { [key: string]: JSONValue } | JSONValue[]
 
@@ -42,10 +42,14 @@ export function createStreamableJSONParser(schema: JSONSchema7, callback: Update
 
       current = current[path[i]]
     }
+
     const lastKey = path[path.length - 1]
     const previousValue = current[lastKey]
+
     current[lastKey] = value
+
     callback({ path, value, previousValue })
+
     return currentObject
   }
 
@@ -56,7 +60,11 @@ export function createStreamableJSONParser(schema: JSONSchema7, callback: Update
       case 'JSONObject':
       case 'JSONArray':
         if (currentPath.length > 0) {
-          stack = [...stack, { object: currentObject, key: currentPath[currentPath.length - 1] }]
+          stack = [...stack, {
+            object: currentObject,
+            key: currentPath[currentPath.length - 1],
+          }]
+
           const newValue: JSONValue = token.type === 'JSONObject' ? {} : []
           currentObject = updateValue(currentPath, newValue, currentObject)
         }
@@ -64,12 +72,20 @@ export function createStreamableJSONParser(schema: JSONSchema7, callback: Update
       case 'JSONField':
         currentPath = [...currentPath, token.content]
         currentString = ''
-        if (token.children.length > 0)
-          ({ currentObject, stack, currentPath, currentString } = processToken(token.children[0], { currentObject, stack, currentPath, currentString }))
+        if (token.children.length > 0) {
+          // Override
+          ({
+            currentObject,
+            stack,
+            currentPath,
+            currentString,
+          } = processToken(token.children[0], { currentObject, stack, currentPath, currentString }))
+        }
         break
       case 'JSONString':
         if (currentPath.length > 0) {
           const content = token.content.replace(/^"|"$/g, '')
+
           for (const char of content) {
             currentString += char
             currentObject = updateValue(currentPath, currentString, currentObject)
@@ -82,12 +98,20 @@ export function createStreamableJSONParser(schema: JSONSchema7, callback: Update
         // eslint-disable-next-line no-case-declarations
         let value: JSONValue
         switch (token.type) {
-          case 'JSONNumber': value = Number(token.content); break
-          case 'JSONBoolean': value = token.content === 'true'; break
-          case 'JSONNull': value = null; break
+          case 'JSONNumber':
+            value = Number(token.content)
+            break
+          case 'JSONBoolean':
+            value = token.content === 'true'
+            break
+          case 'JSONNull':
+            value = null
+            break
         }
+
         currentObject = updateValue(currentPath, value, currentObject)
         currentPath = currentPath.slice(0, -1)
+
         break
     }
 
@@ -96,6 +120,7 @@ export function createStreamableJSONParser(schema: JSONSchema7, callback: Update
         if (child.type === 'JSONField')
           ({ currentObject, stack, currentPath, currentString } = processToken(child, { currentObject, stack, currentPath, currentString }))
       }
+
       if (stack.length > 0) {
         const { object, key } = stack[stack.length - 1]
         object[key] = currentObject
