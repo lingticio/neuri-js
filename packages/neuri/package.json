@@ -34,10 +34,6 @@
     "./formats/json": {
       "types": "./dist/formats/json/index.d.ts",
       "import": "./dist/formats/json/index.mjs"
-    },
-    "./formats/code": {
-      "types": "./dist/formats/code/index.d.ts",
-      "import": "./dist/formats/code/index.mjs"
     }
   },
   "module": "dist/index.mjs",
