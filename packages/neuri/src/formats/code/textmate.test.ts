@@ -5,9 +5,10 @@ import { extractByTextMateGrammar, extractGolangCode, extractJavaScriptCode, ext
 describe('extractByTextMateGrammar', () => {
   it('should extract vue tokens from textmate grammar', async () => {
     const vueCode = `<script setup lang=ts>import ProductCard from '~/components/ProductCard.vue'</script><template> <div> <ProductCard :prop-a="1" />  </div> </template><style scoped> .product-card {  background-color: red;  } </style>`
+    const fullStr = `Sure, this is the code \`\`\`vue${vueCode}\`\`\` whatever ends here`
 
-    const res = await extractByTextMateGrammar('vue', `Sure, this is the code \`\`\`vue${vueCode}\`\`\` whatever ends here`)
-    const code = extractVueCode(res, vueCode)
+    const res = await extractByTextMateGrammar('vue', fullStr)
+    const code = extractVueCode(res, fullStr)
     expect(code).toBe(vueCode)
   })
 
