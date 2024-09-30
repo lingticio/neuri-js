@@ -28,7 +28,6 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
       name: 'workingDirectory',
       description: 'The current working directory',
       type: 'string',
-      required: true,
     }).build(async () => {
       log.withField('workingDirectory', workingDirectory).log('Getting working directory')
       return workingDirectory
@@ -37,11 +36,10 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
 
   function setWorkingDirectory() {
     return defineCallable<[string], void>()
-      .withReturn({
-        name: 'workingDirectory',
+      .withParameter({
+        name: 'dir',
         description: 'The new working directory',
-        type: 'void',
-        required: true,
+        type: 'string',
       })
       .build(async (dir) => {
         if (!dir)
@@ -79,13 +77,11 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'filePath',
         description: 'The path to the file to read',
         type: 'string',
-        required: true,
       })
       .withReturn({
         name: 'contents',
         description: 'The contents of the file',
         type: 'string',
-        required: true,
       })
       .build(async (filePath) => {
         log.withField('filePath', filePath).verbose('Reading file')
@@ -108,14 +104,16 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'dirPath',
         description: 'The path to the directory',
         type: 'string',
-        required: false,
+        optional: true,
         defaultValue: '.',
       })
       .withReturn({
         name: 'files',
         description: 'The list of files in the directory',
-        type: 'string[]',
-        required: true,
+        type: 'array',
+        items: {
+          type: 'string',
+        },
       })
       .build(async (dirPath) => {
         if (dirPath == null)
@@ -147,31 +145,43 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
   }
 
   function getFileContentsRecursively() {
-    return defineCallable<[string], Map<string, string>>()
+    return defineCallable<[string], { filename: string, content: string }[]>()
       .withName('getFileContentsRecursively')
       .withDescription('Get the contents of files recursively')
       .withParameter({
         name: 'dirPath',
         description: 'The path to the directory',
         type: 'string',
-        required: false,
+        optional: true,
         defaultValue: '.',
       })
       .withReturn({
         name: 'fileContents',
         description: 'The contents of the files',
-        type: 'Map<string, string>',
-        required: true,
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            filename: {
+              type: 'string',
+              description: 'The name of the file',
+            },
+            content: {
+              type: 'string',
+              description: 'The content of the file',
+            },
+          },
+        },
       })
       .build(async (dirPath) => {
         log.withField('dirPath', dirPath).verbose('Getting file contents recursively')
 
         const filenames = await listFilesRecursively().call(dirPath)
-        const fileContents = new Map<string, string>()
+        const fileContents: { filename: string, content: string }[] = []
 
         for (const filename of filenames) {
           const content = await readFile().call(join(dirPath, filename))
-          fileContents.set(filename, content)
+          fileContents.push({ filename, content })
         }
 
         return fileContents
@@ -186,14 +196,16 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'dirPath',
         description: 'The path to the directory',
         type: 'string',
-        required: false,
+        optional: true,
         defaultValue: './',
       })
       .withReturn({
         name: 'files',
         description: 'The list of files',
-        type: 'string[]',
-        required: true,
+        type: 'array',
+        items: {
+          type: 'string',
+        },
       })
       .build(async (dirPath) => {
         if (dirPath == null)
@@ -224,13 +236,14 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'contentsRegex',
         description: 'The regular expression to search for',
         type: 'string',
-        required: true,
       })
       .withReturn({
         name: 'files',
         description: 'The list of files',
-        type: 'string[]',
-        required: true,
+        type: 'array',
+        items: {
+          type: 'string',
+        },
       })
       .build(async (contentsRegex) => {
         log.withField('contentsRegex', contentsRegex).verbose('Searching files matching contents')
@@ -252,7 +265,6 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'filePath',
         description: 'The path to the file',
         type: 'string',
-        required: true,
       })
       .build(async (filePath) => {
         log.withField('filePath', filePath).verbose('Reading file as XML')
@@ -270,13 +282,11 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'filePath',
         description: 'The path to the file',
         type: 'string',
-        required: true,
       })
       .withReturn({
         name: 'exists',
         description: 'Whether the file exists',
         type: 'boolean',
-        required: true,
       })
       .build(async (filePath) => {
         log.withField('filePath', filePath).verbose('Checking if file exists')
@@ -293,13 +303,11 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'filePath',
         description: 'The path to the file',
         type: 'string',
-        required: true,
       })
       .withParameter({
         name: 'contents',
         description: 'The contents of the file',
         type: 'string',
-        required: true,
       })
       .build(async (filePath, contents) => {
         log.withField('filePath', filePath).verbose('Writing file')
@@ -318,19 +326,11 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'filePath',
         description: 'The path to the file',
         type: 'string',
-        required: true,
       })
       .withParameter({
         name: 'descriptionOfChanges',
         description: 'The description of the changes',
         type: 'string',
-        required: true,
-      })
-      .withReturn({
-        name: 'void',
-        description: 'No return value',
-        type: 'void',
-        required: true,
       })
       .build(async (filePath, descriptionOfChanges) => {
         log.withField('filePath', filePath).verbose('Editing file contents')
@@ -350,14 +350,13 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         name: 'dirPath',
         description: 'The path to the directory',
         type: 'string',
-        required: false,
+        optional: true,
         defaultValue: './',
       })
       .withReturn({
         name: 'tree',
         description: 'The file system tree',
         type: 'string',
-        required: true,
       })
       .build(async (dirPath) => {
         if (dirPath == null)

@@ -1,3 +1,5 @@
+import type { JSONSchema7 } from 'json-schema'
+
 export interface CallableOpenAIFunction {
   type: 'function'
   function: {
@@ -11,19 +13,15 @@ export interface CallableOpenAITools {
   tools: CallableOpenAIFunction[]
 }
 
-export interface CallableParameter<P> {
+export interface CallableParameter<P> extends JSONSchema7 {
   name: string
-  description: string
-  type: string
-  required: boolean
+  optional?: boolean
   defaultValue?: P
 }
 
-export interface CallableReturn<R> {
+export interface CallableReturn<R> extends JSONSchema7 {
   name: string
-  description: string
-  type: string
-  required: boolean
+  optional?: boolean
   defaultValue?: R
 }
 
@@ -121,26 +119,32 @@ export function toJSONSchema(callable: Callable<any[], any>): any {
       parameters: {
         type: 'object',
         properties: callable.parameters.reduce((acc, param) => {
-          acc[param.name] = {
-            type: param.type,
-            description: param.description,
-            default: param.defaultValue,
-          }
+          acc[param.name] = { ...param }
+          if (param.defaultValue != null)
+            acc[param.name].default = param.defaultValue
+
+          delete acc[param.name].name
+
           return acc
         }, {} as Record<string, any>),
-        required: callable.parameters.filter(param => param.required).map(param => param.name),
+        required: callable.parameters
+          .filter(param => typeof param.optional === 'undefined' || !param.optional)
+          .map(param => param.name),
       },
       returns: {
         type: 'object',
         properties: callable.returns.reduce((acc, ret) => {
-          acc[ret.name] = {
-            type: ret.type,
-            description: ret.description,
-            default: ret.defaultValue,
-          }
+          acc[ret.name] = { ...ret }
+          if (ret.defaultValue != null)
+            acc[ret.name].default = ret.defaultValue
+
+          delete acc[ret.name].name
+
           return acc
         }, {} as Record<string, any>),
-        required: callable.returns.filter(ret => ret.required).map(ret => ret.name),
+        required: callable.returns
+          .filter(ret => typeof ret.optional === 'undefined' || !ret.optional)
+          .map(ret => ret.name),
       },
     },
   }
