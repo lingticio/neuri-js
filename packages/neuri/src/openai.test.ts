@@ -14,8 +14,8 @@ import {
 describe('agent', async () => {
   it('works', async () => {
     const o = new OpenAI({
-      baseURL: env.OPENAI_API_BASEURL,
-      apiKey: env.OPENAI_API_KEY,
+      baseURL: import.meta.env.VITE_OPENAI_API_BASEURL,
+      apiKey: import.meta.env.VITE_OPENAI_API_KEY,
     })
 
     const { call } = await composeAgent({
