@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { defineCallable, defineCallableComponent } from './callable'
 
 describe('callable', () => {
@@ -8,7 +9,7 @@ describe('callable', () => {
       .withDescription('test description')
       .withParameter({ name: 'param', description: 'param description', type: 'string' })
       .withReturn({ name: 'return', description: 'return description', type: 'string' })
-      .build(async (param: string) => param)
+      .build(async ({ parameters: [param] }) => param)
 
     const schema = callable.toJSONSchema()
     expect(schema).toEqual({
@@ -46,7 +47,7 @@ describe('callable', () => {
       .withDescription('test description')
       .withParameter({ name: 'param', description: 'param description', type: 'string' })
       .withReturn({ name: 'return', description: 'return description', type: 'string' })
-      .build(async (param: string) => param)
+      .build(async ({ parameters: [param] }) => param)
 
     const schema = callable.toOpenAIFunctionSchema()
     expect(schema).toEqual({
@@ -76,7 +77,7 @@ describe('callableComponent', () => {
       .withDescription('test description')
       .withParameter({ name: 'param', description: 'param description', type: 'string' })
       .withReturn({ name: 'return', description: 'return description', type: 'string' })
-      .build(async (param: string) => param)
+      .build(async ({ parameters: [param] }) => param)
 
     const functionAdd = () => defineCallable<[number, number], number>()
       .withName('add')
@@ -84,7 +85,7 @@ describe('callableComponent', () => {
       .withParameter({ name: 'a', description: 'a description', type: 'number' })
       .withParameter({ name: 'b', description: 'b description', type: 'number' })
       .withReturn({ name: 'return', description: 'return description', type: 'number' })
-      .build(async (a: number, b: number) => a + b)
+      .build(async ({ parameters: [a, b] }) => a + b)
 
     const component = defineCallableComponent('test', 'test description', {
       test: functionTest,
@@ -165,7 +166,7 @@ describe('callableComponent', () => {
       .withDescription('test description')
       .withParameter({ name: 'param', description: 'param description', type: 'string' })
       .withReturn({ name: 'return', description: 'return description', type: 'string' })
-      .build(async (param: string) => param)
+      .build(async ({ parameters: [param] }) => param)
 
     const functionAdd = () => defineCallable<[number, number], number>()
       .withName('add')
@@ -173,7 +174,7 @@ describe('callableComponent', () => {
       .withParameter({ name: 'a', description: 'a description', type: 'number' })
       .withParameter({ name: 'b', description: 'b description', type: 'number' })
       .withReturn({ name: 'return', description: 'return description', type: 'number' })
-      .build(async (a: number, b: number) => a + b)
+      .build(async ({ parameters: [a, b] }) => a + b)
 
     const component = defineCallableComponent('test', 'test description', {
       test: functionTest,

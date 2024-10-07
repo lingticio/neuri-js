@@ -1,4 +1,5 @@
 import type { JSONSchema7 } from 'json-schema'
+import type { OpenAI } from 'openai'
 
 export interface CallableOpenAIFunction {
   type: 'function'
@@ -13,6 +14,10 @@ export interface CallableOpenAITools {
   tools: CallableOpenAIFunction[]
 }
 
+export interface CallableContext<P> {
+  parameters: P
+}
+
 export interface CallableParameter<P> extends JSONSchema7 {
   name: string
   optional?: boolean
@@ -25,30 +30,30 @@ export interface CallableReturn<R> extends JSONSchema7 {
   defaultValue?: R
 }
 
-export interface Callable<P extends any[], R> {
+export interface Callable<P, R> {
   name: string
   description: string
-  parameters: CallableParameter<P[number]>[]
+  parameters: CallableParameter<P extends any[] ? P[number] : unknown>[]
   returns: CallableReturn<R>[]
-  call: (...params: P) => Promise<R>
+  call: (ctx: CallableContext<P>) => Promise<R>
   toJSONSchema: () => Record<string, any>
   toOpenAIFunctionSchema: () => CallableOpenAIFunction
 }
 
-export interface CallableFunctions extends Record<string, () => Callable<any[], any>> {
-  [name: string]: () => Callable<any[], any>
+export interface CallableFunctions<P = any, R = any> extends Record<string, () => Callable<P, R>> {
+  [name: string]: () => Callable<P, R>
 }
 
 export interface CallableComponent {
-  functions: CallableFunctions
+  functions: CallableFunctions<any[], any>
   toJSONSchema: () => Record<string, any>
   toOpenAIToolsSchema: () => CallableOpenAITools
 }
 
-export interface CallableBuilder<P extends any[], R> {
+export interface CallableBuilder<P, R> {
   withName: (name: string) => CallableBuilder<P, R>
   withDescription: (description: string) => CallableBuilder<P, R>
-  withParameter: (parameter: CallableParameter<P[number]>) => CallableBuilder<P, R>
+  withParameter: (parameter: CallableParameter<P extends any[] ? P[number] : unknown>) => CallableBuilder<P, R>
   withReturn: (returns: CallableReturn<R>) => CallableBuilder<P, R>
   build: (call: Callable<P, R>['call']) => Callable<P, R>
 }
@@ -59,14 +64,14 @@ export function defineCallable<P extends any[], R>(): CallableBuilder<P, R> {
     description: '',
     parameters: [],
     returns: [],
-    call: async (..._: Partial<P>): Promise<R> => {
+    call: async (_): Promise<R> => {
       return undefined as R
     },
     toJSONSchema() {
-      return toJSONSchema(callable)
+      return toJSONSchema(callable as unknown as Callable<any[], any>)
     },
     toOpenAIFunctionSchema() {
-      return toOpenAIFunctionSchema(callable)
+      return toOpenAIFunctionSchema(callable as unknown as Callable<any[], any>)
     },
   }
 
@@ -179,4 +184,22 @@ export function toOpenAIToolsSchema(callableComponent: CallableComponent): Calla
   return {
     tools: Object.entries(callableComponent.functions).map(([_, func]) => func().toOpenAIFunctionSchema()),
   }
+}
+
+export function invokeCallableComponent(openAI: OpenAI, request: OpenAI.ChatCompletionCreateParams, completion: OpenAI.ChatCompletion, callableComponent: CallableComponent) {
+  completion.choices.forEach((choice) => {
+    if (!choice.message.tool_calls)
+      return
+
+    choice.message.tool_calls.forEach((toolCall) => {
+      const matchedFunc = callableComponent.functions[toolCall.function.name]
+      if (!matchedFunc)
+        return
+
+      const argumentsParsed = JSON.parse(toolCall.function.arguments)
+
+      const ctx = { parameters: argumentsParsed }
+      matchedFunc().call(ctx)
+    })
+  })
 }
