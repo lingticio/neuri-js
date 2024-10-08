@@ -8,11 +8,6 @@
     "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "paths": {
-      "~/packages": [
-        "./packages"
-      ]
-    },
     "types": [
       "node",
       "vite/client"
@@ -34,6 +29,10 @@
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
+    "examples/**/*.ts",
+    "examples/**/*.d.ts",
+    "examples/**/*.tsx",
+    "examples/**/*.vue",
     "docs/**/*.ts",
     "docs/**/*.vue",
     "docs/**/.vitepress/**/*.ts",

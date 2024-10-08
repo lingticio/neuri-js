@@ -14,5 +14,6 @@ words:
   - shikijs
   - Streamable
   - testdata
+  - vitepress
 ignoreWords: []
 import: []

@@ -23,7 +23,7 @@ describe('useFileSystem', () => {
   it('should get the current working directory', async () => {
     const { functions: { getWorkingDirectory } } = FileSystem({ basePath: testDir })
 
-    const cwd = await getWorkingDirectory().call()
+    const cwd = await getWorkingDirectory().call({ parameters: [] })
     expect(cwd).toBe(testDir)
   })
 
@@ -37,8 +37,8 @@ describe('useFileSystem', () => {
 
     const newDir = join(testDir, 'new-dir')
     await mkdir(newDir, { recursive: true })
-    await setWorkingDirectory().call(newDir)
-    const cwd = await getWorkingDirectory().call()
+    await setWorkingDirectory().call({ parameters: [newDir] })
+    const cwd = await getWorkingDirectory().call({ parameters: [] })
     expect(cwd).toBe(newDir)
   })
 
@@ -49,7 +49,7 @@ describe('useFileSystem', () => {
       },
     } = FileSystem({ basePath: testDir })
 
-    await expect(setWorkingDirectory().call('nonexistent')).rejects.toThrow(
+    await expect(setWorkingDirectory().call({ parameters: ['nonexistent'] })).rejects.toThrow(
       `New working directory nonexistent does not exist`,
     )
   })
@@ -63,7 +63,7 @@ describe('useFileSystem', () => {
 
     const filePath = join(testDir, 'readme.txt')
     await fsWriteFile(filePath, 'Hello, World!')
-    const content = await readFile().call('readme.txt')
+    const content = await readFile().call({ parameters: ['readme.txt'] })
     expect(content).toBe('Hello, World!')
   })
 
@@ -78,7 +78,7 @@ describe('useFileSystem', () => {
     await mkdir(dirPath, { recursive: true })
     await fsWriteFile(join(dirPath, 'file1.txt'), '')
     await fsWriteFile(join(dirPath, 'file2.txt'), '')
-    const files = await listFilesInDirectory().call('list-test')
+    const files = await listFilesInDirectory().call({ parameters: ['list-test'] })
     expect(files).toContain('file1.txt')
     expect(files).toContain('file2.txt')
   })
@@ -92,7 +92,7 @@ describe('useFileSystem', () => {
 
     const filePath = join(testDir, 'existence.txt')
     await fsWriteFile(filePath, 'Exists')
-    const exists = await fileExists().call('existence.txt')
+    const exists = await fileExists().call({ parameters: ['existence.txt'] })
     expect(exists).toBe(true)
   })
 
@@ -104,7 +104,7 @@ describe('useFileSystem', () => {
     } = FileSystem({ basePath: testDir })
 
     const filePath = 'write-test.txt'
-    await writeFile().call(filePath, 'Written content')
+    await writeFile().call({ parameters: [filePath, 'Written content'] })
     const content = await fsReadFile(join(testDir, filePath), 'utf-8')
     expect(content).toBe('Written content')
   })

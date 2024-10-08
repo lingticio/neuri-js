@@ -44,8 +44,8 @@
       "import": "./dist/formats/markdown/index.mjs"
     },
     "./openai": {
-      "types": "./dist/openai/index.d.ts",
-      "import": "./dist/openai/index.mjs"
+      "types": "./dist/openai.d.ts",
+      "import": "./dist/openai.mjs"
     }
   },
   "module": "dist/index.mjs",

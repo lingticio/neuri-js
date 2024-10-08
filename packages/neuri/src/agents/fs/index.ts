@@ -41,7 +41,7 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         description: 'The new working directory',
         type: 'string',
       })
-      .build(async (dir) => {
+      .build(async ({ parameters: [dir] }) => {
         if (!dir)
           throw new Error('dir must be provided')
 
@@ -57,7 +57,7 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
           relativeDir = dir.substring(1)
         }
 
-        const relativePath = join(await getWorkingDirectory().call(), relativeDir)
+        const relativePath = join(await getWorkingDirectory().call({ parameters: [] }), relativeDir)
         if (await exists(relativePath)) {
           workingDirectory = relativePath
           log.withField('workingDirectory', workingDirectory).log('workingDirectory is now set')
@@ -83,9 +83,9 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         description: 'The contents of the file',
         type: 'string',
       })
-      .build(async (filePath) => {
+      .build(async ({ parameters: [filePath] }) => {
         log.withField('filePath', filePath).verbose('Reading file')
-        const relativeFullPath = join(await getWorkingDirectory().call(), filePath)
+        const relativeFullPath = join(await getWorkingDirectory().call({ parameters: [] }), filePath)
 
         if (await exists(relativeFullPath))
           return (await fsReadFile(relativeFullPath)).toString()
@@ -115,14 +115,14 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
           type: 'string',
         },
       })
-      .build(async (dirPath) => {
+      .build(async ({ parameters: [dirPath] }) => {
         if (dirPath == null)
           dirPath = '.'
 
         log.withField('dirPath', dirPath).verbose('Listing files in directory')
 
         const ig = ignore()
-        const gitIgnorePath = join(await getWorkingDirectory().call(), dirPath, '.gitignore')
+        const gitIgnorePath = join(await getWorkingDirectory().call({ parameters: [] }), dirPath, '.gitignore')
         if (await exists(gitIgnorePath)) {
           let lines = await fsReadFile(gitIgnorePath, 'utf8').then(data => data.split('\n'))
           lines = lines.map(line => line.trim()).filter(line => line.length && !line.startsWith('#'))
@@ -130,12 +130,12 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         }
 
         const files: string[] = []
-        const readdirPath = join(await getWorkingDirectory().call(), dirPath)
+        const readdirPath = join(await getWorkingDirectory().call({ parameters: [] }), dirPath)
         const dirList = await readdir(readdirPath, { withFileTypes: true })
 
         for (const item of dirList) {
           const direntName = item.isDirectory() ? `${item.name}/` : item.name
-          const relativePath = relative(await getWorkingDirectory().call(), join(await getWorkingDirectory().call(), dirPath, direntName))
+          const relativePath = relative(await getWorkingDirectory().call({ parameters: [] }), join(await getWorkingDirectory().call({ parameters: [] }), dirPath, direntName))
           if (!ig.ignores(relativePath))
             files.push(item.name)
         }
@@ -173,14 +173,14 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
           },
         },
       })
-      .build(async (dirPath) => {
+      .build(async ({ parameters: [dirPath] }) => {
         log.withField('dirPath', dirPath).verbose('Getting file contents recursively')
 
-        const filenames = await listFilesRecursively().call(dirPath)
+        const filenames = await listFilesRecursively().call({ parameters: [dirPath] })
         const fileContents: { filename: string, content: string }[] = []
 
         for (const filename of filenames) {
-          const content = await readFile().call(join(dirPath, filename))
+          const content = await readFile().call({ parameters: [join(dirPath, filename)] })
           fileContents.push({ filename, content })
         }
 
@@ -207,19 +207,19 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
           type: 'string',
         },
       })
-      .build(async (dirPath) => {
+      .build(async ({ parameters: [dirPath] }) => {
         if (dirPath == null)
           dirPath = './'
 
         log.withField('dirPath', dirPath).verbose('Listing files recursively')
 
         const files: string[] = []
-        const dirList = await readdir(join(await getWorkingDirectory().call(), dirPath), { withFileTypes: true })
+        const dirList = await readdir(join(await getWorkingDirectory().call({ parameters: [] }), dirPath), { withFileTypes: true })
 
         for (const item of dirList) {
           const fullPath = join(dirPath, item.name)
           if (item.isDirectory())
-            files.push(...await listFilesRecursively().call(fullPath))
+            files.push(...await listFilesRecursively().call({ parameters: [fullPath] }))
           else
             files.push(fullPath)
         }
@@ -245,11 +245,11 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
           type: 'string',
         },
       })
-      .build(async (contentsRegex) => {
+      .build(async ({ parameters: [contentsRegex] }) => {
         log.withField('contentsRegex', contentsRegex).verbose('Searching files matching contents')
 
         const command = `rg --count ${contentsRegex}`
-        const { stdout, stderr, exitCode } = await execa(command, { cwd: await getWorkingDirectory().call() })
+        const { stdout, stderr, exitCode } = await execa(command, { cwd: await getWorkingDirectory().call({ parameters: [] }) })
         if (exitCode != null && exitCode > 0)
           throw new Error(stderr)
 
@@ -288,10 +288,10 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         description: 'Whether the file exists',
         type: 'boolean',
       })
-      .build(async (filePath) => {
+      .build(async ({ parameters: [filePath] }) => {
         log.withField('filePath', filePath).verbose('Checking if file exists')
 
-        return await exists(join(await getWorkingDirectory().call(), filePath))
+        return await exists(join(await getWorkingDirectory().call({ parameters: [] }), filePath))
       })
   }
 
@@ -309,10 +309,10 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         description: 'The contents of the file',
         type: 'string',
       })
-      .build(async (filePath, contents) => {
+      .build(async ({ parameters: [filePath, contents] }) => {
         log.withField('filePath', filePath).verbose('Writing file')
 
-        const fullPath = join(await getWorkingDirectory().call(), filePath)
+        const fullPath = join(await getWorkingDirectory().call({ parameters: [] }), filePath)
         await fsWriteFile(fullPath, contents)
         log.withField('filePath', filePath).log('File written')
       })
@@ -332,13 +332,13 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         description: 'The description of the changes',
         type: 'string',
       })
-      .build(async (filePath, descriptionOfChanges) => {
+      .build(async ({ parameters: [filePath, descriptionOfChanges] }) => {
         log.withField('filePath', filePath).verbose('Editing file contents')
 
-        let contents = await readFile().call(filePath)
+        let contents = await readFile().call({ parameters: [filePath] })
         // Assuming `processText` is some function that modifies the text based on the description
         contents = contents.replace(/some pattern/, descriptionOfChanges)
-        await writeFile().call(filePath, contents)
+        await writeFile().call({ parameters: [filePath, contents] })
       })
   }
 
@@ -358,13 +358,13 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
         description: 'The file system tree',
         type: 'string',
       })
-      .build(async (dirPath) => {
+      .build(async ({ parameters: [dirPath] }) => {
         if (dirPath == null)
           dirPath = './'
 
         log.withField('dirPath', dirPath).verbose('Getting file system tree')
 
-        const files = await listFilesRecursively().call(dirPath)
+        const files = await listFilesRecursively().call({ parameters: [dirPath] })
         return files.join('\n')
       })
   }
