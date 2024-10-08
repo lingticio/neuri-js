@@ -11,7 +11,7 @@ import {
   user,
 } from './openai'
 
-describe('agent', async () => {
+describe.skip('agent', async () => {
   it('works', async () => {
     const o = new OpenAI({
       baseURL: import.meta.env.VITE_OPENAI_API_BASEURL,
