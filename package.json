@@ -1,7 +1,7 @@
 {
   "name": "neuridev",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "packageManager": "pnpm@9.0.5",
   "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
