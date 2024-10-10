@@ -40,7 +40,7 @@
     "@antfu/eslint-config": "^2.12.2",
     "@antfu/ni": "^0.21.12",
     "@types/node": "^20.12.5",
-    "bumpp": "^9.5.2",
+    "bumpp": "^9.7.1",
     "eslint": "^8.57.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.4.4",
