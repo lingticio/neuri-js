@@ -13,8 +13,14 @@
     "run": "tsx src/main.ts"
   },
   "dependencies": {
+    "@oxc-parser/wasm": "^0.31.0",
+    "acorn-walk": "^8.3.4",
+    "glob": "^11.0.0",
     "neuri": "workspace:^",
-    "openai": "^4.54.0"
+    "openai": "^4.54.0",
+    "swc-walk": "1.0.0-rc.2",
+    "ts-morph": "^24.0.0",
+    "typescript": "^5.4.4"
   },
   "devDependencies": {
     "tsx": "^4.19.1"
