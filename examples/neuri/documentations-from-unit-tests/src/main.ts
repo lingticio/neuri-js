@@ -3,11 +3,6 @@ import OpenAI from 'openai'
 
 import {
   composeAgent,
-  defineToolFunction,
-
-  resolveFirstTextMessageFromCompletion,
-  system,
-  user,
 } from 'neuri/openai'
 
 async function main() {
