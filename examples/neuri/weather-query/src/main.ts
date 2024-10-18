@@ -1,5 +1,6 @@
 import { env } from 'node:process'
 import OpenAI from 'openai'
+import * as z from 'zod'
 
 import {
   composeAgent,
@@ -21,7 +22,6 @@ async function main() {
     openAI: o,
     tools: [
       defineToolFunction(
-        o,
         toolFunction('getCity', 'Get the user\'s city', {}),
         async () => {
           return 'New York City'
@@ -36,16 +36,9 @@ async function main() {
         },
       ),
       defineToolFunction<{ location: string }, string>(
-        o,
-        toolFunction('getCityCode', 'Get the user\'s city code with search', {
-          type: 'object',
-          properties: {
-            city: {
-              type: 'string',
-            },
-          },
-          required: ['city'],
-        }),
+        toolFunction('getCityCode', 'Get the user\'s city code with search', z.object({
+          city: z.string().min(1).describe('Get the user\'s city code with search'),
+        })),
         async () => {
           return 'NYC'
         },
@@ -59,17 +52,9 @@ async function main() {
         },
       ),
       defineToolFunction<{ cityCode: string }, { city: string, cityCode: string, weather: string, degreesCelsius: number }>(
-        o,
-        toolFunction('getWeather', 'Get the current weather', {
-          type: 'object',
-          properties: {
-            cityCode: {
-              type: 'string',
-              description: 'The city code to get the weather for.',
-            },
-          },
-          required: ['cityCode'],
-        }),
+        toolFunction('getWeather', 'Get the current weather', z.object({
+          cityCode: z.string().min(1).describe('Get the user\'s city code with search'),
+        })),
         async ({ parameters: { cityCode } }) => {
           return {
             city: `New York city`,

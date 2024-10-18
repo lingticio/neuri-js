@@ -1,5 +1,8 @@
 import type OpenAI from 'openai'
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema7, JSONSchema7Object, JSONSchema7Type } from 'json-schema'
+import { ZodSchema } from 'zod'
+import * as z from 'zod'
+import { zodToJsonSchema } from 'zod-to-json-schema'
 
 export function system(message: string): OpenAI.ChatCompletionSystemMessageParam {
   return { role: 'system', content: message }
@@ -170,7 +173,12 @@ export async function invokeFunctionWithTools<P, R>(chatCompletion: OpenAI.Chat.
   }
 }
 
-export function toolFunction(name: string, description: string, parameters: JSONSchema7): OpenAI.Chat.ChatCompletionTool {
+export function toolFunction(name: string, description: string, parameters: JSONSchema7Object): OpenAI.Chat.ChatCompletionTool
+export function toolFunction(name: string, description: string, parameters: ZodSchema): OpenAI.Chat.ChatCompletionTool
+export function toolFunction(name: string, description: string, parameters: JSONSchema7Object | ZodSchema): OpenAI.Chat.ChatCompletionTool {
+  if (parameters instanceof ZodSchema)
+    parameters = zodToJsonSchema(parameters) as JSONSchema7Object
+
   return {
     type: 'function',
     function: {
@@ -182,7 +190,7 @@ export function toolFunction(name: string, description: string, parameters: JSON
 }
 
 export interface Tool<P = any, R = any> {
-  openAI: OpenAI
+  openAI?: OpenAI
   tool: OpenAI.Chat.ChatCompletionTool
   func: (ctx: InvokeContext<P, R>) => Promise<R>
   hooks: ToolHooks<P, R>
@@ -216,10 +224,10 @@ export interface ResolvedToolCall<P, R> extends Tool {
 }
 
 export function defineToolFunction<P, R>(
-  openAI: OpenAI,
   tool: OpenAI.Chat.ChatCompletionTool,
   func: (ctx: InvokeContext<P, R>) => Promise<R>,
   options?: {
+    openAI?: OpenAI
     hooks?: Partial<ToolHooks<P, R>>
   },
 ): Tool {
@@ -237,7 +245,7 @@ export function defineToolFunction<P, R>(
     hooks.postInvoke = options?.hooks?.postInvoke
 
   return {
-    openAI,
+    openAI: options?.openAI,
     tool,
     func,
     hooks,

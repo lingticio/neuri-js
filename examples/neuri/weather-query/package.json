@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "neuri": "workspace:^",
-    "openai": "^4.54.0"
+    "openai": "^4.54.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "tsx": "^4.19.1"
