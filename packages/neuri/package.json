@@ -66,6 +66,7 @@
     "@guiiai/logg": "^1.0.3",
     "@shikijs/core": "^1.14.1",
     "@shikijs/vscode-textmate": "^9.2.2",
+    "@valibot/to-json-schema": "^0.2.1",
     "ajv": "^8.17.1",
     "defu": "^6.1.4",
     "execa": "^9.3.1",
@@ -81,6 +82,7 @@
     "unist-util-is": "^6.0.0",
     "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.0.0",
+    "valibot": "^0.42.1",
     "zod": "^3.23.8",
     "zod-to-json-schema": "^3.23.3"
   },

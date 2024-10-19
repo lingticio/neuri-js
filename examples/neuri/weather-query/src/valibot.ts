@@ -1,6 +1,6 @@
 import { env } from 'node:process'
 import OpenAI from 'openai'
-import * as z from 'zod'
+import * as v from 'valibot'
 
 import {
   composeAgent,
@@ -36,8 +36,8 @@ async function main() {
         },
       ),
       defineToolFunction<{ location: string }, string>(
-        toolFunction('getCityCode', 'Get the user\'s city code with search', z.object({
-          city: z.string().min(1).describe('Get the user\'s city code with search'),
+        toolFunction('getCityCode', 'Get the user\'s city code with search', v.object({
+          location: v.pipe(v.string(), v.minLength(1), v.description('Get the user\'s city code with search')),
         })),
         async () => {
           return 'NYC'
@@ -52,8 +52,8 @@ async function main() {
         },
       ),
       defineToolFunction<{ cityCode: string }, { city: string, cityCode: string, weather: string, degreesCelsius: number }>(
-        toolFunction('getWeather', 'Get the current weather', z.object({
-          cityCode: z.string().min(1).describe('Get the user\'s city code with search'),
+        toolFunction('getWeather', 'Get the current weather', v.object({
+          cityCode: v.pipe(v.string(), v.minLength(1), v.description('Get the user\'s city code with search')),
         })),
         async ({ parameters: { cityCode } }) => {
           return {

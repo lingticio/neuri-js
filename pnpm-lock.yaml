@@ -84,6 +84,9 @@ importers:
       openai:
         specifier: ^4.54.0
         version: 4.54.0
+      valibot:
+        specifier: ^0.42.1
+        version: 0.42.1(typescript@5.6.3)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -103,6 +106,9 @@ importers:
       '@shikijs/vscode-textmate':
         specifier: ^9.2.2
         version: 9.2.2
+      '@valibot/to-json-schema':
+        specifier: ^0.2.1
+        version: 0.2.1(valibot@0.42.1(typescript@5.6.3))
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
@@ -148,6 +154,9 @@ importers:
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
+      valibot:
+        specifier: ^0.42.1
+        version: 0.42.1(typescript@5.6.3)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -1751,6 +1760,11 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
 
+  '@valibot/to-json-schema@0.2.1':
+    resolution: {integrity: sha512-Cyb/2vz56CvRp5VzO4a0lWxCwMG3BxWZrZRd/EyDMkx1yhfeSP2r8b7SEH+s+f16vdiMEjtRws/4EiOXLZlbMQ==}
+    peerDependencies:
+      valibot: '>=0.31.0 <1'
+
   '@vitejs/plugin-vue@5.1.2':
     resolution: {integrity: sha512-nY9IwH12qeiJqumTCLJLE7IiNx7HZ39cbHaysEUd+Myvbz9KAqd2yq+U01Kab1R/H1BmiyM2ShTYlNH32Fzo3A==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -2780,6 +2794,7 @@ packages:
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -2886,6 +2901,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -4282,6 +4298,14 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  valibot@0.42.1:
+    resolution: {integrity: sha512-3keXV29Ar5b//Hqi4MbSdV7lfVp6zuYLZuA9V1PvQUsXqogr+u5lvLPLk3A4f74VUXDnf/JfWMN6sB+koJ/FFw==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
@@ -6056,6 +6080,10 @@ snapshots:
     transitivePeerDependencies:
       - rollup
       - supports-color
+
+  '@valibot/to-json-schema@0.2.1(valibot@0.42.1(typescript@5.6.3))':
+    dependencies:
+      valibot: 0.42.1(typescript@5.6.3)
 
   '@vitejs/plugin-vue@5.1.2(vite@5.4.9(@types/node@22.7.6)(less@4.2.0))(vue@3.4.35(typescript@5.6.3))':
     dependencies:
@@ -9020,6 +9048,10 @@ snapshots:
       punycode: 2.3.1
 
   util-deprecate@1.0.2: {}
+
+  valibot@0.42.1(typescript@5.6.3):
+    optionalDependencies:
+      typescript: 5.6.3
 
   validate-npm-package-license@3.0.4:
     dependencies:
