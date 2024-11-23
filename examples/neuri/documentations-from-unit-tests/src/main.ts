@@ -1,9 +1,9 @@
 import { env } from 'node:process'
-import OpenAI from 'openai'
-
 import {
   composeAgent,
 } from 'neuri/openai'
+
+import OpenAI from 'openai'
 
 async function main() {
   const o = new OpenAI({

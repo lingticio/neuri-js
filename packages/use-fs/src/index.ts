@@ -1,17 +1,17 @@
+import type { CallableComponent } from 'neuri'
 import {
   readFile as fsReadFile,
   writeFile as fsWriteFile,
   readdir,
 } from 'node:fs/promises'
-import { cwd } from 'node:process'
 import { join, relative } from 'node:path'
-import { defu } from 'defu'
+import { cwd } from 'node:process'
 import { useLogg } from '@guiiai/logg'
-import ignore from 'ignore'
+import { defu } from 'defu'
 import { execa } from 'execa'
 
-import type { CallableComponent } from '../../callable'
-import { defineCallable, defineCallableComponent } from '../../callable'
+import ignore from 'ignore'
+import { defineCallable, defineCallableComponent } from 'neuri'
 import { exists } from './utils'
 
 export function FileSystem(options?: { basePath?: string }): CallableComponent {

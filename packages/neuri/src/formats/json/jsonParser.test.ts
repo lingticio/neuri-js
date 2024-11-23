@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
 import type { Token } from './jsonParser'
+import { describe, expect, it } from 'vitest'
 import { createJSONParser, stringifyTokens } from './jsonParser'
 
 describe('jsonParser', () => {

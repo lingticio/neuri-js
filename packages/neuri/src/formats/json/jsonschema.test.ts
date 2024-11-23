@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
 import type { JSONSchemaDraft202012 } from './jsonschema'
+import { describe, expect, it } from 'vitest'
 import { buildRegexFromSchema, buildRegexFromSchemaString, extractBySchema, extractObjectBySchema } from './jsonschema'
 
 describe('buildRegexFromSchemaString', () => {

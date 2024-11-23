@@ -27,17 +27,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
-    "./agents/fs": {
-      "types": "./dist/agents/fs/index.d.ts",
-      "import": "./dist/agents/fs/index.mjs"
-    },
     "./formats/json": {
       "types": "./dist/formats/json/index.d.ts",
       "import": "./dist/formats/json/index.mjs"
-    },
-    "./formats/code/textmate": {
-      "types": "./dist/formats/code/textmate.d.ts",
-      "import": "./dist/formats/code/textmate.mjs"
     },
     "./formats/markdown": {
       "types": "./dist/formats/markdown/index.d.ts",
@@ -64,19 +56,13 @@
   },
   "dependencies": {
     "@guiiai/logg": "^1.0.3",
-    "@shikijs/core": "^1.14.1",
-    "@shikijs/vscode-textmate": "^9.2.2",
     "@valibot/to-json-schema": "^0.2.1",
     "ajv": "^8.17.1",
     "defu": "^6.1.4",
-    "execa": "^9.3.1",
-    "ignore": "^5.3.2",
     "json-schema": "^0.4.0",
     "nanoid": "^5.0.7",
     "openai": "^4.54.0",
     "remark-parse": "^11.0.0",
-    "shiki": "^1.14.1",
-    "tm-grammars": "^1.17.18",
     "unified": "^11.0.5",
     "unist-util-filter": "^5.0.1",
     "unist-util-is": "^6.0.0",

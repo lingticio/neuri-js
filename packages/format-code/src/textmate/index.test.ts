@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { tokenizeByTextMateGrammar } from './textmate'
+import { tokenizeByTextMateGrammar } from '.'
 
 describe('tokenizeByTextMateGrammar', () => {
   it('should tokenize vue code', async () => {

@@ -1,6 +1,6 @@
-import { unified } from 'unified'
-import RemarkParse from 'remark-parse'
 import type { Code, Node } from 'mdast'
+import RemarkParse from 'remark-parse'
+import { unified } from 'unified'
 import { visit } from 'unist-util-visit'
 
 function isCodeNode(node: Node): node is Code {
@@ -46,7 +46,7 @@ interface StreamableParser {
 }
 
 function trimCodeBlockBoundary(content: string): string {
-  return content.replace(/\n(`){1,}$/, '')
+  return content.replace(/\n(`)+$/, '')
 }
 
 /**

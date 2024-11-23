@@ -1,7 +1,4 @@
 import { env } from 'node:process'
-import OpenAI from 'openai'
-import * as v from 'valibot'
-
 import {
   composeAgent,
   defineToolFunction,
@@ -11,6 +8,9 @@ import {
   toolFunction,
   user,
 } from 'neuri/openai'
+import OpenAI from 'openai'
+
+import * as v from 'valibot'
 
 async function main() {
   const o = new OpenAI({
