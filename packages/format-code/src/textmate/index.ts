@@ -1,7 +1,8 @@
 import type { LanguageRegistration, ShikiInternal } from '@shikijs/core'
 import type { BundledLanguage } from 'shiki'
 
-import { createShikiInternal, loadWasm } from '@shikijs/core'
+import { createShikiInternal } from '@shikijs/core'
+import { loadWasm } from '@shikijs/engine-oniguruma'
 import { bundledLanguages } from 'shiki'
 
 let wasmLoaded = false

@@ -49,6 +49,7 @@
   "dependencies": {
     "@guiiai/logg": "^1.0.3",
     "@shikijs/core": "^1.14.1",
+    "@shikijs/engine-oniguruma": "^1.23.1",
     "@shikijs/vscode-textmate": "^9.2.2",
     "shiki": "^1.14.1",
     "tm-grammars": "^1.17.18"
