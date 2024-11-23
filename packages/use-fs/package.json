@@ -1,0 +1,55 @@
+{
+  "name": "@neuri/use-fs",
+  "type": "module",
+  "version": "0.0.5",
+  "description": "FileSystem related agent implementation for neuri",
+  "author": {
+    "name": "Lingtic.io Neuri Team",
+    "email": "neuridev@lingtic.io",
+    "url": "https://github.com/lingticio"
+  },
+  "license": "MIT",
+  "homepage": "https://docs.lingtic.io/pages/en/neuri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lingticio/neuri-js.git",
+    "directory": "packages/use-fs"
+  },
+  "keywords": [
+    "guiiai",
+    "llm",
+    "openai",
+    "lingtic",
+    "neuri"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "stub": "unbuild --stub",
+    "build": "unbuild",
+    "package:publish": "pnpm build && pnpm publish --access public --no-git-checks"
+  },
+  "dependencies": {
+    "@guiiai/logg": "^1.0.3",
+    "defu": "^6.1.4",
+    "execa": "^9.3.1",
+    "ignore": "^5.3.2",
+    "neuri": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17"
+  }
+}

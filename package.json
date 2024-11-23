@@ -23,6 +23,7 @@
   "scripts": {
     "stub": "pnpm -r --filter=./packages/* --parallel run stub",
     "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix .",
     "docs:dev": "pnpm -r --filter=./docs run dev",
     "docs:build": "pnpm -r --filter=./docs run build",
     "docs:preview": "pnpm -r --filter=./docs run preview",

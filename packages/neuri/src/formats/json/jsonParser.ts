@@ -56,7 +56,7 @@ export function createJSONParser() {
   }
 
   function handleStateJSONNumber(char: string) {
-    if (/[\d.eE+-]/.test(char)) {
+    if (/[\d.e+-]/i.test(char)) {
       buffer += char
     }
     else {
@@ -101,7 +101,7 @@ export function createJSONParser() {
   }
 
   function trimTrailingNonNumber(s: string): string {
-    return s.replace(/[^0-9.eE+-]+$/, '')
+    return s.replace(/[^0-9.e+-]+$/i, '')
   }
 
   function determineValueType(value: string): TokenType {
@@ -109,7 +109,8 @@ export function createJSONParser() {
       return 'JSONBoolean'
     if (value === 'null')
       return 'JSONNull'
-    if (/^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(value))
+    // eslint-disable-next-line regexp/no-unused-capturing-group
+    if (/^-?\d+(\.\d+)?(e[+-]?\d+)?$/i.test(value))
       return 'JSONNumber'
     return 'JSONString'
   }

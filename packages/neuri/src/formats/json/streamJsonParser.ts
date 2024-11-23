@@ -1,6 +1,6 @@
 import type { JSONSchema7 } from 'json-schema'
-import Ajv from 'ajv'
 import type { Token } from './jsonParser'
+import Ajv from 'ajv'
 import { createJSONParser } from './jsonParser'
 
 type JSONValue = string | number | boolean | null | { [key: string]: JSONValue } | JSONValue[]
