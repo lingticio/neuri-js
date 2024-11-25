@@ -14,6 +14,9 @@
     "run:valibot": "tsx src/valibot.ts"
   },
   "dependencies": {
+    "@typeschema/main": "^0.14.1",
+    "@typeschema/valibot": "^0.14.0",
+    "@typeschema/zod": "^0.14.0",
     "neuri": "workspace:^",
     "openai": "^4.54.0",
     "valibot": "^0.42.1",

@@ -1,9 +1,5 @@
-import type { JSONSchema7, JSONSchema7Object } from 'json-schema'
 import type OpenAI from 'openai'
-import type { BaseIssue, BaseSchema } from 'valibot'
-import { toJsonSchema } from '@valibot/to-json-schema'
-import { ZodSchema } from 'zod'
-import { zodToJsonSchema } from 'zod-to-json-schema'
+import { type Schema, toJSONSchema } from '@typeschema/main'
 
 export function system(message: string): OpenAI.ChatCompletionSystemMessageParam {
   return { role: 'system', content: message }
@@ -174,28 +170,13 @@ export async function invokeFunctionWithTools<P, R>(chatCompletion: OpenAI.Chat.
   }
 }
 
-function isValibotObjectSchema(schema: any): schema is BaseSchema<unknown, unknown, BaseIssue<unknown>> {
-  if (typeof schema !== 'object')
-    return false
-
-  return 'type' in schema && schema.type === 'string' && 'reference' in schema && 'expects' in schema && 'entries' in schema && 'message' in schema
-}
-
-export function toolFunction(name: string, description: string, parameters: JSONSchema7Object): OpenAI.Chat.ChatCompletionTool
-export function toolFunction(name: string, description: string, parameters: ZodSchema): OpenAI.Chat.ChatCompletionTool
-export function toolFunction(name: string, description: string, parameters: BaseSchema<unknown, unknown, BaseIssue<unknown>>): OpenAI.Chat.ChatCompletionTool
-export function toolFunction(name: string, description: string, parameters: JSONSchema7 | ZodSchema | BaseSchema<unknown, unknown, BaseIssue<unknown>>): OpenAI.Chat.ChatCompletionTool {
-  if (parameters instanceof ZodSchema)
-    parameters = zodToJsonSchema(parameters) as JSONSchema7
-  else if (isValibotObjectSchema(parameters))
-    parameters = toJsonSchema(parameters) as JSONSchema7
-
+export async function toolFunction<T extends Schema>(name: string, description: string, parameters: T): Promise<OpenAI.Chat.ChatCompletionTool> {
   return {
     type: 'function',
     function: {
       name,
       description,
-      parameters: parameters as Record<string, any>,
+      parameters: await toJSONSchema(parameters) as Record<string, any>,
     },
   }
 }

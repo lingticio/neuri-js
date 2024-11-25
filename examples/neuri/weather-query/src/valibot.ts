@@ -22,7 +22,7 @@ async function main() {
     openAI: o,
     tools: [
       defineToolFunction(
-        toolFunction('getCity', 'Get the user\'s city', {}),
+        await toolFunction('getCity', 'Get the user\'s city', v.object({})),
         async () => {
           return 'New York City'
         },
@@ -36,7 +36,7 @@ async function main() {
         },
       ),
       defineToolFunction<{ location: string }, string>(
-        toolFunction('getCityCode', 'Get the user\'s city code with search', v.object({
+        await toolFunction('getCityCode', 'Get the user\'s city code with search', v.object({
           location: v.pipe(v.string(), v.minLength(1), v.description('Get the user\'s city code with search')),
         })),
         async () => {
@@ -52,7 +52,7 @@ async function main() {
         },
       ),
       defineToolFunction<{ cityCode: string }, { city: string, cityCode: string, weather: string, degreesCelsius: number }>(
-        toolFunction('getWeather', 'Get the current weather', v.object({
+        await toolFunction('getWeather', 'Get the current weather', v.object({
           cityCode: v.pipe(v.string(), v.minLength(1), v.description('Get the user\'s city code with search')),
         })),
         async ({ parameters: { cityCode } }) => {

@@ -1,8 +1,8 @@
 import { env } from 'node:process'
+import { wrap } from '@typeschema/main'
 import {
   composeAgent,
   defineToolFunction,
-
   resolveFirstTextMessageFromCompletion,
   system,
   toolFunction,
@@ -22,7 +22,7 @@ async function main() {
     openAI: o,
     tools: [
       defineToolFunction(
-        toolFunction('getCity', 'Get the user\'s city', {}),
+        await toolFunction('getCity', 'Get the user\'s city', z.object({})),
         async () => {
           return 'New York City'
         },
@@ -36,7 +36,7 @@ async function main() {
         },
       ),
       defineToolFunction<{ location: string }, string>(
-        toolFunction('getCityCode', 'Get the user\'s city code with search', z.object({
+        await toolFunction('getCityCode', 'Get the user\'s city code with search', z.object({
           location: z.string().min(1).describe('Get the user\'s city code with search'),
         })),
         async () => {
@@ -52,7 +52,7 @@ async function main() {
         },
       ),
       defineToolFunction<{ cityCode: string }, { city: string, cityCode: string, weather: string, degreesCelsius: number }>(
-        toolFunction('getWeather', 'Get the current weather', z.object({
+        await toolFunction('getWeather', 'Get the current weather', z.object({
           cityCode: z.string().min(1).describe('Get the user\'s city code with search'),
         })),
         async ({ parameters: { cityCode } }) => {

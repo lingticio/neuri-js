@@ -10,12 +10,14 @@ words:
   - guiiai
   - Lingtic
   - logg
+  - mdast
   - neuri
   - openai
   - shiki
   - shikijs
   - Streamable
   - testdata
+  - typeschema
   - vitepress
 ignoreWords: []
 import: []
