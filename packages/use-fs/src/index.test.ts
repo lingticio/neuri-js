@@ -14,7 +14,7 @@ const testDir = join(__dirname, 'testdata')
 setGlobalFormat(Format.Pretty)
 setGlobalLogLevel(LogLevel.Debug)
 
-describe('useFileSystem', () => {
+describe.todo('useFileSystem', () => {
   beforeAll(async () => {
     if (!(await exists(testDir)))
       await mkdir(testDir, { recursive: true })

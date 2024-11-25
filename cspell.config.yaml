@@ -18,6 +18,7 @@ words:
   - Streamable
   - testdata
   - typeschema
+  - valibot
   - vitepress
 ignoreWords: []
 import: []
