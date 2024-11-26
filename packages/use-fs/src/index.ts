@@ -11,7 +11,6 @@ import { defu } from 'defu'
 import { execa } from 'execa'
 import ignore from 'ignore'
 import { defineToolFunction, toolFunction } from 'neuri/openai'
-
 import { object, string } from 'zod'
 
 import { exists } from './utils'
@@ -195,7 +194,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function setWorkingDirectory() {
-    return defineToolFunction<{ dir: string }, void>(
+    return defineToolFunction(
       await toolFunction('setWorkingDirectory', 'Set the current working directory', object({ dir: string().describe('The new working directory') })),
       async ({ parameters: { dir } }) => {
         return await _setWorkingDirectory(dir)
@@ -204,7 +203,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function readFile() {
-    return defineToolFunction<{ filePath: string }, string>(
+    return defineToolFunction(
       await toolFunction('readFile', 'Read the contents of a file', object({ filePath: string().describe('The path to the file to read') })),
       async ({ parameters: { filePath } }) => {
         return await _readFile(filePath)
@@ -213,7 +212,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function listFilesInDirectory() {
-    return defineToolFunction<{ dirPath?: string }, string[]>(
+    return defineToolFunction(
       await toolFunction('listFilesInDirectory', 'List the files in a directory', object({ dirPath: string().optional().describe('The path to the directory') })),
       async ({ parameters: { dirPath } }) => {
         return await _listFilesInDirectory(dirPath)
@@ -222,7 +221,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function getFileContentsRecursively() {
-    return defineToolFunction<{ dirPath?: string }, { filename: string, content: string }[]>(
+    return defineToolFunction(
       await toolFunction('getFileContentsRecursively', 'Get the contents of files recursively', object({ dirPath: string().optional().describe('The path to the directory') })),
       async ({ parameters: { dirPath } }) => {
         return await _getFileContentsRecursively(dirPath)
@@ -231,7 +230,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function listFilesRecursively() {
-    return defineToolFunction<{ dirPath?: string }, string[]>(
+    return defineToolFunction(
       await toolFunction('listFilesRecursively', 'List files recursively', object({ dirPath: string().optional().describe('The path to the directory') })),
       async ({ parameters: { dirPath } }) => {
         return await _listFilesRecursively(dirPath)
@@ -240,7 +239,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function searchFilesMatchingContents() {
-    return defineToolFunction<{ contentsRegex: string }, string[]>(
+    return defineToolFunction(
       await toolFunction('searchFilesMatchingContents', 'Search files matching contents', object({ contentsRegex: string().describe('The regular expression to search for') })),
       async ({ parameters: { contentsRegex } }) => {
         return await _searchFilesMatchingContents(contentsRegex)
@@ -249,7 +248,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function readFileAsXML() {
-    return defineToolFunction<{ filePath: string }, string>(
+    return defineToolFunction(
       await toolFunction('readFileAsXML', 'Read a file as XML', object({ filePath: string().describe('The path to the file') })),
       async ({ parameters: { filePath } }) => {
         return await _readFileAsXML(filePath)
@@ -258,7 +257,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function fileExists() {
-    return defineToolFunction<{ filePath: string }, boolean>(
+    return defineToolFunction(
       await toolFunction('fileExists', 'Check if a file exists', object({ filePath: string().describe('The path to the file') })),
       async ({ parameters: { filePath } }) => {
         return await _fileExists(filePath)
@@ -267,7 +266,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function writeFile() {
-    return defineToolFunction<{ filePath: string, contents: string }, void>(
+    return defineToolFunction(
       await toolFunction('writeFile', 'Write a file', object({ filePath: string().describe('The path to the file'), contents: string().describe('The contents of the file') })),
       async ({ parameters: { filePath, contents } }) => {
         return await _writeFile(filePath, contents)
@@ -276,7 +275,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function editFileContents() {
-    return defineToolFunction<{ filePath: string, descriptionOfChanges: string }, void>(
+    return defineToolFunction(
       await toolFunction('editFileContents', 'Edit the contents of a file', object({ filePath: string().describe('The path to the file'), descriptionOfChanges: string().describe('The description of the changes') })),
       async ({ parameters: { filePath, descriptionOfChanges } }) => {
         return await _editFileContents(filePath, descriptionOfChanges)
@@ -285,7 +284,7 @@ export async function FileSystem(options?: { basePath?: string }) {
   }
 
   async function getFileSystemTree() {
-    return defineToolFunction<{ dirPath?: string }, string>(
+    return defineToolFunction(
       await toolFunction('getFileSystemTree', 'Get the file system tree', object({ dirPath: string().optional().describe('The path to the directory') })),
       async ({ parameters: { dirPath } }) => {
         return await _getFileSystemTree(dirPath)

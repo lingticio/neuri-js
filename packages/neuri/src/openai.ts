@@ -1,5 +1,7 @@
+import type { Infer, Schema } from '@typeschema/main'
 import type OpenAI from 'openai'
-import { type Schema, toJSONSchema } from '@typeschema/main'
+
+import { toJSONSchema } from '@typeschema/main'
 
 export function system(message: string): OpenAI.ChatCompletionSystemMessageParam {
   return { role: 'system', content: message }
@@ -79,6 +81,24 @@ export function tool<P = any, R = any>(message: string, toolCall: ResolvedToolCa
   }
 }
 
+export function messages(...messages: OpenAI.ChatCompletionMessageParam[]): OpenAI.ChatCompletionMessageParam[] {
+  return messages
+}
+
+export interface ChatCompletion extends OpenAI.Chat.Completions.ChatCompletion {
+  firstContent: () => Promise<string>
+}
+
+export function chatCompletionFromOpenAIChatCompletion(completions: OpenAI.Chat.Completions.ChatCompletion): ChatCompletion {
+  return {
+    ...completions,
+    firstContent: async () => {
+      const message = resolveFirstTextMessageFromCompletion(completions)
+      return message
+    },
+  }
+}
+
 export function resolveFirstTextMessageFromCompletion(chatCompletion?: OpenAI.Chat.Completions.ChatCompletion): string {
   if (!chatCompletion)
     return ''
@@ -131,7 +151,7 @@ export function resolvedToolCall<P = any, R = any>(toolCall: OpenAI.Chat.ChatCom
   }
 }
 
-export async function invokeFunctionWithResolvedToolCall<P = any, R = any | undefined>(completions: OpenAI.Chat.ChatCompletion, toolCall: ResolvedToolCall<P, R> | undefined, messages: OpenAI.ChatCompletionMessageParam[]): Promise<R | undefined> {
+export async function invokeFunctionWithResolvedToolCall<P = any, R = any | undefined>(completions: ChatCompletion, toolCall: ResolvedToolCall<P, R> | undefined, messages: OpenAI.ChatCompletionMessageParam[]): Promise<R | undefined> {
   if (toolCall == null)
     return undefined
   if (toolCall.toolCall == null)
@@ -153,7 +173,7 @@ export async function invokeFunctionWithResolvedToolCall<P = any, R = any | unde
   return res
 }
 
-export async function invokeFunctionWithTools<P, R>(chatCompletion: OpenAI.Chat.Completions.ChatCompletion, tools: Tool<P, R>[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<{
+export async function invokeFunctionWithTools<P, R>(chatCompletion: ChatCompletion, tools: Tool<P, R>[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<{
   result: R | undefined
   chatCompletion: OpenAI.Chat.Completions.ChatCompletion
   chatCompletionToolCall?: OpenAI.Chat.Completions.ChatCompletionMessageToolCall
@@ -170,13 +190,25 @@ export async function invokeFunctionWithTools<P, R>(chatCompletion: OpenAI.Chat.
   }
 }
 
-export async function toolFunction<T extends Schema>(name: string, description: string, parameters: T): Promise<OpenAI.Chat.ChatCompletionTool> {
+type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
+
+// eslint-disable-next-line unused-imports/no-unused-vars
+interface ToolFunction<P> extends OpenAI.Chat.ChatCompletionTool {
+  type: 'function'
+  function: {
+    name: string
+    description?: string
+    parameters: JSONSchema
+  }
+}
+
+export async function toolFunction<S extends Schema, P extends Infer<S>>(name: string, description: string, parameters: S): Promise<ToolFunction<P>> {
   return {
     type: 'function',
     function: {
       name,
       description,
-      parameters: await toJSONSchema(parameters) as Record<string, any>,
+      parameters: await toJSONSchema(parameters as any),
     },
   }
 }
@@ -196,7 +228,7 @@ export interface ToolHooks<P, R> {
 
 export interface InvokeContext<P, R> {
   messages: OpenAI.ChatCompletionMessageParam[]
-  chatCompletion: OpenAI.Chat.Completions.ChatCompletion
+  chatCompletion: ChatCompletion
   parameters: P
   toolCall: ResolvedToolCall<P, R>
 }
@@ -220,7 +252,7 @@ export interface ResolvedToolCall<P, R> extends Tool<P, R> {
 }
 
 export function defineToolFunction<P, R>(
-  tool: OpenAI.Chat.ChatCompletionTool,
+  tool: ToolFunction<P>,
   func: (ctx: InvokeContext<P, R>) => Promise<R>,
   options?: {
     openAI?: OpenAI
@@ -256,7 +288,7 @@ export function composeAgent(options: {
   openAI: OpenAI
   tools: Tool<any, any>[]
 }) {
-  async function call(messages: OpenAI.ChatCompletionMessageParam[], callOptions: { model: string }) {
+  async function call(messages: OpenAI.ChatCompletionMessageParam[], callOptions: { model: string }): Promise<ChatCompletion | undefined> {
     let max = 5
     while (max >= 0) {
       max--
@@ -270,11 +302,13 @@ export function composeAgent(options: {
       const chatCompletionToolCall = resolveFirstToolCallFromCompletion(res)
       messages.push(assistant(chatCompletionToolCall))
 
-      const { result, toolCall } = await invokeFunctionWithTools<any, any>(res, options.tools, messages)
+      const chatCompletion = chatCompletionFromOpenAIChatCompletion(res)
+
+      const { result, toolCall } = await invokeFunctionWithTools<any, any>(chatCompletion, options.tools, messages)
       if (!toolCall)
-        return res
+        return chatCompletion
       if (result == null)
-        return res
+        return chatCompletion
 
       let strRes = ''
       if (typeof result === 'string')

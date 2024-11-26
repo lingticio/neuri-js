@@ -59,7 +59,10 @@ jobs:
         run: pnpm run packages:build
 
       - name: Test
-        run: pnpm run test:run
+        run: pnpm run test
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASEURL: ${{ secrets.OPENAI_API_BASEURL }}
 
   lint:
     strategy:
