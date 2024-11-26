@@ -1,4 +1,3 @@
-import { env } from 'node:process'
 import OpenAI from 'openai'
 import { describe, expect, it } from 'vitest'
 

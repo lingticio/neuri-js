@@ -192,6 +192,7 @@ export async function invokeFunctionWithTools<P, R>(chatCompletion: ChatCompleti
 
 type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
 
+// @ts-expect-error - P is helper
 // eslint-disable-next-line unused-imports/no-unused-vars
 interface ToolFunction<P> extends OpenAI.Chat.ChatCompletionTool {
   type: 'function'

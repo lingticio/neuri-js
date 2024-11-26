@@ -8,6 +8,14 @@
     "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "neuri": [
+        "./packages/neuri/src/index.ts"
+      ],
+      "neuri/openai": [
+        "./packages/neuri/src/openai.ts"
+      ]
+    },
     "types": [
       "node",
       "vite/client"
