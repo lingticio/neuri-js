@@ -83,13 +83,13 @@ importers:
     dependencies:
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       '@typeschema/valibot':
         specifier: ^0.14.0
         version: 0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2))
       '@typeschema/zod':
         specifier: ^0.14.0
-        version: 0.14.0(@types/json-schema@7.0.15)(zod@3.23.8)
+        version: 0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8)
       neuri:
         specifier: workspace:^
         version: link:../../../packages/neuri
@@ -139,7 +139,7 @@ importers:
         version: 1.0.5
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
@@ -177,6 +177,9 @@ importers:
       '@types/node':
         specifier: ^20.11.17
         version: 20.17.7
+      '@typeschema/zod':
+        specifier: ^0.14.0
+        version: 0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8)
       json-schema:
         specifier: ^0.4.0
         version: 0.4.0
@@ -186,6 +189,9 @@ importers:
       zod:
         specifier: ^3.23.8
         version: 3.23.8
+      zod-to-json-schema:
+        specifier: ^3.23.5
+        version: 3.23.5(zod@3.23.8)
 
   packages/use-fs:
     dependencies:
@@ -4567,6 +4573,11 @@ packages:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
 
+  zod-to-json-schema@3.23.5:
+    resolution: {integrity: sha512-5wlSS0bXfF/BrL4jPAbz9da5hDlDptdEppYfe+x4eIJ7jioqKG9uUxOwPzqof09u/XeVdrgFu29lZi+8XNDJtA==}
+    peerDependencies:
+      zod: ^3.23.3
+
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
@@ -5588,12 +5599,12 @@ snapshots:
     optionalDependencies:
       '@types/json-schema': 7.0.15
 
-  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod@3.23.8))':
+  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
     dependencies:
       '@typeschema/core': 0.14.0(@types/json-schema@7.0.15)
     optionalDependencies:
       '@typeschema/valibot': 0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2))
-      '@typeschema/zod': 0.14.0(@types/json-schema@7.0.15)(zod@3.23.8)
+      '@typeschema/zod': 0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8)
     transitivePeerDependencies:
       - '@types/json-schema'
 
@@ -5605,11 +5616,12 @@ snapshots:
     transitivePeerDependencies:
       - '@types/json-schema'
 
-  '@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod@3.23.8)':
+  '@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8)':
     dependencies:
       '@typeschema/core': 0.14.0(@types/json-schema@7.0.15)
     optionalDependencies:
       zod: 3.23.8
+      zod-to-json-schema: 3.23.5(zod@3.23.8)
     transitivePeerDependencies:
       - '@types/json-schema'
 
@@ -9309,6 +9321,10 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors@2.1.1: {}
+
+  zod-to-json-schema@3.23.5(zod@3.23.8):
+    dependencies:
+      zod: 3.23.8
 
   zod@3.23.8: {}
 
