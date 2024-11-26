@@ -1,20 +1,22 @@
-import type { CallableComponent } from 'neuri'
 import {
   readFile as fsReadFile,
   writeFile as fsWriteFile,
   readdir,
 } from 'node:fs/promises'
 import { join, relative } from 'node:path'
+
 import { cwd } from 'node:process'
 import { useLogg } from '@guiiai/logg'
 import { defu } from 'defu'
 import { execa } from 'execa'
-
 import ignore from 'ignore'
-import { defineCallable, defineCallableComponent } from 'neuri'
+import { defineToolFunction, toolFunction } from 'neuri/openai'
+
+import { object, string } from 'zod'
+
 import { exists } from './utils'
 
-export function FileSystem(options?: { basePath?: string }): CallableComponent {
+export async function FileSystem(options?: { basePath?: string }) {
   const log = useLogg('useFileSystem').useGlobalConfig()
 
   const opts = defu(options, {
@@ -23,368 +25,286 @@ export function FileSystem(options?: { basePath?: string }): CallableComponent {
 
   let workingDirectory = opts.basePath
 
-  function getWorkingDirectory() {
-    return defineCallable<[], string>().withReturn({
-      name: 'workingDirectory',
-      description: 'The current working directory',
-      type: 'string',
-    }).build(async () => {
-      log.withField('workingDirectory', workingDirectory).log('Getting working directory')
-      return workingDirectory
-    })
+  async function _getWorkingDirectory() {
+    return workingDirectory
   }
 
-  function setWorkingDirectory() {
-    return defineCallable<[string], void>()
-      .withParameter({
-        name: 'dir',
-        description: 'The new working directory',
-        type: 'string',
-      })
-      .build(async ({ parameters: [dir] }) => {
-        if (!dir)
-          throw new Error('dir must be provided')
+  async function _setWorkingDirectory(dir: string | undefined) {
+    if (!dir)
+      throw new Error('dir must be provided')
 
-        let relativeDir = dir
-        if (dir.startsWith('/')) {
-          if (await exists(dir)) {
-            workingDirectory = dir
-            log.withField('workingDirectory', workingDirectory).log('workingDirectory is now set')
+    let relativeDir = dir
+    if (dir.startsWith('/')) {
+      if (await exists(dir)) {
+        workingDirectory = dir
+        log.withField('workingDirectory', workingDirectory).log('workingDirectory is now set')
 
-            return
-          }
+        return
+      }
 
-          relativeDir = dir.substring(1)
-        }
+      relativeDir = dir.substring(1)
+    }
 
-        const relativePath = join(await getWorkingDirectory().call({ parameters: [] }), relativeDir)
-        if (await exists(relativePath)) {
-          workingDirectory = relativePath
-          log.withField('workingDirectory', workingDirectory).log('workingDirectory is now set')
+    const relativePath = join(await _getWorkingDirectory(), relativeDir)
+    if (await exists(relativePath)) {
+      workingDirectory = relativePath
+      log.withField('workingDirectory', workingDirectory).log('workingDirectory is now set')
 
-          return
-        }
+      return
+    }
 
-        throw new Error(`New working directory ${dir} does not exist (current working directory ${workingDirectory}`)
-      })
+    throw new Error(`New working directory ${dir} does not exist (current working directory ${workingDirectory}`)
   }
 
-  function readFile() {
-    return defineCallable<[string], string>()
-      .withName('readFile')
-      .withDescription('Read the contents of a file')
-      .withParameter({
-        name: 'filePath',
-        description: 'The path to the file to read',
-        type: 'string',
-      })
-      .withReturn({
-        name: 'contents',
-        description: 'The contents of the file',
-        type: 'string',
-      })
-      .build(async ({ parameters: [filePath] }) => {
-        log.withField('filePath', filePath).verbose('Reading file')
-        const relativeFullPath = join(await getWorkingDirectory().call({ parameters: [] }), filePath)
-
-        if (await exists(relativeFullPath))
-          return (await fsReadFile(relativeFullPath)).toString()
-        else if (filePath.startsWith('/') && await exists(filePath))
-          return (await fsReadFile(filePath)).toString()
-
-        throw new Error(`File ${filePath} does not exist`)
-      })
+  async function getWorkingDirectory() {
+    return defineToolFunction<void, string>(
+      await toolFunction('getWorkingDirectory', 'Get the current working directory', object({})),
+      _getWorkingDirectory,
+    )
   }
 
-  function listFilesInDirectory() {
-    return defineCallable<[string], string[]>()
-      .withName('listFilesInDirectory')
-      .withDescription('List the files in a directory')
-      .withParameter({
-        name: 'dirPath',
-        description: 'The path to the directory',
-        type: 'string',
-        optional: true,
-        defaultValue: '.',
-      })
-      .withReturn({
-        name: 'files',
-        description: 'The list of files in the directory',
-        type: 'array',
-        items: {
-          type: 'string',
-        },
-      })
-      .build(async ({ parameters: [dirPath] }) => {
-        if (dirPath == null)
-          dirPath = '.'
+  async function _readFile(filePath: string | undefined) {
+    if (!filePath)
+      throw new Error('filePath must be provided')
 
-        log.withField('dirPath', dirPath).verbose('Listing files in directory')
+    log.withField('filePath', filePath).verbose('Reading file')
+    const relativeFullPath = join(await _getWorkingDirectory(), filePath)
 
-        const ig = ignore()
-        const gitIgnorePath = join(await getWorkingDirectory().call({ parameters: [] }), dirPath, '.gitignore')
-        if (await exists(gitIgnorePath)) {
-          let lines = await fsReadFile(gitIgnorePath, 'utf8').then(data => data.split('\n'))
-          lines = lines.map(line => line.trim()).filter(line => line.length && !line.startsWith('#'))
-          ig.add(lines)
-        }
+    if (await exists(relativeFullPath))
+      return (await fsReadFile(relativeFullPath)).toString()
+    else if (filePath.startsWith('/') && await exists(filePath))
+      return (await fsReadFile(filePath)).toString()
 
-        const files: string[] = []
-        const readdirPath = join(await getWorkingDirectory().call({ parameters: [] }), dirPath)
-        const dirList = await readdir(readdirPath, { withFileTypes: true })
-
-        for (const item of dirList) {
-          const direntName = item.isDirectory() ? `${item.name}/` : item.name
-          const relativePath = relative(await getWorkingDirectory().call({ parameters: [] }), join(await getWorkingDirectory().call({ parameters: [] }), dirPath, direntName))
-          if (!ig.ignores(relativePath))
-            files.push(item.name)
-        }
-
-        return files
-      })
+    throw new Error(`File ${filePath} does not exist`)
   }
 
-  function getFileContentsRecursively() {
-    return defineCallable<[string], { filename: string, content: string }[]>()
-      .withName('getFileContentsRecursively')
-      .withDescription('Get the contents of files recursively')
-      .withParameter({
-        name: 'dirPath',
-        description: 'The path to the directory',
-        type: 'string',
-        optional: true,
-        defaultValue: '.',
-      })
-      .withReturn({
-        name: 'fileContents',
-        description: 'The contents of the files',
-        type: 'array',
-        items: {
-          type: 'object',
-          properties: {
-            filename: {
-              type: 'string',
-              description: 'The name of the file',
-            },
-            content: {
-              type: 'string',
-              description: 'The content of the file',
-            },
-          },
-        },
-      })
-      .build(async ({ parameters: [dirPath] }) => {
-        log.withField('dirPath', dirPath).verbose('Getting file contents recursively')
+  async function _listFilesInDirectory(dirPath: string | undefined) {
+    if (dirPath == null)
+      dirPath = workingDirectory
 
-        const filenames = await listFilesRecursively().call({ parameters: [dirPath] })
-        const fileContents: { filename: string, content: string }[] = []
+    log.withField('dirPath', dirPath).verbose('Listing files in directory')
 
-        for (const filename of filenames) {
-          const content = await readFile().call({ parameters: [join(dirPath, filename)] })
-          fileContents.push({ filename, content })
-        }
+    const ig = ignore()
+    const gitIgnorePath = join(await _getWorkingDirectory(), dirPath, '.gitignore')
+    if (await exists(gitIgnorePath)) {
+      let lines = await fsReadFile(gitIgnorePath, 'utf8').then(data => data.split('\n'))
+      lines = lines.map(line => line.trim()).filter(line => line.length && !line.startsWith('#'))
+      ig.add(lines)
+    }
 
-        return fileContents
-      })
+    const files: string[] = []
+    const readdirPath = join(await _getWorkingDirectory(), dirPath)
+    const dirList = await readdir(readdirPath, { withFileTypes: true })
+
+    for (const item of dirList) {
+      const direntName = item.isDirectory() ? `${item.name}/` : item.name
+      const relativePath = relative(await _getWorkingDirectory(), join(await _getWorkingDirectory(), dirPath, direntName))
+      if (!ig.ignores(relativePath))
+        files.push(item.name)
+    }
+
+    return files
   }
 
-  function listFilesRecursively() {
-    return defineCallable<[string], string[]>()
-      .withName('listFilesRecursively')
-      .withDescription('List files recursively')
-      .withParameter({
-        name: 'dirPath',
-        description: 'The path to the directory',
-        type: 'string',
-        optional: true,
-        defaultValue: './',
-      })
-      .withReturn({
-        name: 'files',
-        description: 'The list of files',
-        type: 'array',
-        items: {
-          type: 'string',
-        },
-      })
-      .build(async ({ parameters: [dirPath] }) => {
-        if (dirPath == null)
-          dirPath = './'
+  async function _getFileContentsRecursively(dirPath: string | undefined) {
+    if (dirPath == null)
+      dirPath = workingDirectory
 
-        log.withField('dirPath', dirPath).verbose('Listing files recursively')
+    log.withField('dirPath', dirPath).verbose('Getting file contents recursively')
 
-        const files: string[] = []
-        const dirList = await readdir(join(await getWorkingDirectory().call({ parameters: [] }), dirPath), { withFileTypes: true })
+    const filenames = await _listFilesRecursively(dirPath)
+    const fileContents: { filename: string, content: string }[] = []
 
-        for (const item of dirList) {
-          const fullPath = join(dirPath, item.name)
-          if (item.isDirectory())
-            files.push(...await listFilesRecursively().call({ parameters: [fullPath] }))
-          else
-            files.push(fullPath)
-        }
+    for (const filename of filenames) {
+      const content = await _readFile(join(dirPath, filename))
+      fileContents.push({ filename, content })
+    }
 
-        return files
-      })
+    return fileContents
   }
 
-  function searchFilesMatchingContents() {
-    return defineCallable<[string], string[]>()
-      .withName('searchFilesMatchingContents')
-      .withDescription('Search files matching contents')
-      .withParameter({
-        name: 'contentsRegex',
-        description: 'The regular expression to search for',
-        type: 'string',
-      })
-      .withReturn({
-        name: 'files',
-        description: 'The list of files',
-        type: 'array',
-        items: {
-          type: 'string',
-        },
-      })
-      .build(async ({ parameters: [contentsRegex] }) => {
-        log.withField('contentsRegex', contentsRegex).verbose('Searching files matching contents')
+  async function _listFilesRecursively(dirPath: string | undefined) {
+    if (dirPath == null)
+      dirPath = './'
 
-        const command = `rg --count ${contentsRegex}`
-        const { stdout, stderr, exitCode } = await execa(command, { cwd: await getWorkingDirectory().call({ parameters: [] }) })
-        if (exitCode != null && exitCode > 0)
-          throw new Error(stderr)
+    log.withField('dirPath', dirPath).verbose('Listing files recursively')
 
-        return stdout.split('\n').filter(line => line)
-      })
+    const files: string[] = []
+    const dirList = await readdir(join(await _getWorkingDirectory(), dirPath), { withFileTypes: true })
+
+    for (const item of dirList) {
+      const fullPath = join(dirPath, item.name)
+      if (item.isDirectory())
+        files.push(...await _listFilesRecursively(fullPath))
+      else
+        files.push(fullPath)
+    }
+
+    return files
   }
 
-  function readFileAsXML() {
-    return defineCallable<[string], string>()
-      .withName('readFileAsXML')
-      .withDescription('Read a file as XML')
-      .withParameter({
-        name: 'filePath',
-        description: 'The path to the file',
-        type: 'string',
-      })
-      .build(async (filePath) => {
-        log.withField('filePath', filePath).verbose('Reading file as XML')
+  async function _searchFilesMatchingContents(contentsRegex: string) {
+    log.withField('contentsRegex', contentsRegex).verbose('Searching files matching contents')
 
-        const content = await readFile().call(filePath)
-        return `<file_content file_path="${filePath}">\n${content}\n</file_contents>\n`
-      })
+    const command = `rg --count ${contentsRegex}`
+    const { stdout, stderr, exitCode } = await execa(command, { cwd: await _getWorkingDirectory() })
+    if (exitCode != null && exitCode > 0)
+      throw new Error(stderr)
+
+    return stdout.split('\n').filter(line => line)
   }
 
-  function fileExists() {
-    return defineCallable<[string], boolean>()
-      .withName('fileExists')
-      .withDescription('Check if a file exists')
-      .withParameter({
-        name: 'filePath',
-        description: 'The path to the file',
-        type: 'string',
-      })
-      .withReturn({
-        name: 'exists',
-        description: 'Whether the file exists',
-        type: 'boolean',
-      })
-      .build(async ({ parameters: [filePath] }) => {
-        log.withField('filePath', filePath).verbose('Checking if file exists')
+  async function _readFileAsXML(filePath: string | undefined) {
+    log.withField('filePath', filePath).verbose('Reading file as XML')
 
-        return await exists(join(await getWorkingDirectory().call({ parameters: [] }), filePath))
-      })
+    const content = await _readFile(filePath)
+    return `<file_content file_path="${filePath}">\n${content}\n</file_contents>\n`
   }
 
-  function writeFile() {
-    return defineCallable<[string, string], void>()
-      .withName('writeFile')
-      .withDescription('Write a file')
-      .withParameter({
-        name: 'filePath',
-        description: 'The path to the file',
-        type: 'string',
-      })
-      .withParameter({
-        name: 'contents',
-        description: 'The contents of the file',
-        type: 'string',
-      })
-      .build(async ({ parameters: [filePath, contents] }) => {
-        log.withField('filePath', filePath).verbose('Writing file')
+  async function _fileExists(filePath: string) {
+    log.withField('filePath', filePath).verbose('Checking if file exists')
 
-        const fullPath = join(await getWorkingDirectory().call({ parameters: [] }), filePath)
-        await fsWriteFile(fullPath, contents)
-        log.withField('filePath', filePath).log('File written')
-      })
+    return await exists(join(await _getWorkingDirectory(), filePath))
   }
 
-  function editFileContents() {
-    return defineCallable<[string, string], void>()
-      .withName('editFileContents')
-      .withDescription('Edit the contents of a file')
-      .withParameter({
-        name: 'filePath',
-        description: 'The path to the file',
-        type: 'string',
-      })
-      .withParameter({
-        name: 'descriptionOfChanges',
-        description: 'The description of the changes',
-        type: 'string',
-      })
-      .build(async ({ parameters: [filePath, descriptionOfChanges] }) => {
-        log.withField('filePath', filePath).verbose('Editing file contents')
+  async function _writeFile(filePath: string, contents: string) {
+    log.withField('filePath', filePath).verbose('Writing file')
 
-        let contents = await readFile().call({ parameters: [filePath] })
-        // Assuming `processText` is some function that modifies the text based on the description
-        contents = contents.replace(/some pattern/, descriptionOfChanges)
-        await writeFile().call({ parameters: [filePath, contents] })
-      })
+    const fullPath = join(await _getWorkingDirectory(), filePath)
+    await fsWriteFile(fullPath, contents)
+    log.withField('filePath', filePath).log('File written')
   }
 
-  function getFileSystemTree() {
-    return defineCallable<[string], string>()
-      .withName('getFileSystemTree')
-      .withDescription('Get the file system tree')
-      .withParameter({
-        name: 'dirPath',
-        description: 'The path to the directory',
-        type: 'string',
-        optional: true,
-        defaultValue: './',
-      })
-      .withReturn({
-        name: 'tree',
-        description: 'The file system tree',
-        type: 'string',
-      })
-      .build(async ({ parameters: [dirPath] }) => {
-        if (dirPath == null)
-          dirPath = './'
+  async function _editFileContents(filePath: string, descriptionOfChanges: string) {
+    log.withField('filePath', filePath).verbose('Editing file contents')
 
-        log.withField('dirPath', dirPath).verbose('Getting file system tree')
-
-        const files = await listFilesRecursively().call({ parameters: [dirPath] })
-        return files.join('\n')
-      })
+    let contents = await _readFile(filePath)
+    // Assuming `processText` is some function that modifies the text based on the description
+    contents = contents.replace(/some pattern/, descriptionOfChanges)
+    await _writeFile(filePath, contents)
   }
 
-  return defineCallableComponent(
-    'FileSystem',
-    'A component for interacting with the file system',
-    {
-      getWorkingDirectory,
-      setWorkingDirectory,
-      readFile,
-      listFilesInDirectory,
-      getFileContentsRecursively,
-      listFilesRecursively,
-      searchFilesMatchingContents,
-      readFileAsXML,
-      fileExists,
-      writeFile,
-      editFileContents,
-      getFileSystemTree,
-    },
-  )
+  async function _getFileSystemTree(dirPath: string | undefined) {
+    if (dirPath == null)
+      dirPath = './'
+
+    log.withField('dirPath', dirPath).verbose('Getting file system tree')
+
+    const files = await _listFilesRecursively(dirPath)
+    return files.join('\n')
+  }
+
+  async function setWorkingDirectory() {
+    return defineToolFunction<{ dir: string }, void>(
+      await toolFunction('setWorkingDirectory', 'Set the current working directory', object({ dir: string().describe('The new working directory') })),
+      async ({ parameters: { dir } }) => {
+        return await _setWorkingDirectory(dir)
+      },
+    )
+  }
+
+  async function readFile() {
+    return defineToolFunction<{ filePath: string }, string>(
+      await toolFunction('readFile', 'Read the contents of a file', object({ filePath: string().describe('The path to the file to read') })),
+      async ({ parameters: { filePath } }) => {
+        return await _readFile(filePath)
+      },
+    )
+  }
+
+  async function listFilesInDirectory() {
+    return defineToolFunction<{ dirPath?: string }, string[]>(
+      await toolFunction('listFilesInDirectory', 'List the files in a directory', object({ dirPath: string().optional().describe('The path to the directory') })),
+      async ({ parameters: { dirPath } }) => {
+        return await _listFilesInDirectory(dirPath)
+      },
+    )
+  }
+
+  async function getFileContentsRecursively() {
+    return defineToolFunction<{ dirPath?: string }, { filename: string, content: string }[]>(
+      await toolFunction('getFileContentsRecursively', 'Get the contents of files recursively', object({ dirPath: string().optional().describe('The path to the directory') })),
+      async ({ parameters: { dirPath } }) => {
+        return await _getFileContentsRecursively(dirPath)
+      },
+    )
+  }
+
+  async function listFilesRecursively() {
+    return defineToolFunction<{ dirPath?: string }, string[]>(
+      await toolFunction('listFilesRecursively', 'List files recursively', object({ dirPath: string().optional().describe('The path to the directory') })),
+      async ({ parameters: { dirPath } }) => {
+        return await _listFilesRecursively(dirPath)
+      },
+    )
+  }
+
+  async function searchFilesMatchingContents() {
+    return defineToolFunction<{ contentsRegex: string }, string[]>(
+      await toolFunction('searchFilesMatchingContents', 'Search files matching contents', object({ contentsRegex: string().describe('The regular expression to search for') })),
+      async ({ parameters: { contentsRegex } }) => {
+        return await _searchFilesMatchingContents(contentsRegex)
+      },
+    )
+  }
+
+  async function readFileAsXML() {
+    return defineToolFunction<{ filePath: string }, string>(
+      await toolFunction('readFileAsXML', 'Read a file as XML', object({ filePath: string().describe('The path to the file') })),
+      async ({ parameters: { filePath } }) => {
+        return await _readFileAsXML(filePath)
+      },
+    )
+  }
+
+  async function fileExists() {
+    return defineToolFunction<{ filePath: string }, boolean>(
+      await toolFunction('fileExists', 'Check if a file exists', object({ filePath: string().describe('The path to the file') })),
+      async ({ parameters: { filePath } }) => {
+        return await _fileExists(filePath)
+      },
+    )
+  }
+
+  async function writeFile() {
+    return defineToolFunction<{ filePath: string, contents: string }, void>(
+      await toolFunction('writeFile', 'Write a file', object({ filePath: string().describe('The path to the file'), contents: string().describe('The contents of the file') })),
+      async ({ parameters: { filePath, contents } }) => {
+        return await _writeFile(filePath, contents)
+      },
+    )
+  }
+
+  async function editFileContents() {
+    return defineToolFunction<{ filePath: string, descriptionOfChanges: string }, void>(
+      await toolFunction('editFileContents', 'Edit the contents of a file', object({ filePath: string().describe('The path to the file'), descriptionOfChanges: string().describe('The description of the changes') })),
+      async ({ parameters: { filePath, descriptionOfChanges } }) => {
+        return await _editFileContents(filePath, descriptionOfChanges)
+      },
+    )
+  }
+
+  async function getFileSystemTree() {
+    return defineToolFunction<{ dirPath?: string }, string>(
+      await toolFunction('getFileSystemTree', 'Get the file system tree', object({ dirPath: string().optional().describe('The path to the directory') })),
+      async ({ parameters: { dirPath } }) => {
+        return await _getFileSystemTree(dirPath)
+      },
+    )
+  }
+
+  return {
+    getWorkingDirectory: await getWorkingDirectory(),
+    setWorkingDirectory: await setWorkingDirectory(),
+    readFile: await readFile(),
+    listFilesInDirectory: await listFilesInDirectory(),
+    getFileContentsRecursively: await getFileContentsRecursively(),
+    listFilesRecursively: await listFilesRecursively(),
+    searchFilesMatchingContents: await searchFilesMatchingContents(),
+    readFileAsXML: await readFileAsXML(),
+    fileExists: await fileExists(),
+    writeFile: await writeFile(),
+    editFileContents: await editFileContents(),
+    getFileSystemTree: await getFileSystemTree(),
+  }
 }

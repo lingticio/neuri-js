@@ -6,7 +6,7 @@ import { defineToolFunction, type InvokeContext, type Tool, toolFunction, type T
 export interface Neuri { }
 export interface Agent {
   name: string
-  tools: Tool[]
+  tools: Tool<any, any>[]
 }
 
 export interface NeuriBuilder {
@@ -29,8 +29,8 @@ export interface AgentBuilder {
 
 interface AgentBuilderInternal extends Partial<AgentBuilder> {
   name: string
-  tools: Tool[]
-  promiseTools: Promise<Tool>[]
+  tools: Tool<any, any>[]
+  promiseTools: Promise<Tool<any, any>>[]
 }
 
 function newNeuriBuilderAgent(cb: () => NeuriBuilderInternal): (agent: Agent | Promise<Agent>) => NeuriBuilder {

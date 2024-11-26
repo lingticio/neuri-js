@@ -1,5 +1,5 @@
 import { env } from 'node:process'
-import { wrap } from '@typeschema/main'
+
 import {
   composeAgent,
   defineToolFunction,

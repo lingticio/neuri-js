@@ -39,14 +39,16 @@
   "scripts": {
     "dev": "unbuild --stub",
     "stub": "unbuild --stub",
-    "build": "unbuild"
+    "build": "unbuild",
+    "package:publish": "pnpm build && pnpm publish --access public --no-git-checks"
   },
   "dependencies": {
     "@guiiai/logg": "^1.0.3",
     "defu": "^6.1.4",
     "execa": "^9.3.1",
     "ignore": "^5.3.2",
-    "neuri": "workspace:^"
+    "neuri": "workspace:^",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.11.17"

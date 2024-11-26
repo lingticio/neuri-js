@@ -108,7 +108,7 @@ export function resolveFirstToolCallFromCompletion(chatCompletion?: OpenAI.Chat.
   return choices[0][0]
 }
 
-export function resolvedToolCall<P = any, R = any>(toolCall: OpenAI.Chat.ChatCompletionMessageToolCall | null | undefined, tools: Tool[]): ResolvedToolCall<P, R> | undefined {
+export function resolvedToolCall<P = any, R = any>(toolCall: OpenAI.Chat.ChatCompletionMessageToolCall | null | undefined, tools: Tool<P, R>[]): ResolvedToolCall<P, R> | undefined {
   if (toolCall == null)
     return undefined
   if (toolCall.function == null)
@@ -153,7 +153,7 @@ export async function invokeFunctionWithResolvedToolCall<P = any, R = any | unde
   return res
 }
 
-export async function invokeFunctionWithTools<P, R>(chatCompletion: OpenAI.Chat.Completions.ChatCompletion, tools: Tool[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<{
+export async function invokeFunctionWithTools<P, R>(chatCompletion: OpenAI.Chat.Completions.ChatCompletion, tools: Tool<P, R>[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<{
   result: R | undefined
   chatCompletion: OpenAI.Chat.Completions.ChatCompletion
   chatCompletionToolCall?: OpenAI.Chat.Completions.ChatCompletionMessageToolCall
@@ -181,7 +181,7 @@ export async function toolFunction<T extends Schema>(name: string, description: 
   }
 }
 
-export interface Tool<P = any, R = any> {
+export interface Tool<P, R> {
   openAI?: OpenAI
   tool: OpenAI.Chat.ChatCompletionTool
   func: (ctx: InvokeContext<P, R>) => Promise<R>
@@ -201,6 +201,10 @@ export interface InvokeContext<P, R> {
   toolCall: ResolvedToolCall<P, R>
 }
 
+export function newTestInvokeContext<P, R>(parameters?: P): InvokeContext<P, R> {
+  return { parameters } as InvokeContext<P, R>
+}
+
 export interface PreInvokeContext<P, R> extends InvokeContext<P, R> {
 
 }
@@ -209,7 +213,7 @@ export interface PostInvokeContext<P, R> extends InvokeContext<P, R> {
   result: R
 }
 
-export interface ResolvedToolCall<P, R> extends Tool {
+export interface ResolvedToolCall<P, R> extends Tool<P, R> {
   arguments: P
   toolCall: OpenAI.Chat.ChatCompletionMessageToolCall
   hooks: ToolHooks<P, R>
@@ -222,7 +226,7 @@ export function defineToolFunction<P, R>(
     openAI?: OpenAI
     hooks?: Partial<ToolHooks<P, R>>
   },
-): Tool {
+): Tool<P, R> {
   const hooks: ToolHooks<P, R> = {
     configureOpenAI: async o => o,
     preInvoke: async () => {},
@@ -244,13 +248,13 @@ export function defineToolFunction<P, R>(
   }
 }
 
-export function tools(tools: Tool[]): OpenAI.Chat.ChatCompletionTool[] {
+export function tools(tools: Tool<any, any>[]): OpenAI.Chat.ChatCompletionTool[] {
   return tools.map(tool => tool.tool)
 }
 
 export function composeAgent(options: {
   openAI: OpenAI
-  tools: Tool[]
+  tools: Tool<any, any>[]
 }) {
   async function call(messages: OpenAI.ChatCompletionMessageParam[], callOptions: { model: string }) {
     let max = 5
