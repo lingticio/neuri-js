@@ -3,6 +3,145 @@ import type OpenAI from 'openai'
 
 import { toJSONSchema } from '@typeschema/main'
 
+/**
+ * Generate the completion response from LLM API.
+ *
+ * @param params - The parameters to generate the completion response.
+ * @param params.options - The options to create the completion.
+ * @param params.openAI - The OpenAI instance.
+ * @returns The completion response.
+ */
+export async function generate(params: { options: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming, openAI: OpenAI }) {
+  const res = await params.openAI.chat.completions.create(params.options)
+  return chatCompletionFromOpenAIChatCompletion(res)
+}
+
+/**
+ * Generate the completion response from LLM API.
+ */
+export interface StreamChunk {
+  raw: () => Uint8Array
+  textPart: () => string
+  chunk: () => OpenAI.Chat.ChatCompletionChunk
+}
+
+function parseChunkFromBuffer(value: Uint8Array) {
+  const str = new TextDecoder().decode(value)
+  return JSON.parse(str) as unknown as OpenAI.Chat.ChatCompletionChunk
+}
+
+function newStreamChunk(raw: Uint8Array, resChunk: OpenAI.Chat.ChatCompletionChunk): StreamChunk {
+  return {
+    raw: () => raw,
+    chunk: () => resChunk,
+    textPart: () => resChunk.choices?.[0]?.delta.content ?? '',
+  } satisfies StreamChunk
+}
+
+export interface StreamResponse {
+  /**
+   * Get the completion response.
+   *
+   * @returns The completion response.
+   */
+  response: () => Promise<any>
+  /**
+   * Get the entire completion response as a text.
+   *
+   * @returns The entire completion response as a text.
+   */
+  text: () => Promise<string>
+  /**
+   * Get the completion response as a stream of chunks.
+   *
+   * @returns The completion response as a stream of chunks.
+   */
+  chunks: () => Promise<StreamChunk[]>
+  /**
+   * Convert the completion response to a iterable readable stream.
+   *
+   * This function is 100% sure to be ok to use even if your browser or environments didn't implemented the `Symbol.asyncIterator` feature.
+   *
+   * @param options
+   * @returns
+   */
+  toReadableStream: () => AsyncGenerator<StreamChunk, void, unknown>
+}
+
+interface PipeHook {
+  onChunk?: (chunk: StreamChunk) => void
+  onDone?: () => void
+}
+
+/**
+ * Stream the completion response from LLM API.
+ *
+ * @param params - The parameters to stream the completion response.
+ * @param params.options - The options to create the completion.
+ * @param params.openAI - The OpenAI instance.
+ * @returns The completion response stream.
+ */
+export async function stream(params: {
+  options: OpenAI.Chat.Completions.ChatCompletionCreateParamsStreaming
+  openAI: OpenAI
+}): Promise<StreamResponse> {
+  const res = await params.openAI.chat.completions.create(params.options)
+  const hooks: PipeHook[] = []
+  const accumulatedText = new Promise<string>((resolve) => {
+    const chunks: StreamChunk[] = []
+    hooks.push({
+      onChunk: (chunk) => {
+        chunks.push(chunk)
+      },
+      onDone: () => {
+        resolve(chunks.map(i => i.textPart()).join(''))
+      },
+    })
+  })
+  const accumulatedChunks = new Promise<StreamChunk[]>((resolve) => {
+    const chunks: StreamChunk[] = []
+    hooks.push({
+      onChunk: (chunk) => {
+        chunks.push(chunk)
+      },
+      onDone: () => {
+        resolve(chunks)
+      },
+    })
+  })
+
+  /*
+      reactjs - TS2504: Type 'ReadableStream<Uint8Array>' must have a '[Symbol.asyncIterator]()' method that returns an async iterator - Stack Overflow
+      https://stackoverflow.com/questions/76700924/ts2504-type-readablestreamuint8array-must-have-a-symbol-asynciterator
+    */
+  async function* pipeAsGenerator(res: ReadableStream<Uint8Array>, hooks?: PipeHook[]): AsyncGenerator<StreamChunk, void, unknown> {
+    const reader = res.getReader()
+    try {
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) {
+          hooks?.forEach(i => i.onDone?.())
+          return
+        }
+
+        const chunk = newStreamChunk(value, parseChunkFromBuffer(value))
+        hooks?.forEach(i => i.onChunk?.(chunk))
+        yield chunk
+      }
+    }
+    finally {
+      reader.releaseLock()
+    }
+  }
+
+  return {
+    response: async () => res,
+    text: () => accumulatedText,
+    chunks: () => accumulatedChunks,
+    toReadableStream: () => (pipeAsGenerator(res.toReadableStream())),
+  } satisfies StreamResponse
+}
+
 export function system(message: string): OpenAI.ChatCompletionSystemMessageParam {
   return { role: 'system', content: message }
 }
@@ -294,10 +433,13 @@ export function composeAgent(options: {
     while (max >= 0) {
       max--
 
-      const res = await options.openAI.chat.completions.create({
-        model: callOptions.model,
-        messages,
-        tools: tools(options.tools),
+      const res = await generate({
+        openAI: options.openAI,
+        options: {
+          model: callOptions.model,
+          messages,
+          tools: tools(options.tools),
+        },
       })
 
       const chatCompletionToolCall = resolveFirstToolCallFromCompletion(res)
