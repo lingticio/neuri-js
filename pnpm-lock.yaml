@@ -83,7 +83,7 @@ importers:
     dependencies:
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       '@typeschema/valibot':
         specifier: ^0.14.0
         version: 0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2))
@@ -139,7 +139,7 @@ importers:
         version: 1.0.5
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
@@ -210,6 +210,9 @@ importers:
       neuri:
         specifier: workspace:*
         version: link:../neuri
+      ofetch:
+        specifier: ^1.4.1
+        version: 1.4.1
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -5599,7 +5602,7 @@ snapshots:
     optionalDependencies:
       '@types/json-schema': 7.0.15
 
-  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
+  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
     dependencies:
       '@typeschema/core': 0.14.0(@types/json-schema@7.0.15)
     optionalDependencies:
@@ -8095,7 +8098,7 @@ snapshots:
       acorn: 8.11.3
       pathe: 1.1.2
       pkg-types: 1.2.1
-      ufo: 1.5.3
+      ufo: 1.5.4
 
   mlly@1.7.3:
     dependencies:

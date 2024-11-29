@@ -8,10 +8,15 @@ words:
   - defu
   - execa
   - guiiai
+  - Infobar
+  - KHTML
   - Lingtic
+  - lingticio
   - logg
   - mdast
   - neuri
+  - noancestors
+  - ofetch
   - openai
   - reactjs
   - shiki
@@ -21,5 +26,6 @@ words:
   - typeschema
   - valibot
   - vitepress
+  - vuejs
 ignoreWords: []
 import: []
