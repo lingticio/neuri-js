@@ -1,7 +1,7 @@
 {
   "name": "@neuri/format-code",
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Code related output parsers for neuri",
   "author": {
     "name": "Lingtic.io Neuri Team",
