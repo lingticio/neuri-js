@@ -1,7 +1,7 @@
 {
   "name": "@neuri/use-fs",
   "type": "module",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "FileSystem related agent implementation for neuri",
   "author": {
     "name": "Lingtic.io Neuri Team",
