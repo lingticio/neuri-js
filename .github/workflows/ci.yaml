@@ -63,6 +63,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASEURL: ${{ secrets.OPENAI_API_BASEURL }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
 
   lint:
     strategy:
