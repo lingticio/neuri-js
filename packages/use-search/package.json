@@ -1,8 +1,8 @@
 {
-  "name": "neuri",
+  "name": "@neuri/use-search",
   "type": "module",
   "version": "0.0.10",
-  "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
+  "description": "Search Engine related agent implementation for neuri",
   "author": {
     "name": "Lingtic.io Neuri Team",
     "email": "neuridev@lingtic.io",
@@ -13,7 +13,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/lingticio/neuri-js.git",
-    "directory": "packages/neuri"
+    "directory": "packages/use-search"
   },
   "keywords": [
     "guiiai",
@@ -27,13 +27,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
-    "./openai": {
-      "types": "./dist/openai.d.ts",
-      "import": "./dist/openai.mjs"
-    },
-    "./test": {
-      "types": "./dist/test.d.ts",
-      "import": "./dist/test.mjs"
+    "./serpapi": {
+      "types": "./dist/serpapi/index.d.ts",
+      "import": "./dist/serpapi/index.mjs"
     }
   },
   "module": "dist/index.mjs",
@@ -52,25 +48,16 @@
   },
   "dependencies": {
     "@guiiai/logg": "^1.0.3",
-    "@typeschema/main": "^0.14.1",
-    "ajv": "^8.17.1",
     "defu": "^6.1.4",
-    "nanoid": "^5.0.7",
-    "openai": "^4.54.0",
-    "remark-parse": "^11.0.0",
-    "unified": "^11.0.5",
-    "unist-util-filter": "^5.0.1",
-    "unist-util-is": "^6.0.0",
-    "unist-util-remove": "^4.0.0",
-    "unist-util-visit": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/mdast": "^4.0.4",
-    "@types/node": "^20.11.17",
-    "@typeschema/zod": "^0.14.0",
-    "json-schema": "^0.4.0",
-    "remark": "^15.0.1",
+    "execa": "^9.3.1",
+    "ignore": "^5.3.2",
+    "neuri": "workspace:*",
+    "ofetch": "^1.4.1",
+    "serpapi": "^2.1.0",
     "zod": "^3.23.8",
     "zod-to-json-schema": "^3.23.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17"
   }
 }

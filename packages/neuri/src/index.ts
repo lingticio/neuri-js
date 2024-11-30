@@ -68,7 +68,7 @@ export interface NeuriBuilderInternal extends Partial<NeuriBuilder> {
   promiseAgents: Promise<Agent>[]
 }
 
-export type ToolFunc<P, R> = (ctx: InvokeContext<P, R>) => Promise<R>
+export type ToolFunc<P, R> = (ctx: InvokeContext<P, R>) => R
 export interface ToolOption<P, R> { openAI?: OpenAI, hooks?: Partial<ToolHooks<P, R>>, description?: string }
 
 export interface AgentBuilder {

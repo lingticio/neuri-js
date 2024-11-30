@@ -1,3 +1,5 @@
+import type { Directory, EntryNode } from '../../common'
+
 export interface BaseResponse<T> {
   payload: T
   title: string
@@ -72,3 +74,6 @@ export interface CsrfTokens {
     post: string
   }
 }
+
+export interface GitHubDirectory extends Directory<Omit<Tree, 'tree' | 'fileTree'>> { }
+export interface GitHubEntryNode extends EntryNode<Omit<Tree, 'tree' | 'fileTree'>> { }

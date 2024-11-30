@@ -30,6 +30,10 @@
     "./github": {
       "types": "./dist/github/index.d.ts",
       "import": "./dist/github/index.mjs"
+    },
+    "./node": {
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.mjs"
     }
   },
   "module": "dist/index.mjs",

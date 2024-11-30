@@ -1,9 +1,12 @@
+import { invoke } from 'neuri/test'
 import { describe, expect, it } from 'vitest'
-import { readDir, readFileContent } from '.'
+import { GitHubPublicFileSystem } from '.'
 
 describe('use-fs/github/public', async () => {
   it('should list tree of files', async () => {
-    const files = await readDir('lingticio/neuri-js', '/', { branch: 'main' })
+    const { listFilesInDirectory } = await GitHubPublicFileSystem()
+
+    const files = await invoke(listFilesInDirectory, { repository: 'lingticio/neuri-js', directory: '/', branch: 'main' })
     expect(files.children).toBeDefined()
     expect(files.children?.length).toBeGreaterThan(0)
 
@@ -12,9 +15,12 @@ describe('use-fs/github/public', async () => {
   })
 
   it('should read file', async () => {
-    const file = await readFileContent<string>('lingticio/neuri-js', '/README.md', { branch: 'main' })
+    const { readFile } = await GitHubPublicFileSystem()
+
+    const file = await invoke(readFile, { repository: 'lingticio/neuri-js', filePath: '/README.md', branch: 'main' })
     expect(file).toBeDefined()
-    expect(file.textContent).toBeDefined()
-    expect(file.textContent?.length).toBeGreaterThan(0)
+    expect(file).toBeDefined()
+    expect(typeof file).toBe('string')
+    expect((file as string).length).toBeGreaterThan(0)
   })
 })

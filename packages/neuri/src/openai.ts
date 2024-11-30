@@ -351,7 +351,7 @@ export async function invokeFunctionWithTools<P, R>(chatCompletion: ChatCompleti
 
 type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
 
-// @ts-expect-error - P is helper
+// @ts-expect-error - P is helper, R is helper
 // eslint-disable-next-line unused-imports/no-unused-vars
 interface ToolFunction<P> extends OpenAI.Chat.ChatCompletionTool {
   type: 'function'
@@ -376,7 +376,7 @@ export async function toolFunction<S extends Schema, P extends Infer<S>>(name: s
 export interface Tool<P, R> {
   openAI?: OpenAI
   tool: OpenAI.Chat.ChatCompletionTool
-  func: (ctx: InvokeContext<P, R>) => Promise<R>
+  func: (ctx: InvokeContext<P, R>) => R
   hooks: ToolHooks<P, R>
 }
 
@@ -393,10 +393,6 @@ export interface InvokeContext<P, R> {
   toolCall: ResolvedToolCall<P, R>
 }
 
-export function newTestInvokeContext<P, R>(parameters?: P): InvokeContext<P, R> {
-  return { parameters } as InvokeContext<P, R>
-}
-
 export interface PreInvokeContext<P, R> extends InvokeContext<P, R> {
 
 }
@@ -411,9 +407,9 @@ export interface ResolvedToolCall<P, R> extends Tool<P, R> {
   hooks: ToolHooks<P, R>
 }
 
-export function defineToolFunction<P, R>(
+export function defineToolFunction<F extends (ctx: InvokeContext<P, R>) => R, P = Parameters<F>, R = ReturnType<F>>(
   tool: ToolFunction<P>,
-  func: (ctx: InvokeContext<P, R>) => Promise<R>,
+  func: F,
   options?: {
     openAI?: OpenAI
     hooks?: Partial<ToolHooks<P, R>>
