@@ -82,6 +82,7 @@ nr docs:build
 ## Acknowledgement
 
 - [outlines](https://github.com/outlines-dev/outlines) for providing such powerful ideas to build the structured data manipulation
+- [Agentic](https://agentic.so/intro) for providing the completed implementation references for tools and agents
 - [shikijs/shiki](https://github.com/shikijs/shiki) for bundling the VSCode TextMate WASM
 
 ## Star History
