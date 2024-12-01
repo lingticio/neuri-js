@@ -364,7 +364,7 @@ export async function invokeFunctionWithTools(chatCompletion: ChatCompletion, to
     }
   }
 
-  return []
+  return results
 }
 
 type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>

@@ -13,14 +13,6 @@ describe('neuri', async () => {
           .tool('getMyName', object({ name: string() }), async () => 'Neuri')
           .build(),
       )
-      .agent(
-        agent('weather')
-          .tool('getCurrentLocation', object({}), async () => 'Shanghai')
-          .tool('getCurrentWeather', object({ location: string() }), async ({ parameters: { location } }) => {
-            return `${location}, China: 22 degree Celsius`
-          })
-          .build(),
-      )
       .build({
         openAI: new OpenAI({
           apiKey: process.env.OPENAI_API_KEY,
