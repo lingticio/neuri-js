@@ -12,11 +12,20 @@
       "neuri": [
         "./packages/neuri/src/index.ts"
       ],
-      "neuri/openai": [
-        "./packages/neuri/src/openai.ts"
+      "neuri/*": [
+        "./packages/neuri/src/*"
       ],
-      "neuri/test": [
-        "./packages/neuri/src/test.ts"
+      "neuri/use-fs": [
+        "./packages/use-fs/src/index.ts"
+      ],
+      "neuri/use-fs/*": [
+        "./packages/use-fs/src/*"
+      ],
+      "neuri/use-search": [
+        "./packages/use-search/src/index.ts"
+      ],
+      "neuri/use-search/*": [
+        "./packages/use-search/src/*"
       ]
     },
     "types": [
