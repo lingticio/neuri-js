@@ -55,6 +55,6 @@
     "tm-grammars": "^1.17.18"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17"
+    "@types/node": "^22.0.0"
   }
 }

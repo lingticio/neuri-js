@@ -80,7 +80,7 @@ importers:
     dependencies:
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       '@typeschema/valibot':
         specifier: ^0.14.0
         version: 0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2))
@@ -126,8 +126,8 @@ importers:
         version: 1.19.5
     devDependencies:
       '@types/node':
-        specifier: ^20.11.17
-        version: 20.17.7
+        specifier: ^22.0.0
+        version: 22.7.6
 
   packages/neuri:
     dependencies:
@@ -136,7 +136,7 @@ importers:
         version: 1.0.5
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
@@ -172,8 +172,8 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       '@types/node':
-        specifier: ^20.11.17
-        version: 20.17.7
+        specifier: ^22.0.0
+        version: 22.7.6
       '@typeschema/zod':
         specifier: ^0.14.0
         version: 0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8)
@@ -215,8 +215,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@types/node':
-        specifier: ^20.11.17
-        version: 20.17.7
+        specifier: ^22.0.0
+        version: 22.7.6
 
   packages/use-search:
     dependencies:
@@ -249,8 +249,8 @@ importers:
         version: 3.23.5(zod@3.23.8)
     devDependencies:
       '@types/node':
-        specifier: ^20.11.17
-        version: 20.17.7
+        specifier: ^22.0.0
+        version: 22.7.6
 
 packages:
 
@@ -1274,9 +1274,6 @@ packages:
 
   '@types/node@18.19.65':
     resolution: {integrity: sha512-Ay5BZuO1UkTmVHzZJNvZKw/E+iB3GQABb6kijEz89w2JrfhNA+M/ebp18pfz9Gqe9ywhMC8AA8yC01lZq48J+Q==}
-
-  '@types/node@20.17.7':
-    resolution: {integrity: sha512-sZXXnpBFMKbao30dUAvzKbdwA2JM1fwUtVEq/kxKuPI5mMwZiRElCpTXb0Biq/LMEVpXDZL5G5V0RPnxKeyaYg==}
 
   '@types/node@22.7.6':
     resolution: {integrity: sha512-/d7Rnj0/ExXDMcioS78/kf1lMzYk4BZV8MZGTBKzTGZ6/406ukkbYlIsZmMPhcR5KlkunDHQLrtAVmSq7r+mSw==}
@@ -5134,10 +5131,6 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.17.7':
-    dependencies:
-      undici-types: 6.19.8
-
   '@types/node@22.7.6':
     dependencies:
       undici-types: 6.19.8
@@ -5154,7 +5147,7 @@ snapshots:
     optionalDependencies:
       '@types/json-schema': 7.0.15
 
-  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
+  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
     dependencies:
       '@typeschema/core': 0.14.0(@types/json-schema@7.0.15)
     optionalDependencies:
