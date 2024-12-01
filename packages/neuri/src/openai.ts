@@ -246,6 +246,7 @@ export function messages(...messages: OpenAI.ChatCompletionMessageParam[]): Open
 
 export interface ChatCompletion extends OpenAI.Chat.Completions.ChatCompletion {
   firstContent: () => Promise<string>
+  firstChoice: () => OpenAI.ChatCompletion.Choice | undefined
 }
 
 export function chatCompletionFromOpenAIChatCompletion(completions: OpenAI.Chat.Completions.ChatCompletion): ChatCompletion {
@@ -254,6 +255,12 @@ export function chatCompletionFromOpenAIChatCompletion(completions: OpenAI.Chat.
     firstContent: async () => {
       const message = resolveFirstTextMessageFromCompletion(completions)
       return message
+    },
+    firstChoice: () => {
+      if (completions.choices.length === 0)
+        return undefined
+
+      return completions.choices[0]
     },
   }
 }
@@ -310,7 +317,7 @@ export function resolvedToolCall<P = any, R = any>(toolCall: OpenAI.Chat.ChatCom
   }
 }
 
-export async function invokeFunctionWithResolvedToolCall<P = any, R = any | undefined>(completions: ChatCompletion, toolCall: ResolvedToolCall<P, R> | undefined, messages: OpenAI.ChatCompletionMessageParam[]): Promise<R | undefined> {
+export async function invokeFunctionWithResolvedToolCall<P = any, R = any | undefined>(completions: ChatCompletion, toolCall: ResolvedToolCall<P, R> | undefined, messages?: OpenAI.ChatCompletionMessageParam[]): Promise<R | undefined> {
   if (toolCall == null)
     return undefined
   if (toolCall.toolCall == null)
@@ -319,7 +326,7 @@ export async function invokeFunctionWithResolvedToolCall<P = any, R = any | unde
     return undefined
 
   const ctx: InvokeContext<P, R> = {
-    messages,
+    messages: messages ?? [],
     chatCompletion: completions,
     parameters: toolCall.arguments,
     toolCall,
@@ -332,21 +339,32 @@ export async function invokeFunctionWithResolvedToolCall<P = any, R = any | unde
   return res
 }
 
-export async function invokeFunctionWithTools<P, R>(chatCompletion: ChatCompletion, tools: Tool<P, R>[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<{
+export interface ToolCallFunctionResult<P = any, R = any> {
   result: R | undefined
-  chatCompletion: OpenAI.Chat.Completions.ChatCompletion
   chatCompletionToolCall?: OpenAI.Chat.Completions.ChatCompletionMessageToolCall
-  toolCall: ResolvedToolCall<P, R> | undefined
-}> {
-  const chatCompletionToolCall = resolveFirstToolCallFromCompletion(chatCompletion)
-  const toolCall = resolvedToolCall<P, R>(chatCompletionToolCall, tools)
+  resolvedToolCall: ResolvedToolCall<P, R> | undefined
+}
 
-  return {
-    result: await invokeFunctionWithResolvedToolCall<P, R>(chatCompletion, toolCall, messages),
-    chatCompletion,
-    chatCompletionToolCall,
-    toolCall,
+export async function invokeFunctionWithTools(chatCompletion: ChatCompletion, tools: Tool<any, any>[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<Array<ToolCallFunctionResult<any, any>>> {
+  const results: Array<ToolCallFunctionResult<any, any>> = []
+
+  for (const choice of chatCompletion.choices) {
+    if (!choice.message.tool_calls) {
+      continue
+    }
+
+    for (const toolCall of choice.message.tool_calls) {
+      const tc = resolvedToolCall<any, any>(toolCall, tools)
+
+      results.push({
+        result: await invokeFunctionWithResolvedToolCall<any, any>(chatCompletion, tc, messages),
+        chatCompletionToolCall: toolCall,
+        resolvedToolCall: tc,
+      })
+    }
   }
+
+  return []
 }
 
 type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
@@ -444,8 +462,8 @@ export function composeAgent(options: {
   openAI: OpenAI
   tools: Tool<any, any>[]
 }) {
-  async function call(messages: OpenAI.ChatCompletionMessageParam[], callOptions: { model: string }): Promise<ChatCompletion | undefined> {
-    let max = 5
+  async function call(messages: OpenAI.ChatCompletionMessageParam[], callOptions: { model: string, maxRoundTrip?: number }): Promise<ChatCompletion | undefined> {
+    let max = callOptions.maxRoundTrip ?? 10
     while (max >= 0) {
       max--
 
@@ -462,20 +480,23 @@ export function composeAgent(options: {
       messages.push(assistant(chatCompletionToolCall))
 
       const chatCompletion = chatCompletionFromOpenAIChatCompletion(res)
-
-      const { result, toolCall } = await invokeFunctionWithTools<any, any>(chatCompletion, options.tools, messages)
-      if (!toolCall)
-        return chatCompletion
-      if (result == null)
+      const invokeResults = await invokeFunctionWithTools(chatCompletion, options.tools, messages)
+      if (!invokeResults.length)
         return chatCompletion
 
-      let strRes = ''
-      if (typeof result === 'string')
-        strRes = result
-      else
-        strRes = JSON.stringify(result)
+      for (const invokeResult of invokeResults) {
+        const { result, resolvedToolCall: toolCall } = invokeResult
+        if (!toolCall)
+          continue
 
-      messages.push(tool(strRes, toolCall))
+        let strRes = ''
+        if (typeof result === 'string')
+          strRes = result
+        else
+          strRes = JSON.stringify(result)
+
+        messages.push(tool(strRes, toolCall))
+      }
     }
   }
 
