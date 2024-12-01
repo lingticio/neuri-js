@@ -10,7 +10,15 @@ describe('neuri', async () => {
     const n = await neuri()
       .agent(
         agent('consciousness')
-          .tool('getMyName', object({ name: string() }), async () => 'Neuri')
+          .tool('getMyName', object({ name: string() }), async () => 'Your name is Neuri.')
+          .build(),
+      )
+      .agent(
+        agent('weather')
+          .tool('getCurrentLocation', object({}), async () => 'Shanghai')
+          .tool('getCurrentWeather', object({ location: string() }), async ({ parameters: { location } }) => {
+            return `${location}, China: 22 degree Celsius`
+          })
           .build(),
       )
       .build({
