@@ -13,6 +13,6 @@ describe('neuri/use-search/serpapi', () => {
     expect(result.formatOrganicResultsAsMarkdownSnippets().length).toBeGreaterThan(0)
     expect(result.response).toBeDefined()
     expect(result.response.search_information.query_displayed).toBe('Neuri.js')
-    expect(result.response.organic_results.length).toBeGreaterThan(0)
+    expect(result.response?.organic_results?.length).toBeGreaterThan(0)
   })
 })
