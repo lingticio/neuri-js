@@ -3,7 +3,8 @@ import OpenAI from 'openai'
 
 import { describe, expect, it } from 'vitest'
 import { object, string } from 'zod'
-import { defineToolFunction, messages, newTestInvokeContext, stream, type StreamChunk, system, toolFunction, user } from './openai'
+import { defineToolFunction, messages, stream, type StreamChunk, system, toolFunction, user } from './openai'
+import { newTestInvokeContext } from './test'
 
 describe('neuri/openai', async () => {
   it('it works', async () => {
