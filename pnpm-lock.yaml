@@ -80,7 +80,7 @@ importers:
     dependencies:
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       '@typeschema/valibot':
         specifier: ^0.14.0
         version: 0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2))
@@ -136,7 +136,7 @@ importers:
         version: 1.0.5
       '@typeschema/main':
         specifier: ^0.14.1
-        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
+        version: 0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))
       ajv:
         specifier: ^8.17.1
         version: 8.17.1
@@ -202,8 +202,8 @@ importers:
         specifier: ^9.3.1
         version: 9.5.1
       ignore:
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^6.0.0
+        version: 6.0.2
       neuri:
         specifier: workspace:*
         version: link:../neuri
@@ -230,8 +230,8 @@ importers:
         specifier: ^9.3.1
         version: 9.5.1
       ignore:
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^6.0.0
+        version: 6.0.2
       neuri:
         specifier: workspace:*
         version: link:../neuri
@@ -2602,6 +2602,10 @@ packages:
 
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
+    engines: {node: '>= 4'}
+
+  ignore@6.0.2:
+    resolution: {integrity: sha512-InwqeHHN2XpumIkMvpl/DCJVrAHgCsG5+cn1XlnLWGwtZBm8QJfSusItfrwx81CTp5agNZqpKU2J/ccC5nGT4A==}
     engines: {node: '>= 4'}
 
   image-size@0.5.5:
@@ -5154,7 +5158,7 @@ snapshots:
     optionalDependencies:
       '@types/json-schema': 7.0.15
 
-  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15)(valibot@0.42.1(typescript@5.7.2)))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
+  '@typeschema/main@0.14.1(@types/json-schema@7.0.15)(@typeschema/valibot@0.14.0(@types/json-schema@7.0.15))(@typeschema/zod@0.14.0(@types/json-schema@7.0.15)(zod-to-json-schema@3.23.5(zod@3.23.8))(zod@3.23.8))':
     dependencies:
       '@typeschema/core': 0.14.0(@types/json-schema@7.0.15)
     optionalDependencies:
@@ -6716,6 +6720,8 @@ snapshots:
     optional: true
 
   ignore@5.3.2: {}
+
+  ignore@6.0.2: {}
 
   image-size@0.5.5:
     optional: true
