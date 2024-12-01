@@ -58,6 +58,6 @@
     "zod-to-json-schema": "^3.23.5"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17"
+    "@types/node": "^22.0.0"
   }
 }
