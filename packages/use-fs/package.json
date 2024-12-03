@@ -51,15 +51,15 @@
     "package:publish": "pnpm publish --access public --no-git-checks"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.3",
+    "@guiiai/logg": "^1.0.6",
     "defu": "^6.1.4",
-    "execa": "^9.3.1",
-    "ignore": "^6.0.0",
+    "execa": "^9.5.1",
+    "ignore": "^6.0.2",
     "neuri": "workspace:*",
     "ofetch": "^1.4.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.10.1"
   }
 }

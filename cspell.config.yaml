@@ -28,5 +28,6 @@ words:
   - valibot
   - vitepress
   - vuejs
+  - xsai
 ignoreWords: []
 import: []

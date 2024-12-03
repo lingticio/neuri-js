@@ -47,14 +47,14 @@
     "package:publish": "pnpm publish --access public --no-git-checks"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.3",
-    "@shikijs/core": "^1.14.1",
-    "@shikijs/engine-oniguruma": "^1.23.1",
-    "@shikijs/vscode-textmate": "^9.2.2",
-    "shiki": "^1.14.1",
-    "tm-grammars": "^1.17.18"
+    "@guiiai/logg": "^1.0.6",
+    "@shikijs/core": "^1.24.0",
+    "@shikijs/engine-oniguruma": "^1.24.0",
+    "@shikijs/vscode-textmate": "^9.3.0",
+    "shiki": "^1.24.0",
+    "tm-grammars": "^1.21.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.10.1"
   }
 }

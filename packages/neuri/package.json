@@ -51,15 +51,17 @@
     "package:publish": "pnpm publish --access public --no-git-checks"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.3",
+    "@guiiai/logg": "^1.0.6",
     "@typeschema/main": "^0.14.1",
+    "@xsai/generate-text": "^0.0.11",
+    "@xsai/tool": "^0.0.11",
     "defu": "^6.1.4",
-    "nanoid": "^5.0.7",
-    "openai": "^4.54.0"
+    "nanoid": "^5.0.9",
+    "openai": "^4.74.0"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.10.1",
     "@typeschema/zod": "^0.14.0",
     "json-schema": "^0.4.0",
     "remark": "^15.0.1",
