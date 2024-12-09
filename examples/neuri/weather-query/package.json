@@ -18,9 +18,9 @@
     "@typeschema/valibot": "^0.14.0",
     "@typeschema/zod": "^0.14.0",
     "neuri": "workspace:^",
-    "openai": "^4.74.0",
+    "openai": "^4.76.3",
     "valibot": "^0.42.1",
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "tsx": "^4.19.2"

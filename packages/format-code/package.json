@@ -48,13 +48,13 @@
   },
   "dependencies": {
     "@guiiai/logg": "^1.0.6",
-    "@shikijs/core": "^1.24.0",
-    "@shikijs/engine-oniguruma": "^1.24.0",
-    "@shikijs/vscode-textmate": "^9.3.0",
-    "shiki": "^1.24.0",
-    "tm-grammars": "^1.21.0"
+    "@shikijs/core": "^1.24.2",
+    "@shikijs/engine-oniguruma": "^1.24.2",
+    "@shikijs/vscode-textmate": "^9.3.1",
+    "shiki": "^1.24.2",
+    "tm-grammars": "^1.21.5"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1"
+    "@types/node": "^22.10.2"
   }
 }
