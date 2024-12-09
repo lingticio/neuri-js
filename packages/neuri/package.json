@@ -53,11 +53,14 @@
   "dependencies": {
     "@guiiai/logg": "^1.0.6",
     "@typeschema/main": "^0.14.1",
-    "@xsai/generate-text": "^0.0.15",
-    "@xsai/tool": "^0.0.15",
+    "@xsai/generate-text": "^0.0.19",
+    "@xsai/providers": "^0.0.19",
+    "@xsai/shared-chat-completion": "^0.0.19",
+    "@xsai/stream-text": "^0.0.19",
+    "@xsai/tool": "^0.0.19",
     "defu": "^6.1.4",
     "nanoid": "^5.0.9",
-    "openai": "^4.74.0"
+    "openai": "^4.76.0"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",

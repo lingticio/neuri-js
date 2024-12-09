@@ -1,28 +1,8 @@
 import { env } from 'node:process'
 import OpenAI from 'openai'
-
 import { describe, expect, it } from 'vitest'
-import { object, string } from 'zod'
-import { defineToolFunction, messages, stream, type StreamChunk, system, toolFunction, user } from './openai'
-import { newTestInvokeContext } from './test'
-
-describe('neuri/openai', async () => {
-  it('it works', async () => {
-    const tf = await defineToolFunction(
-      await toolFunction('name', 'description', object({ name: string() })),
-      async ({ parameters: { name } }) => {
-        expect(name).toBe('name')
-
-        return name
-      },
-    )
-
-    expect(tf).toBeDefined()
-
-    const name = await tf.func(newTestInvokeContext({ name: 'name' }))
-    expect(name).toBe('name')
-  })
-})
+import { messages, system, user } from './messages'
+import { stream, type StreamChunk } from './stream'
 
 describe('stream', async () => {
   it('it works', async () => {
