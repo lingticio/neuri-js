@@ -1,22 +1,8 @@
-import type OpenAI from 'openai'
+import type { StreamTextOptions, StreamTextResponse } from '@xsai/stream-text'
+import { streamText } from '@xsai/stream-text'
 
-export interface StreamChunk {
-  raw: () => Uint8Array
+export interface StreamChunk extends StreamTextResponse {
   textPart: () => string
-  chunk: () => OpenAI.Chat.ChatCompletionChunk
-}
-
-function parseChunkFromBuffer(value: Uint8Array) {
-  const str = new TextDecoder().decode(value)
-  return JSON.parse(str) as unknown as OpenAI.Chat.ChatCompletionChunk
-}
-
-function newStreamChunk(raw: Uint8Array, resChunk: OpenAI.Chat.ChatCompletionChunk): StreamChunk {
-  return {
-    raw: () => raw,
-    chunk: () => resChunk,
-    textPart: () => resChunk.choices?.[0]?.delta.content ?? '',
-  } satisfies StreamChunk
 }
 
 export interface StreamResponse {
@@ -51,15 +37,6 @@ export interface StreamResponse {
    * @returns The completion response as a stream of chunks.
    */
   chunks: () => Promise<StreamChunk[]>
-  /**
-   * Convert the completion response to a iterable readable stream.
-   *
-   * This function is 100% sure to be ok to use even if your browser or environments didn't implemented the `Symbol.asyncIterator` feature.
-   *
-   * @param options
-   * @returns
-   */
-  toReadableStream: () => AsyncGenerator<Uint8Array, void, unknown>
 }
 
 interface PipeHook<F, T> {
@@ -94,20 +71,12 @@ async function* asyncIteratorFromReadableStream<T, F = Uint8Array>(res: Readable
  * Stream the completion response from LLM API.
  *
  * @param params - The parameters to stream the completion response.
- * @param params.options - The options to create the completion.
- * @param params.openAI - The OpenAI instance.
  * @returns The completion response stream.
  */
-export async function stream(params: {
-  options: Omit<OpenAI.Chat.Completions.ChatCompletionCreateParamsStreaming, 'stream'>
-  openAI: OpenAI
-}): Promise<StreamResponse> {
-  const res = await params.openAI.chat.completions.create({ ...params.options, stream: true, stream_options: { include_usage: true } })
+export async function stream(params: StreamTextOptions): Promise<StreamResponse> {
+  const res = await streamText(params)
 
-  const [fullStream, rawStream] = res.tee()
-  const [textStream, chunkStream] = fullStream.tee()
-
-  const textStreamHooks: PipeHook<Uint8Array, string>[] = []
+  const textStreamHooks: PipeHook<string, string>[] = []
   const accumulatedText = new Promise<string>((resolve) => {
     const chunks: string[] = []
     textStreamHooks.push({
@@ -116,7 +85,7 @@ export async function stream(params: {
     })
   })
 
-  const chunkStreamHooks: PipeHook<Uint8Array, StreamChunk>[] = []
+  const chunkStreamHooks: PipeHook<StreamTextResponse, StreamChunk>[] = []
   const accumulatedChunks = new Promise<StreamChunk[]>((resolve) => {
     const chunks: StreamChunk[] = []
     chunkStreamHooks.push({
@@ -130,15 +99,25 @@ export async function stream(params: {
     text: () => accumulatedText,
     chunks: () => accumulatedChunks,
     textStream: () => asyncIteratorFromReadableStream(
-      textStream.toReadableStream(),
-      async (value: Uint8Array) => newStreamChunk(value, parseChunkFromBuffer(value)).textPart(),
+      res.textStream,
+      async (value: string) => value,
       textStreamHooks,
     ),
     chunkStream: () => asyncIteratorFromReadableStream(
-      chunkStream.toReadableStream(),
-      async (value: Uint8Array) => newStreamChunk(value, parseChunkFromBuffer(value)),
+      res.chunkStream,
+      async (value: StreamTextResponse): Promise<StreamChunk> => {
+        return {
+          ...value,
+          textPart: () => {
+            if (value.choices.length === 0) {
+              return ''
+            }
+
+            return value.choices[0].delta.content
+          },
+        }
+      },
       chunkStreamHooks,
     ),
-    toReadableStream: () => rawStream.toReadableStream() as unknown as AsyncGenerator<Uint8Array, void, unknown>,
   } satisfies StreamResponse
 }

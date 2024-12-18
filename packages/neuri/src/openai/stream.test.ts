@@ -1,25 +1,18 @@
 import { env } from 'node:process'
-import OpenAI from 'openai'
 import { describe, expect, it } from 'vitest'
 import { messages, system, user } from './messages'
 import { stream, type StreamChunk } from './stream'
 
 describe('stream', async () => {
   it('it works', async () => {
-    const openai = new OpenAI({
-      apiKey: env.OPENAI_API_KEY,
-      baseURL: env.OPENAI_API_BASEURL,
-    })
-
     const res = await stream({
-      openAI: openai,
-      options: {
-        model: 'openai/gpt-3.5-turbo',
-        messages: messages(
-          system('You are a helpful assistant.'),
-          user('What is the meaning of life?'),
-        ),
-      },
+      apiKey: env.OPENAI_API_KEY!,
+      baseURL: env.OPENAI_API_BASEURL!,
+      model: 'openai/gpt-3.5-turbo',
+      messages: messages(
+        system('You are a helpful assistant.'),
+        user('What is the meaning of life?'),
+      ),
     })
 
     const readText = async () => {

@@ -1,11 +1,12 @@
 import type { Infer, Schema } from '@typeschema/main'
-import type OpenAI from 'openai'
-import type { InvokeContext, Tool, ToolHooks } from './types'
+import type { CommonProviderOptions } from '@xsai/providers'
+import type { DefinedTool, DefinedToolHooks, InvokeContext, Tool } from './types'
+
 import { toJSONSchema } from '@typeschema/main'
 
 type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
 
-interface ToolFunction<_P> extends OpenAI.Chat.ChatCompletionTool {
+interface ToolFunction<_P> extends Tool {
   type: 'function'
   function: {
     name: string
@@ -29,31 +30,31 @@ export function defineToolFunction<F extends (ctx: InvokeContext<P, R>) => R, P 
   tool: ToolFunction<P>,
   func: F,
   options?: {
-    openAI?: OpenAI
-    hooks?: Partial<ToolHooks<P, R>>
+    provider?: CommonProviderOptions
+    hooks?: Partial<DefinedToolHooks<P, R>>
   },
-): Tool<P, R> {
-  const hooks: ToolHooks<P, R> = {
-    configureOpenAI: async o => o,
+): DefinedTool<P, R> {
+  const hooks: DefinedToolHooks<P, R> = {
+    configureProvider: async o => o,
     preInvoke: async () => {},
     postInvoke: async () => {},
   }
 
-  if (options?.hooks?.configureOpenAI != null)
-    hooks.configureOpenAI = options.hooks.configureOpenAI
+  if (options?.hooks?.configureProvider != null)
+    hooks.configureProvider = options.hooks.configureProvider
   if (options?.hooks?.preInvoke != null)
     hooks.preInvoke = options?.hooks?.preInvoke
   if (options?.hooks?.postInvoke != null)
     hooks.postInvoke = options?.hooks?.postInvoke
 
   return {
-    openAI: options?.openAI,
+    provider: options?.provider ?? { baseURL: 'https://api.openai.com/v1', apiKey: '' },
     tool,
     func,
     hooks,
   }
 }
 
-export function tools(tools: Tool<any, any>[]): OpenAI.Chat.ChatCompletionTool[] {
+export function tools(tools: DefinedTool<any, any>[]): Tool[] {
   return tools.map(tool => tool.tool)
 }

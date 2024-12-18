@@ -1,7 +1,7 @@
-import type OpenAI from 'openai'
-import type { ChatCompletion, InvokeContext, ResolvedToolCall, Tool, ToolCallFunctionResult } from './types'
+import type { Message, ToolCall } from '@xsai/shared-chat'
+import type { ChatCompletion, DefinedTool, InvokeContext, ResolvedToolCall, ToolCallFunctionResult } from './types'
 
-export function resolvedToolCall<P = any, R = any>(toolCall: OpenAI.Chat.ChatCompletionMessageToolCall | null | undefined, tools: Tool<P, R>[]): ResolvedToolCall<P, R> | undefined {
+export function resolvedToolCall<P = any, R = any>(toolCall: ToolCall | null | undefined, tools: DefinedTool<P, R>[]): ResolvedToolCall<P, R> | undefined {
   if (toolCall == null)
     return undefined
   if (toolCall.function == null)
@@ -12,19 +12,16 @@ export function resolvedToolCall<P = any, R = any>(toolCall: OpenAI.Chat.ChatCom
     return undefined
 
   return {
-    tool: {
-      function: toolCall.function,
-      type: 'function',
-    },
+    tool: foundTool.tool,
     toolCall,
     arguments: JSON.parse(toolCall.function.arguments),
-    openAI: foundTool.openAI,
+    provider: foundTool.provider,
     func: foundTool.func,
     hooks: foundTool.hooks,
   }
 }
 
-export async function invokeFunctionWithResolvedToolCall<P = any, R = any | undefined>(completions: ChatCompletion, toolCall: ResolvedToolCall<P, R> | undefined, messages?: OpenAI.ChatCompletionMessageParam[]): Promise<R | undefined> {
+export async function invokeFunctionWithResolvedToolCall<P = any, R = any | undefined>(completions: ChatCompletion, toolCall: ResolvedToolCall<P, R> | undefined, messages?: Message[]): Promise<R | undefined> {
   if (toolCall == null)
     return undefined
   if (toolCall.toolCall == null)
@@ -46,7 +43,7 @@ export async function invokeFunctionWithResolvedToolCall<P = any, R = any | unde
   return res
 }
 
-export async function invokeFunctionWithTools(chatCompletion: ChatCompletion, tools: Tool<any, any>[], messages: OpenAI.ChatCompletionMessageParam[]): Promise<Array<ToolCallFunctionResult<any, any>>> {
+export async function invokeFunctionWithTools(chatCompletion: ChatCompletion, tools: DefinedTool<any, any>[], messages: Message[]): Promise<Array<ToolCallFunctionResult<any, any>>> {
   const results: Array<ToolCallFunctionResult<any, any>> = []
 
   for (const choice of chatCompletion.choices) {

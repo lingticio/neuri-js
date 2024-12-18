@@ -1,7 +1,7 @@
-import type OpenAI from 'openai'
-import type { ChatCompletion } from './types'
+import type { ToolCall } from '@xsai/shared-chat'
+import type { ChatCompletion, ChatCompletionsResponse } from './types'
 
-export function chatCompletionFromOpenAIChatCompletion(completions: OpenAI.Chat.Completions.ChatCompletion): ChatCompletion {
+export function chatCompletionFromOpenAIChatCompletion(completions: ChatCompletionsResponse): ChatCompletion {
   return {
     ...completions,
     firstContent: async () => {
@@ -17,7 +17,7 @@ export function chatCompletionFromOpenAIChatCompletion(completions: OpenAI.Chat.
   }
 }
 
-export function resolveFirstTextMessageFromCompletion(chatCompletion?: OpenAI.Chat.Completions.ChatCompletion): string {
+export function resolveFirstTextMessageFromCompletion(chatCompletion?: ChatCompletionsResponse): string {
   if (!chatCompletion)
     return ''
   if (chatCompletion.choices.length === 0)
@@ -27,7 +27,7 @@ export function resolveFirstTextMessageFromCompletion(chatCompletion?: OpenAI.Ch
   return message.content ?? ''
 }
 
-export function resolveToolCallsFromCompletion(chatCompletion?: OpenAI.Chat.Completions.ChatCompletion): OpenAI.Chat.ChatCompletionMessageToolCall[][] {
+export function resolveToolCallsFromCompletion(chatCompletion?: ChatCompletionsResponse): ToolCall[][] {
   if (!chatCompletion)
     return []
   if (!('choices' in chatCompletion))
@@ -38,7 +38,7 @@ export function resolveToolCallsFromCompletion(chatCompletion?: OpenAI.Chat.Comp
   return chatCompletion.choices.filter(choice => choice.message.tool_calls != null).map(choice => choice.message.tool_calls!)
 }
 
-export function resolveFirstToolCallFromCompletion(chatCompletion?: OpenAI.Chat.Completions.ChatCompletion): OpenAI.Chat.ChatCompletionMessageToolCall | undefined {
+export function resolveFirstToolCallFromCompletion(chatCompletion?: ChatCompletionsResponse): ToolCall | undefined {
   const choices = resolveToolCallsFromCompletion(chatCompletion)
   if (choices.length === 0)
     return undefined

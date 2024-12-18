@@ -1,15 +1,14 @@
-import type OpenAI from 'openai'
-import { chatCompletionFromOpenAIChatCompletion } from './completion'
+import type { GenerateTextOptions } from '@xsai/generate-text'
+import type { ChatCompletion } from './types'
+import { chatCompletion } from '@xsai/shared-chat'
 
 /**
- * Generate the completion response from LLM API.
+ * Generate text
  *
- * @param params - The parameters to generate the completion response.
- * @param params.options - The options to create the completion.
- * @param params.openAI - The OpenAI instance.
- * @returns The completion response.
+ * @param params - The parameters to generate text.
+ * @returns ChatCompletion
  */
-export async function generate(params: { options: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming, openAI: OpenAI }) {
-  const res = await params.openAI.chat.completions.create(params.options)
-  return chatCompletionFromOpenAIChatCompletion(res)
+export async function generate(params: GenerateTextOptions) {
+  const reqRes = await chatCompletion(params)
+  return await reqRes.json() as ChatCompletion
 }

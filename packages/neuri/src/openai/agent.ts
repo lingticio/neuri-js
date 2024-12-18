@@ -1,5 +1,7 @@
-import type OpenAI from 'openai'
-import type { ChatCompletion, Tool } from './types'
+import type { CommonProviderOptions } from '@xsai/providers'
+import type { Message } from '@xsai/shared-chat'
+
+import type { ChatCompletion, DefinedTool } from './types'
 import { chatCompletionFromOpenAIChatCompletion, resolveFirstToolCallFromCompletion } from './completion'
 import { generate } from './generate'
 import { invokeFunctionWithTools } from './invoke'
@@ -7,30 +9,32 @@ import { assistant, tool } from './messages'
 import { tools } from './tools'
 
 export function composeAgent(options: {
-  openAI: OpenAI
-  tools: Tool<any, any>[]
+  provider: CommonProviderOptions
+  tools: DefinedTool<any, any>[]
 }) {
-  async function call(messages: OpenAI.ChatCompletionMessageParam[], callOptions: { model: string, maxRoundTrip?: number }): Promise<ChatCompletion | undefined> {
+  async function call(messages: Message[], callOptions: { model: string, maxRoundTrip?: number }): Promise<ChatCompletion | undefined> {
     let max = callOptions.maxRoundTrip ?? 10
     while (max >= 0) {
       max--
 
       const res = await generate({
-        openAI: options.openAI,
-        options: {
-          model: callOptions.model,
-          messages,
-          tools: tools(options.tools),
-        },
+        apiKey: options.provider.apiKey,
+        baseURL: options.provider.baseURL,
+        model: callOptions.model,
+        messages,
+        tools: tools(options.tools),
       })
 
-      const chatCompletionToolCall = resolveFirstToolCallFromCompletion(res)
-      messages.push(assistant(chatCompletionToolCall))
+      const resChatCompletionToolCall = resolveFirstToolCallFromCompletion(res)
+      if (!resChatCompletionToolCall)
+        return res
 
-      const chatCompletion = chatCompletionFromOpenAIChatCompletion(res)
-      const invokeResults = await invokeFunctionWithTools(chatCompletion, options.tools, messages)
+      messages.push(assistant(resChatCompletionToolCall))
+
+      const resChatCompletion = chatCompletionFromOpenAIChatCompletion(res)
+      const invokeResults = await invokeFunctionWithTools(resChatCompletion, options.tools, messages)
       if (!invokeResults.length)
-        return chatCompletion
+        return resChatCompletion
 
       for (const invokeResult of invokeResults) {
         const { result, resolvedToolCall: toolCall } = invokeResult
