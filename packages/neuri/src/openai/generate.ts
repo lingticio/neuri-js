@@ -1,6 +1,8 @@
 import type { GenerateTextOptions } from '@xsai/generate-text'
-import type { ChatCompletion } from './types'
+import type { ChatCompletionsResponse } from './types'
+
 import { chatCompletion } from '@xsai/shared-chat'
+import { chatCompletionFromResp as chatCmplFromResp } from './completion'
 
 /**
  * Generate text
@@ -10,5 +12,5 @@ import { chatCompletion } from '@xsai/shared-chat'
  */
 export async function generate(params: GenerateTextOptions) {
   const reqRes = await chatCompletion(params)
-  return await reqRes.json() as ChatCompletion
+  return chatCmplFromResp(await reqRes.json() as ChatCompletionsResponse)
 }

@@ -1,11 +1,11 @@
 import type { ToolCall } from '@xsai/shared-chat'
 import type { ChatCompletion, ChatCompletionsResponse } from './types'
 
-export function chatCompletionFromOpenAIChatCompletion(completions: ChatCompletionsResponse): ChatCompletion {
+export function chatCompletionFromResp(completions: ChatCompletionsResponse): ChatCompletion {
   return {
     ...completions,
     firstContent: async () => {
-      const message = resolveFirstTextMessageFromCompletion(completions)
+      const message = resolveFirstTextContentFromChatCmpl(completions)
       return message
     },
     firstChoice: () => {
@@ -17,7 +17,7 @@ export function chatCompletionFromOpenAIChatCompletion(completions: ChatCompleti
   }
 }
 
-export function resolveFirstTextMessageFromCompletion(chatCompletion?: ChatCompletionsResponse): string {
+export function resolveFirstTextContentFromChatCmpl(chatCompletion?: ChatCompletionsResponse): string {
   if (!chatCompletion)
     return ''
   if (chatCompletion.choices.length === 0)
@@ -27,7 +27,7 @@ export function resolveFirstTextMessageFromCompletion(chatCompletion?: ChatCompl
   return message.content ?? ''
 }
 
-export function resolveToolCallsFromCompletion(chatCompletion?: ChatCompletionsResponse): ToolCall[][] {
+export function resolveToolCallsFromCmpl(chatCompletion?: ChatCompletionsResponse): ToolCall[][] {
   if (!chatCompletion)
     return []
   if (!('choices' in chatCompletion))
@@ -38,8 +38,8 @@ export function resolveToolCallsFromCompletion(chatCompletion?: ChatCompletionsR
   return chatCompletion.choices.filter(choice => choice.message.tool_calls != null).map(choice => choice.message.tool_calls!)
 }
 
-export function resolveFirstToolCallFromCompletion(chatCompletion?: ChatCompletionsResponse): ToolCall | undefined {
-  const choices = resolveToolCallsFromCompletion(chatCompletion)
+export function resolveFirstToolCallFromCmpl(chatCompletion?: ChatCompletionsResponse): ToolCall | undefined {
+  const choices = resolveToolCallsFromCmpl(chatCompletion)
   if (choices.length === 0)
     return undefined
 

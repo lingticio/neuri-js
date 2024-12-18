@@ -3,7 +3,7 @@ import { env } from 'node:process'
 import {
   composeAgent,
   defineToolFunction,
-  resolveFirstTextMessageFromCompletion,
+  resolveFirstTextContentFromChatCmpl,
   system,
   toolFunction,
   user,
@@ -82,7 +82,7 @@ async function main() {
     model: 'openai/gpt-3.5-turbo',
   })
 
-  return resolveFirstTextMessageFromCompletion(res)
+  return resolveFirstTextContentFromChatCmpl(res)
 }
 
 // eslint-disable-next-line no-console
