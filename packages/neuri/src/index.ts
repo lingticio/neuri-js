@@ -1,7 +1,8 @@
 import type { Infer, Schema } from '@typeschema/main'
-import type OpenAI from 'openai'
+import type { CommonProviderOptions } from '@xsai/providers'
+import type { Message } from '@xsai/shared-chat'
 
-import type { ChatCompletion, InvokeContext, Tool, ToolHooks } from './openai'
+import type { ChatCompletion, DefinedTool, DefinedToolHooks, InvokeContext } from './openai'
 import { composeAgent, defineToolFunction, toolFunction } from './openai'
 
 export interface CallOptions {
@@ -9,15 +10,15 @@ export interface CallOptions {
 }
 
 export interface NeuriContext {
-  message: OpenAI.ChatCompletionMessageParam | OpenAI.ChatCompletionMessageParam[]
-  messages: OpenAI.ChatCompletionMessageParam[]
-  reroute: (name: string, messages: OpenAI.ChatCompletionMessageParam[], options: CallOptions) => Promise<ChatCompletion | undefined>
+  message: Message | Message[]
+  messages: Message[]
+  reroute: (name: string, messages: Message[], options: CallOptions) => Promise<ChatCompletion | undefined>
 }
 
 interface NeuriContextOptions {
-  openAI: OpenAI
-  message: OpenAI.ChatCompletionMessageParam | OpenAI.ChatCompletionMessageParam[]
-  messages?: OpenAI.ChatCompletionMessageParam[]
+  provider: CommonProviderOptions
+  message: Message | Message[]
+  messages?: Message[]
   agents?: Agent[]
 }
 
@@ -38,29 +39,29 @@ function newContext(options: NeuriContextOptions): NeuriContext {
         throw new Error(`Agent "${name}" not found`)
       }
 
-      const { call } = composeAgent({ openAI: options.openAI, tools: agent.tools })
+      const { call } = composeAgent({ provider: options.provider, tools: agent.tools })
       return await call(messages, { model: rerouteOpts.model })
     },
   }
 }
 
 export interface Neuri {
-  handle: <R>(message: OpenAI.ChatCompletionMessageParam | OpenAI.ChatCompletionMessageParam[], handler: (ctx: NeuriContext) => Promise<R>) => Promise<R>
+  handle: <R>(message: Message | Message[], handler: (ctx: NeuriContext) => Promise<R>) => Promise<R>
 }
 
 interface NeuriInternal extends Neuri {
   agents: Agent[]
-  messages: OpenAI.ChatCompletionMessageParam[]
+  messages: Message[]
 }
 
 export interface Agent {
   name: string
-  tools: Tool<any, any>[]
+  tools: DefinedTool<any, any>[]
 }
 
 export interface NeuriBuilder {
   agent: (agent: Agent | Promise<Agent>) => NeuriBuilder
-  build: (options: { openAI: OpenAI }) => Promise<Neuri>
+  build: (options: { provider: CommonProviderOptions }) => Promise<Neuri>
 }
 
 export interface NeuriBuilderInternal extends Partial<NeuriBuilder> {
@@ -69,7 +70,7 @@ export interface NeuriBuilderInternal extends Partial<NeuriBuilder> {
 }
 
 export type ToolFunc<P, R> = (ctx: InvokeContext<P, R>) => R
-export interface ToolOption<P, R> { openAI?: OpenAI, hooks?: Partial<ToolHooks<P, R>>, description?: string }
+export interface ToolOption<P, R> { provider?: CommonProviderOptions, hooks?: Partial<DefinedToolHooks<P, R>>, description?: string }
 
 export interface AgentBuilder {
   tool: <S extends Schema, R>(name: string, parameters: S, handle: ToolFunc<Infer<S>, R>, options?: ToolOption<Infer<S>, R>) => AgentBuilder
@@ -78,8 +79,8 @@ export interface AgentBuilder {
 
 interface AgentBuilderInternal extends Partial<AgentBuilder> {
   name: string
-  tools: Tool<any, any>[]
-  promiseTools: Promise<Tool<any, any>>[]
+  tools: DefinedTool<any, any>[]
+  promiseTools: Promise<DefinedTool<any, any>>[]
 }
 
 function newNeuriBuilderAgent(cb: () => NeuriBuilderInternal): (agent: Agent | Promise<Agent>) => NeuriBuilder {
@@ -97,7 +98,7 @@ function newNeuriBuilderAgent(cb: () => NeuriBuilderInternal): (agent: Agent | P
   }
 }
 
-function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { openAI: OpenAI }) => Promise<Neuri> {
+function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { provider: CommonProviderOptions }) => Promise<Neuri> {
   return async (options): Promise<Neuri> => {
     const neuriBuilder = cb()
 
@@ -122,7 +123,7 @@ function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { openA
           message,
           messages: neuriInternal.messages,
           agents: neuriInternal.agents,
-          openAI: options.openAI,
+          provider: options.provider,
         }))
       },
     }

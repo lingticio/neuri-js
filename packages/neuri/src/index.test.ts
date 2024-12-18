@@ -1,4 +1,3 @@
-import OpenAI from 'openai'
 import { describe, expect, it } from 'vitest'
 
 import { object, string } from 'zod'
@@ -22,10 +21,10 @@ describe('neuri', async () => {
           .build(),
       )
       .build({
-        openAI: new OpenAI({
-          apiKey: process.env.OPENAI_API_KEY,
-          baseURL: process.env.OPENAI_API_BASEURL,
-        }),
+        provider: {
+          apiKey: process.env.OPENAI_API_KEY!,
+          baseURL: process.env.OPENAI_API_BASEURL!,
+        },
       })
 
     const name = await n.handle(messages(
