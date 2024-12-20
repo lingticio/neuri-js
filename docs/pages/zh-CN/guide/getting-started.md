@@ -8,7 +8,7 @@
 pnpm add neuri
 ```
 
-## 使用
+## 基础使用
 
 ```ts
 import { env } from 'node:process'
@@ -66,26 +66,55 @@ const response = await call([
 
 const result = resolveFirstTextContentFromChatCmpl(response)
 console.log(result)
-
 ```
 
-## Neuri API 文档
+## 扩展包
 
-### 核心概念
+### @neuri/use-fs
 
-#### Agent
+文件系统相关的工具函数包，支持本地文件系统和 GitHub 仓库操作。
 
-Agent 是 Neuri 的核心概念，它代表一个可以执行特定任务的智能体。每个 Agent 都可以包含多个工具函数（Tool Functions）。
+```ts
+import { FileSystem } from '@neuri/use-fs/node'
+import { GitHubPublicFileSystem } from '@neuri/use-fs/github'
 
-#### Tool Function
+// 本地文件系统
+const fs = await FileSystem()
+const { readFile, writeFile, listFilesInDirectory } = fs
 
-工具函数是 Agent 可以调用的具体功能实现。每个工具函数都需要定义:
-- 名称
-- 参数 Schema
-- 处理逻辑
-- 可选的描述和钩子函数
+// GitHub 仓库操作
+const github = await GitHubPublicFileSystem()
+const { listFilesInDirectory: listGitHubFiles, readFile: readGitHubFile } = github
+```
 
-### API 参考
+### @neuri/use-search
+
+搜索引擎相关的工具函数包，目前支持 Google 搜索(通过 SerpAPI)。
+
+```ts
+import { SerpApi } from '@neuri/use-search/serpapi'
+
+const serpapi = await SerpApi({
+  apiKey: 'your-serpapi-key'
+})
+
+const { searchGoogle } = serpapi
+```
+
+### @neuri/format-code
+
+代码格式化和语法高亮相关的工具函数包。
+
+```ts
+import { tokenizeByTextMateGrammar } from '@neuri/format-code/textmate'
+
+// 使用 TextMate 语法解析代码
+const result = await tokenizeByTextMateGrammar('typescript', code)
+```
+
+## API 参考
+
+### 核心 API
 
 #### neuri()
 
