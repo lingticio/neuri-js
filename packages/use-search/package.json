@@ -1,7 +1,7 @@
 {
   "name": "@neuri/use-search",
   "type": "module",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Search Engine related agent implementation for neuri",
   "author": {
     "name": "Lingtic.io Neuri Team",

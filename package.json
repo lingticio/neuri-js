@@ -1,7 +1,7 @@
 {
   "name": "neuri",
   "type": "module",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": true,
   "packageManager": "pnpm@9.15.0",
   "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
