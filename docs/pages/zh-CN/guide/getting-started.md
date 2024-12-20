@@ -5,10 +5,19 @@
 使用你喜欢的包管理器安装 Neuri:
 
 ```bash
+# npm
+npm install neuri
+
+# pnpm
 pnpm add neuri
+
+# yarn
+yarn add neuri
 ```
 
 ## 基础使用
+
+下面是一个简单的天气查询示例，展示了如何使用 Neuri 创建和组合 Agent：
 
 ```ts
 import { env } from 'node:process'
@@ -78,13 +87,23 @@ console.log(result)
 import { FileSystem } from '@neuri/use-fs/node'
 import { GitHubPublicFileSystem } from '@neuri/use-fs/github'
 
-// 本地文件系统
+// 本地文件系统操作
 const fs = await FileSystem()
 const { readFile, writeFile, listFilesInDirectory } = fs
 
 // GitHub 仓库操作
 const github = await GitHubPublicFileSystem()
 const { listFilesInDirectory: listGitHubFiles, readFile: readGitHubFile } = github
+
+// 读取本地文件
+const content = await readFile('path/to/file.txt')
+
+// 读取 GitHub 仓库文件
+const githubContent = await readGitHubFile({
+  repository: 'owner/repo',
+  filePath: '/README.md',
+  branch: 'main'
+})
 ```
 
 ### @neuri/use-search
@@ -99,6 +118,14 @@ const serpapi = await SerpApi({
 })
 
 const { searchGoogle } = serpapi
+
+// 执行搜索
+const results = await searchGoogle.func({
+  parameters: {
+    q: 'Neuri.js',
+    location: 'United States'
+  }
+})
 ```
 
 ### @neuri/format-code
@@ -109,6 +136,11 @@ const { searchGoogle } = serpapi
 import { tokenizeByTextMateGrammar } from '@neuri/format-code/textmate'
 
 // 使用 TextMate 语法解析代码
+const code = `
+function hello() {
+  console.log("Hello, World!")
+}
+`
 const result = await tokenizeByTextMateGrammar('typescript', code)
 ```
 

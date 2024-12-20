@@ -4,6 +4,25 @@ Neuri is a simple and easy-to-use AI Agent framework that provides a complete to
 
 ## Features
 
+- 📦 **100% TypeScript Support** - Complete type definitions out of the box
+- ✅ **High Test Coverage** - Over 70% test coverage ensures reliability
+- 🧠 **Model Agnostic** - Structured data support for various models including Llama 3.1, Phi3.5 Mistral, OpenAI, etc.
+- 📃 **JSON Structured Data**
+  - Works with streaming responses
+  - Clean and type-safe data handling
+- 💻 **Code Snippet Extraction**
+  - Supports streaming extraction
+  - Path-based code snippet handling
+  - Powered by VSCode TextMate grammar
+- 👷 **Easy Agent Composition**
+  - Simple API for declaring and composing agents
+  - Flexible function composition
+  - Built-in tool function system
+- 📚 **Rich Component Library**
+  - FileSystem operations (local & GitHub)
+  - Search engine integration
+  - Code formatting utilities
+
 ### Simple Agent Framework
 
 Neuri is built on OpenAI's Function Calling feature and provides a simple agent framework. You just need to define tool functions, and then let AI automatically choose the right tools to complete tasks.
@@ -42,6 +61,14 @@ Neuri is written in TypeScript and provides complete type definitions. Tool func
 ### Modular Design
 
 Neuri uses a modular design where core functionality and extension packages are separated. You can import only the features you need to reduce bundle size.
+
+## Related Projects
+
+- [neuri-go](https://github.com/lingticio/neuri-go) - Go implementation of Neuri
+- [llmg](https://github.com/lingticio/llmg) - Powerful LLM gateway for building LLM applications
+- [devtools](https://github.com/guiiai/devtools) - Frontend DevTools with LLM copilot features
+- [ollama-operator](https://github.com/nekomeowww/ollama-operator) - Kubernetes operator for Ollama
+- [nolebase/integrations](https://github.com/nolebase/integrations) - Documentation integrations powered by VitePress
 
 ## Next Steps
 

@@ -19,15 +19,21 @@ hero:
 
 features:
   - icon: 🤖
-    title: 简单易用的 Agent 框架
-    details: 基于 OpenAI 的 Function Calling，提供简单易用的 Agent 框架，让你专注于业务逻辑
-  - icon: 🔧
-    title: 丰富的工具函数
-    details: 提供文件系统、搜索引擎、代码格式化等工具函数，快速构建功能完整的 AI 应用
-  - icon: 🎯
-    title: 类型安全
-    details: 使用 TypeScript 编写，提供完整的类型定义，让你的代码更加健壮
-  - icon: 📦
-    title: 模块化设计
-    details: 核心功能和扩展包分离，按需引入，减少打包体积
+    title: 完整的 TypeScript 支持
+    details: 开箱即用的完整类型定义，超过 70% 的测试覆盖率
+  - icon: 🧠
+    title: 模型无关性
+    details: 支持包括 Llama、Phi、Mistral、OpenAI 在内的多种模型，提供结构化数据处理
+  - icon: 💻
+    title: 代码片段提取
+    details: 基于路径的代码片段处理，支持流式输出，由 VSCode TextMate 语法提供支持
+  - icon: 👷
+    title: 简单的 Agent 组合
+    details: 简洁的 API 用于声明和组合 Agent，灵活的函数组合能力
+  - icon: 📚
+    title: 丰富的组件库
+    details: 文件系统操作、搜索引擎集成、代码格式化等功能
+  - icon: 🚀
+    title: 快速上手
+    details: 只需几行代码即可开始，提供完整的文档和示例
 ---

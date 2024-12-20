@@ -19,15 +19,21 @@ hero:
 
 features:
   - icon: 🤖
-    title: Simple Agent Framework
-    details: Built on OpenAI's Function Calling, provides a simple agent framework that lets you focus on business logic
-  - icon: 🔧
-    title: Rich Tool Functions
-    details: Provides filesystem, search engine, code formatting and other tools to quickly build full-featured AI applications
-  - icon: 🎯
-    title: Type Safe
-    details: Written in TypeScript with complete type definitions to make your code more robust
-  - icon: 📦
-    title: Modular Design
-    details: Core functionality and extension packages are separated, import as needed to reduce bundle size
+    title: 100% TypeScript Support
+    details: Complete type definitions out of the box, with over 70% test coverage
+  - icon: 🧠
+    title: Model Agnostic
+    details: Support for various models including Llama, Phi, Mistral, OpenAI, with structured data handling
+  - icon: 💻
+    title: Code Snippet Extraction
+    details: Path-based code snippet handling with streaming support, powered by VSCode TextMate grammar
+  - icon: 👷
+    title: Easy Agent Composition
+    details: Simple API for declaring and composing agents with flexible function composition
+  - icon: 📚
+    title: Rich Component Library
+    details: FileSystem operations, search engine integration, code formatting and more
+  - icon: 🚀
+    title: Quick to Start
+    details: Get started with just a few lines of code, with comprehensive documentation and examples
 ---
