@@ -43,6 +43,10 @@ export function composeAgent(options: {
           continue
 
         let strRes = ''
+
+        if (result == null)
+          continue
+
         if (typeof result === 'string')
           strRes = result
         else
