@@ -54,12 +54,12 @@
     "@guiiai/logg": "^1.0.6",
     "defu": "^6.1.4",
     "execa": "^9.5.2",
-    "ignore": "^6.0.2",
+    "ignore": "^7.0.0",
     "neuri": "workspace:*",
     "ofetch": "^1.4.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.10.5"
   }
 }

@@ -1,5 +1,5 @@
 import type { Infer, Schema } from '@typeschema/main'
-import type { CommonProviderOptions } from '@xsai/providers'
+import type { ProviderOptions } from '@xsai/providers'
 import type { DefinedTool, DefinedToolHooks, InvokeContext, Tool } from './types'
 
 import { toJSONSchema } from '@typeschema/main'
@@ -30,7 +30,7 @@ export function defineToolFunction<F extends (ctx: InvokeContext<P, R>) => R, P 
   tool: ToolFunction<P>,
   func: F,
   options?: {
-    provider?: CommonProviderOptions
+    provider?: ProviderOptions
     hooks?: Partial<DefinedToolHooks<P, R>>
   },
 ): DefinedTool<P, R> {

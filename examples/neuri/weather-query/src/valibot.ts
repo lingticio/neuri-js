@@ -2,24 +2,20 @@ import { env } from 'node:process'
 import {
   composeAgent,
   defineToolFunction,
-
   resolveFirstTextContentFromChatCmpl,
   system,
   toolFunction,
   user,
 } from 'neuri/openai'
-import OpenAI from 'openai'
 
 import * as v from 'valibot'
 
 async function main() {
-  const o = new OpenAI({
-    baseURL: env.OPENAI_API_BASEURL,
-    apiKey: env.OPENAI_API_KEY,
-  })
-
   const { call } = composeAgent({
-    openAI: o,
+    provider: {
+      baseURL: env.OPENAI_API_BASEURL,
+      apiKey: env.OPENAI_API_KEY,
+    },
     tools: [
       defineToolFunction(
         await toolFunction('getCity', 'Get the user\'s city', v.object({})),
@@ -35,7 +31,7 @@ async function main() {
           },
         },
       ),
-      defineToolFunction<{ location: string }, string>(
+      defineToolFunction(
         await toolFunction('getCityCode', 'Get the user\'s city code with search', v.object({
           location: v.pipe(v.string(), v.minLength(1), v.description('Get the user\'s city code with search')),
         })),
@@ -51,7 +47,7 @@ async function main() {
           },
         },
       ),
-      defineToolFunction<{ cityCode: string }, { city: string, cityCode: string, weather: string, degreesCelsius: number }>(
+      defineToolFunction(
         await toolFunction('getWeather', 'Get the current weather', v.object({
           cityCode: v.pipe(v.string(), v.minLength(1), v.description('Get the user\'s city code with search')),
         })),

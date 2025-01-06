@@ -8,18 +8,15 @@ import {
   toolFunction,
   user,
 } from 'neuri/openai'
-import OpenAI from 'openai'
 
 import * as z from 'zod'
 
 async function main() {
-  const o = new OpenAI({
-    baseURL: env.OPENAI_API_BASEURL,
-    apiKey: env.OPENAI_API_KEY,
-  })
-
   const { call } = composeAgent({
-    openAI: o,
+    provider: {
+      baseURL: env.OPENAI_API_BASEURL,
+      apiKey: env.OPENAI_API_KEY,
+    },
     tools: [
       defineToolFunction(
         await toolFunction('getCity', 'Get the user\'s city', z.object({})),
@@ -35,7 +32,7 @@ async function main() {
           },
         },
       ),
-      defineToolFunction<{ location: string }, string>(
+      defineToolFunction(
         await toolFunction('getCityCode', 'Get the user\'s city code with search', z.object({
           location: z.string().min(1).describe('Get the user\'s city code with search'),
         })),
@@ -51,7 +48,7 @@ async function main() {
           },
         },
       ),
-      defineToolFunction<{ cityCode: string }, { city: string, cityCode: string, weather: string, degreesCelsius: number }>(
+      defineToolFunction(
         await toolFunction('getWeather', 'Get the current weather', z.object({
           cityCode: z.string().min(1).describe('Get the user\'s city code with search'),
         })),

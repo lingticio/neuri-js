@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.16",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@9.15.3",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -13,8 +13,7 @@
     "run": "tsx src/main.ts"
   },
   "dependencies": {
-    "neuri": "workspace:^",
-    "openai": "^4.77.0"
+    "neuri": "workspace:^"
   },
   "devDependencies": {
     "tsx": "^4.19.2"

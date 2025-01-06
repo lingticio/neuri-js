@@ -1,5 +1,6 @@
 import type { ToolMessage } from '@xsai/shared-chat'
 import type { ResolvedToolCall } from './types'
+import { message } from '@xsai/shared-chat'
 
 export function tool<P = any, R = any>(message: string, toolCall: ResolvedToolCall<P, R>): ToolMessage {
   return {
@@ -9,9 +10,8 @@ export function tool<P = any, R = any>(message: string, toolCall: ResolvedToolCa
   }
 }
 
-export {
-  assistant,
-  messages,
-  system,
-  user,
-} from '@xsai/shared-chat'
+export const assistant = message.assistant
+export const messages = message.messages
+export const system = message.system
+export const user = message.user
+export { message }
