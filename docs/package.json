@@ -12,11 +12,11 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "@unocss/eslint-config": "^0.65.1",
-    "@unocss/eslint-plugin": "^0.65.1",
-    "unocss": "^0.65.1",
-    "vite": "^6.0.3",
-    "vite-plugin-inspect": "^0.10.3",
+    "@unocss/eslint-config": "^0.65.3",
+    "@unocss/eslint-plugin": "^0.65.3",
+    "unocss": "^0.65.3",
+    "vite": "^6.0.7",
+    "vite-plugin-inspect": "^0.10.6",
     "vitepress": "^1.5.0",
     "vue": "^3.5.13"
   }

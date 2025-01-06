@@ -1,4 +1,4 @@
-import type { CommonProviderOptions } from '@xsai/providers'
+import type { ProviderOptions } from '@xsai/providers'
 import type { Message } from '@xsai/shared-chat'
 
 import type { ChatCompletion, DefinedTool } from './types'
@@ -9,7 +9,7 @@ import { assistant, tool } from './messages'
 import { tools } from './tools'
 
 export function composeAgent(options: {
-  provider: CommonProviderOptions
+  provider: ProviderOptions
   tools: DefinedTool<any, any>[]
 }) {
   async function call(messages: Message[], callOptions: { model: string, maxRoundTrip?: number }): Promise<ChatCompletion | undefined> {
@@ -19,7 +19,7 @@ export function composeAgent(options: {
 
       const res = await generate({
         apiKey: options.provider.apiKey,
-        baseURL: options.provider.baseURL,
+        baseURL: options.provider.baseURL ?? `https://api.openai.com/v1/`,
         model: callOptions.model,
         messages,
         tools: tools(options.tools),

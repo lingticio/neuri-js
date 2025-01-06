@@ -1,5 +1,5 @@
 import type { GenerateTextResponseUsage } from '@xsai/generate-text'
-import type { CommonProviderOptions } from '@xsai/providers'
+import type { ProviderOptions } from '@xsai/providers'
 import type { AssistantMessageResponse, FinishReason, Message, ToolCall, Tool as UpstreamTool } from '@xsai/shared-chat'
 
 export interface Choice {
@@ -32,14 +32,14 @@ export interface ToolCallFunctionResult<P = any, R = any> {
 }
 
 export interface DefinedTool<P, R> {
-  provider: CommonProviderOptions
+  provider: ProviderOptions
   tool: Tool
   func: (ctx: InvokeContext<P, R>) => R
   hooks: DefinedToolHooks<P, R>
 }
 
 export interface DefinedToolHooks<P, R> {
-  configureProvider: (provider?: CommonProviderOptions) => Promise<CommonProviderOptions | undefined>
+  configureProvider: (provider?: ProviderOptions) => Promise<ProviderOptions | undefined>
   preInvoke: (ctx: PreInvokeContext<P, R>) => Promise<void>
   postInvoke: (ctx: PostInvokeContext<P, R>) => Promise<void>
 }

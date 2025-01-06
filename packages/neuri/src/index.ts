@@ -1,5 +1,5 @@
 import type { Infer, Schema } from '@typeschema/main'
-import type { CommonProviderOptions } from '@xsai/providers'
+import type { ProviderOptions } from '@xsai/providers'
 import type { Message } from '@xsai/shared-chat'
 
 import type { ChatCompletion, DefinedTool, DefinedToolHooks, InvokeContext } from './openai'
@@ -16,7 +16,7 @@ export interface NeuriContext {
 }
 
 interface NeuriContextOptions {
-  provider: CommonProviderOptions
+  provider: ProviderOptions
   message: Message | Message[]
   messages?: Message[]
   agents?: Agent[]
@@ -61,7 +61,7 @@ export interface Agent {
 
 export interface NeuriBuilder {
   agent: (agent: Agent | Promise<Agent>) => NeuriBuilder
-  build: (options: { provider: CommonProviderOptions }) => Promise<Neuri>
+  build: (options: { provider: ProviderOptions }) => Promise<Neuri>
 }
 
 export interface NeuriBuilderInternal extends Partial<NeuriBuilder> {
@@ -70,7 +70,7 @@ export interface NeuriBuilderInternal extends Partial<NeuriBuilder> {
 }
 
 export type ToolFunc<P, R> = (ctx: InvokeContext<P, R>) => R
-export interface ToolOption<P, R> { provider?: CommonProviderOptions, hooks?: Partial<DefinedToolHooks<P, R>>, description?: string }
+export interface ToolOption<P, R> { provider?: ProviderOptions, hooks?: Partial<DefinedToolHooks<P, R>>, description?: string }
 
 export interface AgentBuilder {
   tool: <S extends Schema, R>(name: string, parameters: S, handle: ToolFunc<Infer<S>, R>, options?: ToolOption<Infer<S>, R>) => AgentBuilder
@@ -98,7 +98,7 @@ function newNeuriBuilderAgent(cb: () => NeuriBuilderInternal): (agent: Agent | P
   }
 }
 
-function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { provider: CommonProviderOptions }) => Promise<Neuri> {
+function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { provider: ProviderOptions }) => Promise<Neuri> {
   return async (options): Promise<Neuri> => {
     const neuriBuilder = cb()
 

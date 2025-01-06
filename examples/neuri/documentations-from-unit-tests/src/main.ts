@@ -3,16 +3,12 @@ import {
   composeAgent,
 } from 'neuri/openai'
 
-import OpenAI from 'openai'
-
 async function main() {
-  const o = new OpenAI({
-    baseURL: env.OPENAI_API_BASEURL,
-    apiKey: env.OPENAI_API_KEY,
-  })
-
   const { call } = composeAgent({
-    openAI: o,
+    provider: {
+      baseURL: env.OPENAI_API_BASEURL,
+      apiKey: env.OPENAI_API_KEY,
+    },
     tools: [
 
     ],
