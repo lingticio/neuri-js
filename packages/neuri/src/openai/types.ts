@@ -18,6 +18,12 @@ export interface ChatCompletionsResponse {
   usage: GenerateTextResponseUsage
 }
 
+export interface ChatCompletionsErrorResponse {
+  error: {
+    message: string
+  }
+}
+
 export type Tool = Omit<UpstreamTool, 'execute'>
 
 export interface ChatCompletion extends ChatCompletionsResponse {

@@ -1,5 +1,5 @@
 import type { GenerateTextOptions } from '@xsai/generate-text'
-import type { ChatCompletionsResponse } from './types'
+import type { ChatCompletionsErrorResponse, ChatCompletionsResponse } from './types'
 
 import { chat } from '@xsai/shared-chat'
 import { chatCompletionFromResp as chatCmplFromResp } from './completion'
@@ -12,5 +12,11 @@ import { chatCompletionFromResp as chatCmplFromResp } from './completion'
  */
 export async function generate(params: GenerateTextOptions) {
   const reqRes = await chat(params)
-  return chatCmplFromResp(await reqRes.json() as ChatCompletionsResponse)
+  const json = await reqRes.json() as ChatCompletionsResponse | ChatCompletionsErrorResponse
+
+  if ('error' in json) {
+    throw new Error(json.error?.message || 'Unknown error')
+  }
+
+  return chatCmplFromResp(json as ChatCompletionsResponse)
 }
