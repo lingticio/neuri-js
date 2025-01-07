@@ -15,3 +15,4 @@ export const messages = message.messages
 export const system = message.system
 export const user = message.user
 export { message }
+export type { Message } from '@xsai/shared-chat'
