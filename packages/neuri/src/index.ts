@@ -47,6 +47,7 @@ function newContext(options: NeuriContextOptions): NeuriContext {
 
 export interface Neuri {
   handle: <R>(message: Message | Message[], handler: (ctx: NeuriContext) => Promise<R>) => Promise<R>
+  handleStateless: <R>(message: Message | Message[], handler: (ctx: NeuriContext) => Promise<R>) => Promise<R>
 }
 
 interface NeuriInternal extends Neuri {
@@ -122,6 +123,22 @@ function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { provi
         return await cb(newContext({
           message,
           messages: neuriInternal.messages,
+          agents: neuriInternal.agents,
+          provider: options.provider,
+        }))
+      },
+      async handleStateless(message, cb) {
+        const messages = []
+        if (Array.isArray(message)) {
+          messages.push(...message)
+        }
+        else {
+          messages.push(message)
+        }
+
+        return await cb(newContext({
+          message,
+          messages,
           agents: neuriInternal.agents,
           provider: options.provider,
         }))
