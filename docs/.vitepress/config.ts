@@ -12,6 +12,11 @@ export default defineConfig({
     // ignore all localhost links
     /^https?:\/\/localhost/,
   ],
+  head: [
+    // Proxying Plausible through Netlify | Plausible docs
+    // https://plausible.io/docs/proxy/guides/netlify
+    ['script', { 'defer': 'true', 'data-domain': 'docs.neuri.dev', 'data-api': '/api/v1/page-external-data/submit', 'src': '/assets/page-external-data/js/script.js' }],
+  ],
   themeConfig: {
     outline: 'deep',
     socialLinks: [
