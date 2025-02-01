@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.12.1",
-    "@antfu/ni": "^0.23.2",
+    "@antfu/ni": "^23.0.0",
     "@types/node": "^22.10.5",
     "@vitest/coverage-v8": "2.1.8",
     "bumpp": "^9.9.2",
