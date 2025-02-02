@@ -43,7 +43,7 @@
     "@antfu/ni": "^23.3.1",
     "@types/node": "^22.13.0",
     "@vitest/coverage-v8": "2.1.8",
-    "bumpp": "^9.11.1",
+    "bumpp": "^10.0.0",
     "eslint": "^9.19.0",
     "typescript": "^5.7.3",
     "unbuild": "3.0.0-rc.11",
