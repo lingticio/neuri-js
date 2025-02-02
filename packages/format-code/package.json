@@ -44,17 +44,18 @@
     "dev": "unbuild --stub",
     "stub": "unbuild --stub",
     "build": "unbuild",
-    "package:publish": "pnpm publish --access public --no-git-checks"
+    "package:publish": "pnpm publish --access public --no-git-checks",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.6",
-    "@shikijs/core": "^1.26.1",
-    "@shikijs/engine-oniguruma": "^1.26.1",
+    "@guiiai/logg": "^1.0.7",
+    "@shikijs/core": "^1.29.2",
+    "@shikijs/engine-oniguruma": "^1.29.2",
     "@shikijs/vscode-textmate": "^10.0.1",
-    "shiki": "^1.26.1",
-    "tm-grammars": "^1.22.1"
+    "shiki": "^1.29.2",
+    "tm-grammars": "^1.22.10"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.13.0"
   }
 }

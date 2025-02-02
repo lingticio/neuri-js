@@ -1,7 +1,7 @@
 import { env } from 'node:process'
 import { describe, expect, it } from 'vitest'
 import { messages, system, user } from './messages'
-import { stream, type StreamChunk } from './stream'
+import { type ChunkResult, stream } from './stream'
 
 describe('stream', async () => {
   it('it works', async () => {
@@ -25,7 +25,7 @@ describe('stream', async () => {
     }
 
     const readChunk = async () => {
-      const readChunkParts: StreamChunk[] = []
+      const readChunkParts: ChunkResult[] = []
       for await (const chunk of res.chunkStream()) {
         readChunkParts.push(chunk)
       }

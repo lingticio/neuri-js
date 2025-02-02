@@ -1,6 +1,5 @@
-import type { GenerateTextResponseUsage } from '@xsai/generate-text'
 import type { ProviderOptions } from '@xsai/providers'
-import type { AssistantMessageResponse, FinishReason, Message, ToolCall, Tool as UpstreamTool } from '@xsai/shared-chat'
+import type { AssistantMessageResponse, FinishReason, Message, ToolCall, Tool as UpstreamTool, Usage } from '@xsai/shared-chat'
 
 export interface Choice {
   finish_reason: FinishReason
@@ -15,7 +14,7 @@ export interface ChatCompletionsResponse {
   model: string
   object: 'chat.completion'
   system_fingerprint: string
-  usage: GenerateTextResponseUsage
+  usage: Usage
 }
 
 export type Tool = Omit<UpstreamTool, 'execute'>

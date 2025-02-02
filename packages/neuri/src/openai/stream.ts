@@ -1,7 +1,7 @@
-import type { StreamTextOptions, StreamTextResponse } from '@xsai/stream-text'
+import type { StreamTextOptions, ChunkResult as XSAIChunkResult } from '@xsai/stream-text'
 import { streamText } from '@xsai/stream-text'
 
-export interface StreamChunk extends StreamTextResponse {
+export interface ChunkResult extends XSAIChunkResult {
   textPart: () => string
 }
 
@@ -30,13 +30,13 @@ export interface StreamResponse {
    *
    * @returns The completion response as a stream of chunks.
    */
-  chunkStream: () => AsyncGenerator<StreamChunk, void, unknown>
+  chunkStream: () => AsyncGenerator<ChunkResult, void, unknown>
   /**
    * Get the completion response as a stream of chunks.
    *
    * @returns The completion response as a stream of chunks.
    */
-  chunks: () => Promise<StreamChunk[]>
+  chunks: () => Promise<ChunkResult[]>
 }
 
 interface PipeHook<F, T> {
@@ -85,9 +85,9 @@ export async function stream(params: StreamTextOptions): Promise<StreamResponse>
     })
   })
 
-  const chunkStreamHooks: PipeHook<StreamTextResponse, StreamChunk>[] = []
-  const accumulatedChunks = new Promise<StreamChunk[]>((resolve) => {
-    const chunks: StreamChunk[] = []
+  const chunkStreamHooks: PipeHook<XSAIChunkResult, ChunkResult>[] = []
+  const accumulatedChunks = new Promise<ChunkResult[]>((resolve) => {
+    const chunks: ChunkResult[] = []
     chunkStreamHooks.push({
       onChunk: (chunk) => { chunks.push(chunk) },
       onDone: () => { resolve(chunks) },
@@ -105,7 +105,7 @@ export async function stream(params: StreamTextOptions): Promise<StreamResponse>
     ),
     chunkStream: () => asyncIteratorFromReadableStream(
       res.chunkStream,
-      async (value: StreamTextResponse): Promise<StreamChunk> => {
+      async (value: XSAIChunkResult): Promise<ChunkResult> => {
         return {
           ...value,
           textPart: () => {

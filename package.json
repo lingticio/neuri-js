@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.19",
   "private": true,
-  "packageManager": "pnpm@9.15.3",
+  "packageManager": "pnpm@9.15.4",
   "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
   "author": {
     "name": "Lingtic.io Neuri Team",
@@ -36,19 +36,19 @@
     "test": "vitest --coverage",
     "test:ui": "vitest --ui --coverage --coverage.enabled=true",
     "test:run": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "pnpm -r --filter=./packages/* run typecheck"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.12.1",
-    "@antfu/ni": "^0.23.2",
-    "@types/node": "^22.10.5",
+    "@antfu/eslint-config": "^3.16.0",
+    "@antfu/ni": "^23.3.1",
+    "@types/node": "^22.13.0",
     "@vitest/coverage-v8": "2.1.8",
-    "bumpp": "^9.9.2",
-    "eslint": "^9.17.0",
-    "typescript": "^5.7.2",
+    "bumpp": "^9.11.1",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3",
     "unbuild": "3.0.0-rc.11",
-    "vite": "^6.0.7",
-    "vitest": "^2.1.8"
+    "vite": "^6.0.11",
+    "vitest": "^3.0.4"
   },
   "workspaces": [
     "packages/*",
