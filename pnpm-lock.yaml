@@ -107,17 +107,17 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7
       '@shikijs/core':
-        specifier: ^1.29.2
-        version: 1.29.2
+        specifier: ^2.0.0
+        version: 2.2.0
       '@shikijs/engine-oniguruma':
-        specifier: ^1.29.2
-        version: 1.29.2
+        specifier: ^2.0.0
+        version: 2.2.0
       '@shikijs/vscode-textmate':
         specifier: ^10.0.1
         version: 10.0.1
       shiki:
-        specifier: ^1.29.2
-        version: 1.29.2
+        specifier: ^2.0.0
+        version: 2.2.0
       tm-grammars:
         specifier: ^1.22.11
         version: 1.22.11
@@ -1338,41 +1338,23 @@ packages:
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
-  '@shikijs/core@1.29.2':
-    resolution: {integrity: sha512-vju0lY9r27jJfOY4Z7+Rt/nIOjzJpZ3y+nYpqtUZInVoXQ/TJZcfGnNOGnKjFdVZb8qexiCuSlZRKcGfhhTTZQ==}
-
   '@shikijs/core@2.2.0':
     resolution: {integrity: sha512-U+vpKdsQDWuX3fPTCkSc8XPX9dCaS+r+qEP1XhnU30yxRFo2OxHJmY2H5rO1q+v0zB5R2vobsxEFt5uPf31CGQ==}
-
-  '@shikijs/engine-javascript@1.29.2':
-    resolution: {integrity: sha512-iNEZv4IrLYPv64Q6k7EPpOCE/nuvGiKl7zxdq0WFuRPF5PAE9PRo2JGq/d8crLusM59BRemJ4eOqrFrC4wiQ+A==}
 
   '@shikijs/engine-javascript@2.2.0':
     resolution: {integrity: sha512-96SpZ4V3UVMtpSPR5QpmU395CNrQiRPszXK62m8gKR2HMA0653ruce7omS5eX6EyAyFSYHvBWtTuspiIsHpu4A==}
 
-  '@shikijs/engine-oniguruma@1.29.2':
-    resolution: {integrity: sha512-7iiOx3SG8+g1MnlzZVDYiaeHe7Ez2Kf2HrJzdmGwkRisT7r4rak0e655AcM/tF9JG/kg5fMNYlLLKglbN7gBqA==}
-
   '@shikijs/engine-oniguruma@2.2.0':
     resolution: {integrity: sha512-wowCKwkvPFFMXFkiKK/a2vs5uTCc0W9+O9Xcu/oqFP6VoDFe14T8u/D+Rl4dCJJSOyeynP9mxNPJ82T5JHTNCw==}
 
-  '@shikijs/langs@1.29.2':
-    resolution: {integrity: sha512-FIBA7N3LZ+223U7cJDUYd5shmciFQlYkFXlkKVaHsCPgfVLiO+e12FmQE6Tf9vuyEsFe3dIl8qGWKXgEHL9wmQ==}
-
   '@shikijs/langs@2.2.0':
     resolution: {integrity: sha512-RSWLH3bnoyG6O1kZ2msh5jOkKKp8eENwyT30n62vUtXfp5cxkF/bpWPpO+p4+GAPhL2foBWR2kOerwkKG0HXlQ==}
-
-  '@shikijs/themes@1.29.2':
-    resolution: {integrity: sha512-i9TNZlsq4uoyqSbluIcZkmPL9Bfi3djVxRnofUHwvx/h6SRW3cwgBC5SML7vsDcWyukY0eCzVN980rqP6qNl9g==}
 
   '@shikijs/themes@2.2.0':
     resolution: {integrity: sha512-8Us9ZF2mV9kuh+4ySJ9MzrUDIpc2RIkRfKBZclkliW1z9a0PlGU2U7fCkItZZHpR5e4/ft5BzuO+GDqombC6Aw==}
 
   '@shikijs/transformers@2.2.0':
     resolution: {integrity: sha512-zrj7OcSKAh3KL4Jgv45aKS6lSPXZWq61/DyXJJ5gsBMUIE5Ojmnvmseit7H8zQ/xPQOgJP+XqEzy7utScv0N9w==}
-
-  '@shikijs/types@1.29.2':
-    resolution: {integrity: sha512-VJjK0eIijTZf0QSTODEXCqinjBn0joAHQ+aPSBzrv4O2d/QSbsMw+ZeSRx03kV34Hy7NzUvV/7NqfYGRLrASmw==}
 
   '@shikijs/types@2.2.0':
     resolution: {integrity: sha512-wkZZKs80NtW5Jp/7ONI1j7EdXSatX2BKMS7I01wliDa09gJKHkZyVqlEMRka/mjT5Qk9WgAyitoCKgGgbsP/9g==}
@@ -3205,9 +3187,6 @@ packages:
   micromark-util-resolve-all@2.0.1:
     resolution: {integrity: sha512-VdQyxFWFT2/FGJgwQnJYbe1jjQoNTS4RjglmSjTUlpUMa95Htx9NHeYW4rGDJzbjvCsl9eLjMQwGeElsqmzcHg==}
 
-  micromark-util-sanitize-uri@2.0.0:
-    resolution: {integrity: sha512-WhYv5UEcZrbAtlsnPuChHUAsu/iBPOVaEVsntLBIdpibO0ddy8OzavZz3iL2xVvBZOpolujSliP65Kq0/7KIYw==}
-
   micromark-util-sanitize-uri@2.0.1:
     resolution: {integrity: sha512-9N9IomZ/YuGGZZmQec1MbgxtlgougxTodVwDzzEouPKo3qFWvymFHWcnDi2vzV1ff6kas9ucW+o3yzJK9YB1AQ==}
 
@@ -3890,9 +3869,6 @@ packages:
   shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
-
-  shiki@1.29.2:
-    resolution: {integrity: sha512-njXuliz/cP+67jU2hukkxCNuH1yUi4QfdZZY+sMr5PPrIyXSu5iTb/qYC4BiWWB0vZ+7TbdvYUCeL23zpwCfbg==}
 
   shiki@2.2.0:
     resolution: {integrity: sha512-3uoZBmc+zpd2JOEeTvKP/vK5UVDDe8YiigkT9flq+MV5Z1MKFiUXfbLIvHfqcJ+V90StDiP1ckN97z1WlhC6cQ==}
@@ -5331,15 +5307,6 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@shikijs/core@1.29.2':
-    dependencies:
-      '@shikijs/engine-javascript': 1.29.2
-      '@shikijs/engine-oniguruma': 1.29.2
-      '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
-      '@types/hast': 3.0.4
-      hast-util-to-html: 9.0.4
-
   '@shikijs/core@2.2.0':
     dependencies:
       '@shikijs/engine-javascript': 2.2.0
@@ -5349,39 +5316,20 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.4
 
-  '@shikijs/engine-javascript@1.29.2':
-    dependencies:
-      '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
-      oniguruma-to-es: 2.3.0
-
   '@shikijs/engine-javascript@2.2.0':
     dependencies:
       '@shikijs/types': 2.2.0
       '@shikijs/vscode-textmate': 10.0.1
       oniguruma-to-es: 2.3.0
 
-  '@shikijs/engine-oniguruma@1.29.2':
-    dependencies:
-      '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
-
   '@shikijs/engine-oniguruma@2.2.0':
     dependencies:
       '@shikijs/types': 2.2.0
       '@shikijs/vscode-textmate': 10.0.1
 
-  '@shikijs/langs@1.29.2':
-    dependencies:
-      '@shikijs/types': 1.29.2
-
   '@shikijs/langs@2.2.0':
     dependencies:
       '@shikijs/types': 2.2.0
-
-  '@shikijs/themes@1.29.2':
-    dependencies:
-      '@shikijs/types': 1.29.2
 
   '@shikijs/themes@2.2.0':
     dependencies:
@@ -5391,11 +5339,6 @@ snapshots:
     dependencies:
       '@shikijs/core': 2.2.0
       '@shikijs/types': 2.2.0
-
-  '@shikijs/types@1.29.2':
-    dependencies:
-      '@shikijs/vscode-textmate': 10.0.1
-      '@types/hast': 3.0.4
 
   '@shikijs/types@2.2.0':
     dependencies:
@@ -7497,14 +7440,14 @@ snapshots:
       micromark-factory-space: 2.0.0
       micromark-factory-title: 2.0.0
       micromark-factory-whitespace: 2.0.0
-      micromark-util-character: 2.1.0
+      micromark-util-character: 2.1.1
       micromark-util-chunked: 2.0.0
       micromark-util-classify-character: 2.0.0
       micromark-util-html-tag-name: 2.0.0
       micromark-util-normalize-identifier: 2.0.0
       micromark-util-resolve-all: 2.0.0
       micromark-util-subtokenize: 2.0.1
-      micromark-util-symbol: 2.0.0
+      micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.0
 
   micromark-core-commonmark@2.0.2:
@@ -7586,9 +7529,9 @@ snapshots:
 
   micromark-factory-destination@2.0.0:
     dependencies:
-      micromark-util-character: 2.1.0
-      micromark-util-symbol: 2.0.0
-      micromark-util-types: 2.0.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.1
 
   micromark-factory-destination@2.0.1:
     dependencies:
@@ -7599,9 +7542,9 @@ snapshots:
   micromark-factory-label@2.0.0:
     dependencies:
       devlop: 1.1.0
-      micromark-util-character: 2.1.0
-      micromark-util-symbol: 2.0.0
-      micromark-util-types: 2.0.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.1
 
   micromark-factory-label@2.0.1:
     dependencies:
@@ -7612,7 +7555,7 @@ snapshots:
 
   micromark-factory-space@2.0.0:
     dependencies:
-      micromark-util-character: 2.1.0
+      micromark-util-character: 2.1.1
       micromark-util-types: 2.0.0
 
   micromark-factory-space@2.0.1:
@@ -7623,9 +7566,9 @@ snapshots:
   micromark-factory-title@2.0.0:
     dependencies:
       micromark-factory-space: 2.0.0
-      micromark-util-character: 2.1.0
-      micromark-util-symbol: 2.0.0
-      micromark-util-types: 2.0.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.1
 
   micromark-factory-title@2.0.1:
     dependencies:
@@ -7637,9 +7580,9 @@ snapshots:
   micromark-factory-whitespace@2.0.0:
     dependencies:
       micromark-factory-space: 2.0.0
-      micromark-util-character: 2.1.0
-      micromark-util-symbol: 2.0.0
-      micromark-util-types: 2.0.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.1
 
   micromark-factory-whitespace@2.0.1:
     dependencies:
@@ -7650,7 +7593,7 @@ snapshots:
 
   micromark-util-character@2.1.0:
     dependencies:
-      micromark-util-symbol: 2.0.0
+      micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.0
 
   micromark-util-character@2.1.1:
@@ -7660,7 +7603,7 @@ snapshots:
 
   micromark-util-chunked@2.0.0:
     dependencies:
-      micromark-util-symbol: 2.0.0
+      micromark-util-symbol: 2.0.1
 
   micromark-util-chunked@2.0.1:
     dependencies:
@@ -7668,9 +7611,9 @@ snapshots:
 
   micromark-util-classify-character@2.0.0:
     dependencies:
-      micromark-util-character: 2.1.0
-      micromark-util-symbol: 2.0.0
-      micromark-util-types: 2.0.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.1
 
   micromark-util-classify-character@2.0.1:
     dependencies:
@@ -7734,12 +7677,6 @@ snapshots:
     dependencies:
       micromark-util-types: 2.0.1
 
-  micromark-util-sanitize-uri@2.0.0:
-    dependencies:
-      micromark-util-character: 2.1.0
-      micromark-util-encode: 2.0.0
-      micromark-util-symbol: 2.0.0
-
   micromark-util-sanitize-uri@2.0.1:
     dependencies:
       micromark-util-character: 2.1.1
@@ -7750,7 +7687,7 @@ snapshots:
     dependencies:
       devlop: 1.1.0
       micromark-util-chunked: 2.0.0
-      micromark-util-symbol: 2.0.0
+      micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.0
 
   micromark-util-subtokenize@2.0.3:
@@ -7783,7 +7720,7 @@ snapshots:
       micromark-util-encode: 2.0.0
       micromark-util-normalize-identifier: 2.0.0
       micromark-util-resolve-all: 2.0.0
-      micromark-util-sanitize-uri: 2.0.0
+      micromark-util-sanitize-uri: 2.0.1
       micromark-util-subtokenize: 2.0.1
       micromark-util-symbol: 2.0.0
       micromark-util-types: 2.0.0
@@ -8463,17 +8400,6 @@ snapshots:
       shebang-regex: 3.0.0
 
   shebang-regex@3.0.0: {}
-
-  shiki@1.29.2:
-    dependencies:
-      '@shikijs/core': 1.29.2
-      '@shikijs/engine-javascript': 1.29.2
-      '@shikijs/engine-oniguruma': 1.29.2
-      '@shikijs/langs': 1.29.2
-      '@shikijs/themes': 1.29.2
-      '@shikijs/types': 1.29.2
-      '@shikijs/vscode-textmate': 10.0.1
-      '@types/hast': 3.0.4
 
   shiki@2.2.0:
     dependencies:
