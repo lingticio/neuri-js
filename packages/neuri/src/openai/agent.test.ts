@@ -1,13 +1,13 @@
 import type { ChatCompletionsResponse } from './types'
 import { env } from 'node:process'
 import fetchMock, { manageFetchMockGlobally } from '@fetch-mock/vitest'
+import { nanoid } from 'nanoid'
 import { describe, expect, it } from 'vitest'
-
 import * as z from 'zod'
+
 import { composeAgent } from './agent'
 import { messages, user } from './messages'
 import { defineToolFunction, toolFunction } from './tools'
-import { nanoid } from 'nanoid'
 
 manageFetchMockGlobally()
 
@@ -23,7 +23,7 @@ describe('composeAgent', async () => {
         `${env.OPENAI_API_BASEURL!}chat/completions`,
         () => {
           fetchRouteCount += 1
-          const now = Math.ceil(Date.now()/1000)
+          const now = Math.ceil(Date.now() / 1000)
 
           if (fetchRouteCount === 1) {
             return {
