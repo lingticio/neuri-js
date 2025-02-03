@@ -2,7 +2,7 @@ import type { ProviderOptions } from '@xsai/providers'
 import type { Message } from '@xsai/shared-chat'
 
 import type { ChatCompletion, DefinedTool } from './types'
-import { chatCompletionFromResp, resolveFirstToolCallFromCmpl } from './completion'
+import { chatCompletionFromResp, resolveFirstToolCallFromCmpl, resolveToolCallsFromCmpl } from './completion'
 import { generate } from './generate'
 import { invokeFunctionWithTools } from './invoke'
 import { assistant, tool } from './messages'
@@ -30,7 +30,7 @@ export function composeAgent(options: {
         return res
       }
 
-      messages.push(assistant(resChatCompletionToolCall))
+      messages.push(assistant(resolveToolCallsFromCmpl(res)[0]))
 
       const resChatCompletion = chatCompletionFromResp(res)
       const invokeResults = await invokeFunctionWithTools(resChatCompletion, options.tools, messages)

@@ -52,6 +52,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fetch-mock/vitest": "^0.2.7",
     "@guiiai/logg": "^1.0.7",
     "@typeschema/main": "^0.14.1",
     "@xsai/generate-text": "^0.0.31",
@@ -61,6 +62,7 @@
     "@xsai/tool": "^0.0.31",
     "@xsai/utils-chat": "^0.0.31",
     "defu": "^6.1.4",
+    "fetch-mock": "^12.2.1",
     "nanoid": "^5.0.9",
     "openai": "^4.82.0"
   },

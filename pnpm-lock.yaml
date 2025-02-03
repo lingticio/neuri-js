@@ -128,6 +128,9 @@ importers:
 
   packages/neuri:
     dependencies:
+      '@fetch-mock/vitest':
+        specifier: ^0.2.7
+        version: 0.2.7(vitest@3.0.4(@types/debug@4.1.12)(@types/node@22.13.0)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.2)(yaml@2.6.1))
       '@guiiai/logg':
         specifier: ^1.0.7
         version: 1.0.7
@@ -155,6 +158,9 @@ importers:
       defu:
         specifier: ^6.1.4
         version: 6.1.4
+      fetch-mock:
+        specifier: ^12.2.1
+        version: 12.2.1
       nanoid:
         specifier: ^5.0.9
         version: 5.0.9
@@ -994,6 +1000,12 @@ packages:
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@fetch-mock/vitest@0.2.7':
+    resolution: {integrity: sha512-XWVvoOrVNp2vJ7IxsplT13CKIZT2+vVSmZvkHZSn+PUVu+GrVqRmsUnkrkUDiPPXc6ICn1eg7KvbAg1kIniMsA==}
+    engines: {node: '>=18.11.0'}
+    peerDependencies:
+      vitest: '*'
+
   '@gcornut/valibot-json-schema@0.42.0':
     resolution: {integrity: sha512-4Et4AN6wmqeA0PfU5Clkv/IS27wiefsWf6TemAZrb75uzkClYEFavim7SboeKwbll9Nbsn2Iv0LT/HS5H7orZg==}
     hasBin: true
@@ -1393,6 +1405,9 @@ packages:
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
+
+  '@types/glob-to-regexp@0.4.4':
+    resolution: {integrity: sha512-nDKoaKJYbnn1MZxUY0cA1bPmmgZbg0cTq7Rh13d0KWYNOiKbqoR+2d89SnRPszGh7ROzSwZ/GOjZ4jPbmmZ6Eg==}
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
@@ -2563,6 +2578,10 @@ packages:
       picomatch:
         optional: true
 
+  fetch-mock@12.2.1:
+    resolution: {integrity: sha512-ZUEDYDCr/qeZ3paYVyt6VkmuV/3HhZFVsih1Mt8hAAT34Gsc6HUv2qaFd5nh82BMhOaFjYL2yZbYi5VMuIhXKw==}
+    engines: {node: '>=18.11.0'}
+
   figures@6.1.0:
     resolution: {integrity: sha512-d+l3qxjSesT4V7v2fh+QnmFnUWv9lSpjarhShNTgBOfA0ttejbQUAlHLitbjkoRiDulW0OPoQPYIGhIC8ohejg==}
     engines: {node: '>=18'}
@@ -2653,6 +2672,9 @@ packages:
   glob-parent@6.0.2:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
     engines: {node: '>=10.13.0'}
+
+  glob-to-regexp@0.4.1:
+    resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
@@ -2815,6 +2837,10 @@ packages:
   is-stream@4.0.1:
     resolution: {integrity: sha512-Dnz92NInDqYckGEUJv689RbRiTSEHCQ7wOVeALbkOz999YpqT46yMRIGtSNl2iCL1waAZSx40+h59NV/EwzV/A==}
     engines: {node: '>=18'}
+
+  is-subset-of@3.1.10:
+    resolution: {integrity: sha512-avvaYgVmYWyaZ1NDFiv4y9JGkrE2je3op1Po4VYKKJKR8H2qVPsg1GZuuXl5elCTxTlwAIsrAjWAs4BVrISFRw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   is-unicode-supported@2.1.0:
     resolution: {integrity: sha512-mE00Gnza5EEB3Ds0HfMyllZzbBrmLOX3vfWoj9A9PEnTfratQ/BcaJOuMhnkhjXvb2+FkY3VuHqtAGpTPmglFQ==}
@@ -3762,6 +3788,10 @@ packages:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
 
+  regexparam@3.0.0:
+    resolution: {integrity: sha512-RSYAtP31mvYLkAHrOlh25pCNQ5hWnT106VukGaaFfuJrZFkGRX5GhUAdPqpSDXxOhA2c4akmRuplv1mRqnBn6Q==}
+    engines: {node: '>=8'}
+
   regjsparser@0.10.0:
     resolution: {integrity: sha512-qx+xQGZVsy55CH0a1hiVwHmqjLryfh7wQyF5HO07XJ9f7dQMY/gPQHhlyDkIzJKC+x2fUCpCcUODUUUFrm7SHA==}
     hasBin: true
@@ -4085,6 +4115,10 @@ packages:
   type-fest@0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
+
+  typedescriptor@3.0.2:
+    resolution: {integrity: sha512-hyVbaCUd18UiXk656g/imaBLMogpdijIEpnhWYrSda9rhvO4gOU16n2nh7xG5lv/rjumnZzGOdz0CEGTmFe0fQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
@@ -5038,6 +5072,11 @@ snapshots:
       '@eslint/core': 0.10.0
       levn: 0.4.1
 
+  '@fetch-mock/vitest@0.2.7(vitest@3.0.4(@types/debug@4.1.12)(@types/node@22.13.0)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.2)(yaml@2.6.1))':
+    dependencies:
+      fetch-mock: 12.2.1
+      vitest: 3.0.4(@types/debug@4.1.12)(@types/node@22.13.0)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.2)(yaml@2.6.1)
+
   '@gcornut/valibot-json-schema@0.42.0(esbuild@0.24.2)(typescript@5.7.3)':
     dependencies:
       valibot: 0.42.1(typescript@5.7.3)
@@ -5393,6 +5432,8 @@ snapshots:
       '@types/json-schema': 7.0.15
 
   '@types/estree@1.0.6': {}
+
+  '@types/glob-to-regexp@0.4.4': {}
 
   '@types/hast@3.0.4':
     dependencies:
@@ -6864,6 +6905,14 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
+  fetch-mock@12.2.1:
+    dependencies:
+      '@types/glob-to-regexp': 0.4.4
+      dequal: 2.0.3
+      glob-to-regexp: 0.4.1
+      is-subset-of: 3.1.10
+      regexparam: 3.0.0
+
   figures@6.1.0:
     dependencies:
       is-unicode-supported: 2.1.0
@@ -6959,6 +7008,8 @@ snapshots:
   glob-parent@6.0.2:
     dependencies:
       is-glob: 4.0.3
+
+  glob-to-regexp@0.4.1: {}
 
   glob@10.4.5:
     dependencies:
@@ -7103,6 +7154,10 @@ snapshots:
   is-stream@3.0.0: {}
 
   is-stream@4.0.1: {}
+
+  is-subset-of@3.1.10:
+    dependencies:
+      typedescriptor: 3.0.2
 
   is-unicode-supported@2.1.0: {}
 
@@ -8269,6 +8324,8 @@ snapshots:
 
   regexp-tree@0.1.27: {}
 
+  regexparam@3.0.0: {}
+
   regjsparser@0.10.0:
     dependencies:
       jsesc: 0.5.0
@@ -8630,6 +8687,8 @@ snapshots:
   type-fest@0.6.0: {}
 
   type-fest@0.8.1: {}
+
+  typedescriptor@3.0.2: {}
 
   typescript@5.7.3: {}
 
