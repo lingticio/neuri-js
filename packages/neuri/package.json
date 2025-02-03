@@ -54,12 +54,12 @@
   "dependencies": {
     "@guiiai/logg": "^1.0.7",
     "@typeschema/main": "^0.14.1",
-    "@xsai/generate-text": "^0.0.30",
-    "@xsai/providers": "^0.0.30",
-    "@xsai/shared-chat": "^0.0.30",
-    "@xsai/stream-text": "^0.0.30",
-    "@xsai/tool": "^0.0.30",
-    "@xsai/utils-chat": "^0.0.30",
+    "@xsai/generate-text": "^0.0.31",
+    "@xsai/providers": "^0.0.31",
+    "@xsai/shared-chat": "^0.0.31",
+    "@xsai/stream-text": "^0.0.31",
+    "@xsai/tool": "^0.0.31",
+    "@xsai/utils-chat": "^0.0.31",
     "defu": "^6.1.4",
     "nanoid": "^5.0.9",
     "openai": "^4.82.0"
