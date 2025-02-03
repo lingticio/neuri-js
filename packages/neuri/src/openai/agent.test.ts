@@ -127,6 +127,8 @@ describe('composeAgent', async () => {
     )
 
     expect(result).toBeDefined()
+    expect(await result?.firstContent()).to.equal('The weather is sunny and the temperature is 20.')
+
     fetchMock.unmockGlobal()
   })
 })
