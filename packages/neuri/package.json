@@ -52,29 +52,29 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@fetch-mock/vitest": "^0.2.7",
+    "@fetch-mock/vitest": "^0.2.8",
     "@guiiai/logg": "^1.0.7",
     "@typeschema/main": "^0.14.1",
-    "@xsai/generate-text": "^0.0.31",
-    "@xsai/providers": "^0.0.31",
-    "@xsai/shared-chat": "^0.0.31",
-    "@xsai/stream-text": "^0.0.31",
-    "@xsai/tool": "^0.0.31",
-    "@xsai/utils-chat": "^0.0.31",
+    "@xsai/generate-text": "^0.1.0-beta.5",
+    "@xsai/providers": "^0.1.0-beta.5",
+    "@xsai/shared-chat": "^0.1.0-beta.5",
+    "@xsai/stream-text": "^0.1.0-beta.5",
+    "@xsai/tool": "^0.1.0-beta.5",
+    "@xsai/utils-chat": "^0.1.0-beta.5",
     "defu": "^6.1.4",
-    "fetch-mock": "^12.2.1",
+    "fetch-mock": "^12.3.0",
     "nanoid": "^5.0.9",
-    "openai": "^4.82.0"
+    "openai": "^4.85.0"
   },
   "devDependencies": {
     "@gcornut/valibot-json-schema": "^0.42.0",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.13.0",
+    "@types/node": "^22.13.4",
     "@typeschema/zod": "^0.14.0",
     "json-schema": "^0.4.0",
     "remark": "^15.0.1",
-    "valibot": "^1.0.0-beta.14",
-    "zod": "^3.24.1",
+    "valibot": "^1.0.0-rc.0",
+    "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.1"
   }
 }
