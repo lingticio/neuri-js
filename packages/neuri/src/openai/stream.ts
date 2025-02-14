@@ -1,4 +1,4 @@
-import type { StreamTextOptions, ChunkResult as XSAIChunkResult } from '@xsai/stream-text'
+import type { StreamTextOptions, StreamTextChunkResult as XSAIChunkResult } from '@xsai/stream-text'
 import { streamText } from '@xsai/stream-text'
 
 export interface ChunkResult extends XSAIChunkResult {
