@@ -16,7 +16,7 @@
     "@unocss/eslint-plugin": "^65.4.3",
     "unocss": "^65.4.3",
     "vite": "^6.1.0",
-    "vite-plugin-inspect": "^10.2.1",
+    "vite-plugin-inspect": "^11.0.0",
     "vitepress": "^1.6.3",
     "vue": "^3.5.13"
   }
