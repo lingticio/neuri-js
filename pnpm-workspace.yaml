@@ -1,5 +1,7 @@
 packages:
-  - 'packages/**'
-  - 'examples/**'
+  - packages/**
+  - examples/**
   - '!**/dist/**'
   - docs
+onlyBuiltDependencies:
+  - esbuild

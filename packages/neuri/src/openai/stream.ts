@@ -113,7 +113,7 @@ export async function stream(params: StreamTextOptions): Promise<StreamResponse>
               return ''
             }
 
-            return value.choices[0].delta.content
+            return value.choices[0].delta.content || ''
           },
         }
       },
