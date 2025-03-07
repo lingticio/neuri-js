@@ -1,4 +1,4 @@
-name: Relase
+name: Release
 
 on:
   push:
@@ -7,6 +7,13 @@ on:
 
 env:
   STORE_PATH: ''
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+  packages: write
 
 jobs:
   release:
@@ -52,3 +59,8 @@ jobs:
         run: pnpm run packages:publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Sync GitHub Release
+        run: pnpm run changelogithub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
