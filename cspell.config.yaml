@@ -30,5 +30,6 @@ words:
   - vitepress
   - vuejs
   - xsai
+  - xsschema
 ignoreWords: []
 import: []

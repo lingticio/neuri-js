@@ -1,8 +1,8 @@
-import type { Infer, Schema } from '@typeschema/main'
 import type { ProviderOptions } from '@xsai/providers'
+import type { Infer, Schema } from 'xsschema'
 import type { DefinedTool, DefinedToolHooks, InvokeContext, Tool } from './types'
 
-import { toJSONSchema } from '@typeschema/main'
+import { toJSONSchema } from 'xsschema'
 
 type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
 

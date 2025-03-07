@@ -56,9 +56,9 @@
     "ofetch": "^1.4.1",
     "serpapi": "^2.1.0",
     "zod": "^3.24.2",
-    "zod-to-json-schema": "^3.24.1"
+    "zod-to-json-schema": "^3.24.3"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4"
+    "@types/node": "^22.13.9"
   }
 }

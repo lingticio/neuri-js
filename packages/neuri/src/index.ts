@@ -1,6 +1,6 @@
-import type { Infer, Schema } from '@typeschema/main'
 import type { ProviderOptions } from '@xsai/providers'
 import type { Message } from '@xsai/shared-chat'
+import type { Infer, Schema } from 'xsschema'
 
 import type { ChatCompletion, DefinedTool, DefinedToolHooks, InvokeContext } from './openai'
 import { composeAgent, defineToolFunction, toolFunction } from './openai'
