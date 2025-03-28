@@ -53,9 +53,9 @@
     "@shikijs/engine-oniguruma": "^1.29.2",
     "@shikijs/vscode-textmate": "^10.0.2",
     "shiki": "^1.29.2",
-    "tm-grammars": "^1.22.19"
+    "tm-grammars": "^1.23.6"
   },
   "devDependencies": {
-    "@types/node": "^22.13.9"
+    "@types/node": "^22.13.14"
   }
 }
