@@ -2,9 +2,9 @@ import type { ProviderOptions } from '@xsai/providers'
 import type { Infer, Schema } from 'xsschema'
 import type { DefinedTool, DefinedToolHooks, InvokeContext, Tool } from './types'
 
-import { toJSONSchema } from 'xsschema'
+import { toJsonSchema } from 'xsschema'
 
-type JSONSchema = Awaited<ReturnType<typeof toJSONSchema>> & Record<string, any>
+type JSONSchema = Awaited<ReturnType<typeof toJsonSchema>> & Record<string, any>
 
 interface ToolFunction<_P> extends Tool {
   type: 'function'
@@ -21,7 +21,7 @@ export async function toolFunction<S extends Schema, P extends Infer<S>>(name: s
     function: {
       name,
       description,
-      parameters: await toJSONSchema(parameters as any),
+      parameters: await toJsonSchema(parameters as any),
     },
   }
 }

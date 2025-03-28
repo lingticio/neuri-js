@@ -12,8 +12,8 @@ importers:
         specifier: ^4.11.0
         version: 4.11.0(@typescript-eslint/utils@8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(@unocss/eslint-plugin@65.5.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(@vue/compiler-sfc@3.5.13)(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.14)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))
       '@antfu/ni':
-        specifier: ^23.3.1
-        version: 23.3.1
+        specifier: ^24.3.0
+        version: 24.3.0
       '@types/node':
         specifier: ^22.13.14
         version: 22.13.14
@@ -88,8 +88,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(typescript@5.8.2)
       xsschema:
-        specifier: ^0.1.3
-        version: 0.1.3(zod-to-json-schema@3.24.5(zod@3.24.2))
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1(zod-to-json-schema@3.24.5(zod@3.24.2))
       zod:
         specifier: ^3.24.2
         version: 3.24.2
@@ -129,23 +129,23 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7
       '@xsai/generate-text':
-        specifier: ^0.1.3
-        version: 0.1.3
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1
       '@xsai/providers':
         specifier: ^0.1.0-beta.5
         version: 0.1.0-beta.5
       '@xsai/shared-chat':
-        specifier: ^0.1.3
-        version: 0.1.3
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1
       '@xsai/stream-text':
-        specifier: ^0.1.3
-        version: 0.1.3
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1
       '@xsai/tool':
-        specifier: ^0.1.3
-        version: 0.1.3(zod-to-json-schema@3.24.5(zod@3.24.2))
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1(zod-to-json-schema@3.24.5(zod@3.24.2))
       '@xsai/utils-chat':
-        specifier: ^0.1.3
-        version: 0.1.3
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1
       defu:
         specifier: ^6.1.4
         version: 6.1.4
@@ -153,8 +153,8 @@ importers:
         specifier: ^5.1.5
         version: 5.1.5
       xsschema:
-        specifier: ^0.1.3
-        version: 0.1.3(zod-to-json-schema@3.24.5(zod@3.24.2))
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1(zod-to-json-schema@3.24.5(zod@3.24.2))
     devDependencies:
       '@fetch-mock/vitest':
         specifier: ^0.2.13
@@ -166,8 +166,8 @@ importers:
         specifier: ^22.13.14
         version: 22.13.14
       '@xsai-ext/providers-cloud':
-        specifier: ^0.1.3
-        version: 0.1.3
+        specifier: ^0.2.0-beta.1
+        version: 0.2.0-beta.1
       fetch-mock:
         specifier: ^12.5.2
         version: 12.5.2
@@ -373,8 +373,8 @@ packages:
   '@antfu/install-pkg@1.0.0':
     resolution: {integrity: sha512-xvX6P/lo1B3ej0OsaErAjqgFYzYVcJpamjLAFLYh9vRJngBrMoUG7aVnrGTeqM7yxbyTD5p3F2+0/QUEh8Vzhw==}
 
-  '@antfu/ni@23.3.1':
-    resolution: {integrity: sha512-C90iyzm/jLV7Lomv2UzwWUzRv9WZr1oRsFRKsX5HjQL4EXrbi9H/RtBkjCP+NF+ABZXUKpAa4F1dkoTaea4zHg==}
+  '@antfu/ni@24.3.0':
+    resolution: {integrity: sha512-wBSav4mBxvHEW9RbdSo1SWLQ6MAlT0Dc423weC58yOWqW4OcMvtnNDdDrxOZeJ88fEIyPK93gDUWIelBxzSf8g==}
     hasBin: true
 
   '@antfu/utils@8.1.1':
@@ -1965,21 +1965,18 @@ packages:
   '@vueuse/shared@12.5.0':
     resolution: {integrity: sha512-vMpcL1lStUU6O+kdj6YdHDixh0odjPAUM15uJ9f7MY781jcYkIwFA4iv2EfoIPO6vBmvutI1HxxAwmf0cx5ISQ==}
 
-  '@xsai-ext/providers-cloud@0.1.3':
-    resolution: {integrity: sha512-Ziuw1Cin5MHM+PHiMD1lK/mzLcl7MteeCv+kHKRWSvSk6jR8aR7KuDvHMbGPCEeasP1ZEkE0Mj9XtyWFDYIvsg==}
+  '@xsai-ext/providers-cloud@0.2.0-beta.1':
+    resolution: {integrity: sha512-CxjNe0eiFivDqVIz7+xnVZzOngsY1OQA8nrz4qdHD034IXw9PVFw1NfhRQ6l6IVkMh+UQo9n9K+80DFnbsLqzQ==}
 
   '@xsai-ext/shared-providers@0.2.0-beta.1':
     resolution: {integrity: sha512-94v0JQTC2ivmTU9wrBPzE5IsL5FCZbEHDtKviLZBJ8wU0I0mRz8Llg+AcnqzUCrL9gZoHhWwNkqgI4xVabD7MA==}
 
-  '@xsai/generate-text@0.1.3':
-    resolution: {integrity: sha512-jdA7w0yPU7ri0tqj1AXgZ2nYj42sN2V7fwhjo9RpbEagZm0jrRBNgRoVaViyQzbZh3CRCPdUVUmLMojq8VOTLw==}
+  '@xsai/generate-text@0.2.0-beta.1':
+    resolution: {integrity: sha512-WawH6Mow8ivs0pDNgSS8u3RByGtJ7HRF11PvHkzJ3fQC9hM4oSxC0lOEtVAruJXLs+aw8jkgGLFAwse9lAxrng==}
 
   '@xsai/providers@0.1.0-beta.5':
     resolution: {integrity: sha512-jx630mUblMSUcDcXa+BNiFB7deQy1lp0XcJHQokfo/+QvYOpgaPrIRH6oUcjwLio0+8gJXqQmQfEY3+fl9Tjew==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-
-  '@xsai/shared-chat@0.1.3':
-    resolution: {integrity: sha512-vRI7KUf3CUQNXJcNB/fOWIAEAuv48/VeOLQCmiRDbM8EQaWoR6alF4UDz4G5EAYOF4zbu2EngcsUxKqonSxylw==}
 
   '@xsai/shared-chat@0.2.0-beta.1':
     resolution: {integrity: sha512-4/HKIJygBo67GzsEa6H47CEHX9CThFJJsyIgJJdqCi7ajjrSnH7wnTtalgRDQxNWdNJwu+TAgfP+j7+1koOgxg==}
@@ -1990,14 +1987,14 @@ packages:
   '@xsai/shared@0.2.0-beta.1':
     resolution: {integrity: sha512-GBFHnHeqyTT9bvCBb42nNBvCoLW8cd3+pTxfQqzur9FU/acIWfK2CWrGPHCICNXYVbRSCGzjFKrNmvbTjZUImQ==}
 
-  '@xsai/stream-text@0.1.3':
-    resolution: {integrity: sha512-NVV1hwS1TTf8T++M9ew0FTH1U08EFk5LymW2HEVMMVmdUHeKvYqkvOXwFicGYhZsMVRXZqA8b8A8usEHFMsBIg==}
+  '@xsai/stream-text@0.2.0-beta.1':
+    resolution: {integrity: sha512-Ih/qn/WBwDNTcQKz4lueAbw0T/XZMy2oqPtQI/5RWKiLeZcd+H6E5PbJY3fsDfndWu+2W8BDcXA7ZDV72cZ1NA==}
 
-  '@xsai/tool@0.1.3':
-    resolution: {integrity: sha512-Qf+FRpvCAEF4Is7XkFr52P/cI0JDunbYPV+3dAdG0c/QtB7g+hwVgKQLcwIMtg2IZNGy7ggSGVBZZtNPBUnjyQ==}
+  '@xsai/tool@0.2.0-beta.1':
+    resolution: {integrity: sha512-4nauvwJnnd68yh8IXPkfXBzRtbtqoJuv+qbV7aeA+zx2wFTntHCuGmjKMoEmPzO95Pe6d2V4+q4sBu/J53iG/Q==}
 
-  '@xsai/utils-chat@0.1.3':
-    resolution: {integrity: sha512-wXx7CL5sEkvEI4dUDYwuA1mwAnQ5y5ugnLoRGcXtiXf8l3isz7+HOKER5gupzCoy9CsLkPSWnW21GNuXqFObxQ==}
+  '@xsai/utils-chat@0.2.0-beta.1':
+    resolution: {integrity: sha512-65yU2j0EsduEEfWUj8eCdLtQijYtlcKSDc+s5oYG3whUSuMTg3/SQqCsspZ02FkmFoCC/j771O5LvoqzxllfIA==}
 
   abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
@@ -2813,6 +2810,9 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
+  fzf@0.5.2:
+    resolution: {integrity: sha512-Tt4kuxLXFKHy8KT40zwsUPUkg1CrsgY25FxA2U/j/0WgEDCk3ddc/zLTCCcbSHX9FcKtLuVaDGtGE/STWC+j3Q==}
+
   get-intrinsic@1.3.0:
     resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
     engines: {node: '>= 0.4'}
@@ -2899,6 +2899,9 @@ packages:
 
   hast-util-to-html@9.0.4:
     resolution: {integrity: sha512-wxQzXtdbhiwGAUKrnQJXlOPmHnEehzphwkK7aluUPQ+lEc1xefC8pblMgpp2w5ldBTEfveRIrADcrhGIWrlTDA==}
+
+  hast-util-to-html@9.0.5:
+    resolution: {integrity: sha512-OguPdidb+fbHQSU4Q4ZiLKnzWo8Wwsf5bZfbvu7//a9oTYoqD/fWpe96NuHkoS9h0ccGOTe0C4NGXdtS0iObOw==}
 
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
@@ -3829,6 +3832,9 @@ packages:
   property-information@6.5.0:
     resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
 
+  property-information@7.0.0:
+    resolution: {integrity: sha512-7D/qOz/+Y4X/rzSB6jKxKUsQnphO046ei8qxG59mtM3RG3DHgTK81HrxrmoDVINJb8NKT5ZsRbwHvQ6B68Iyhg==}
+
   prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
 
@@ -4126,6 +4132,9 @@ packages:
 
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
+
+  tinyexec@1.0.1:
+    resolution: {integrity: sha512-5uC6DDlmeqiOwCPmK9jMSdOuZTh8bU39Ys6yidB+UTt5hfZUPGAypSgFRiEp+jbi9qH40BLDvy85jIU88wKSqw==}
 
   tinyglobby@0.2.12:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
@@ -4496,20 +4505,6 @@ packages:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
 
-  xsschema@0.1.3:
-    resolution: {integrity: sha512-hU0s8RLGPMDKWvQ1ShkNSXrEZGgndA/6aMQLhoFBXLcbG2yvUTX+Q4WJ8CCIefK2aEkMDRjD9BuqhaQodd0g/g==}
-    peerDependencies:
-      '@valibot/to-json-schema': ^1.0.0-rc.0
-      arktype: ^2.0.4
-      zod-to-json-schema: ^3.24.1
-    peerDependenciesMeta:
-      '@valibot/to-json-schema':
-        optional: true
-      arktype:
-        optional: true
-      zod-to-json-schema:
-        optional: true
-
   xsschema@0.2.0-beta.1:
     resolution: {integrity: sha512-54jKWehz8z0jhPYhoDEA51gZe4xbBD3jJ+BWvyZMuQyUzUPUmsr/QMxIqie3o82vMrFFmzJ3vb5if4b5jHerhA==}
     peerDependencies:
@@ -4724,7 +4719,12 @@ snapshots:
       package-manager-detector: 0.2.11
       tinyexec: 0.3.2
 
-  '@antfu/ni@23.3.1': {}
+  '@antfu/ni@24.3.0':
+    dependencies:
+      ansis: 3.17.0
+      fzf: 0.5.2
+      package-manager-detector: 1.1.0
+      tinyexec: 1.0.1
 
   '@antfu/utils@8.1.1': {}
 
@@ -5447,7 +5447,7 @@ snapshots:
       '@shikijs/types': 1.29.2
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
-      hast-util-to-html: 9.0.4
+      hast-util-to-html: 9.0.5
 
   '@shikijs/core@2.2.0':
     dependencies:
@@ -6125,7 +6125,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@xsai-ext/providers-cloud@0.1.3':
+  '@xsai-ext/providers-cloud@0.2.0-beta.1':
     dependencies:
       '@xsai-ext/shared-providers': 0.2.0-beta.1
       '@xsai/shared': 0.2.0-beta.1
@@ -6134,17 +6134,13 @@ snapshots:
     dependencies:
       '@xsai/shared': 0.2.0-beta.1
 
-  '@xsai/generate-text@0.1.3':
+  '@xsai/generate-text@0.2.0-beta.1':
     dependencies:
       '@xsai/shared-chat': 0.2.0-beta.1
 
   '@xsai/providers@0.1.0-beta.5':
     dependencies:
       '@xsai/shared': 0.1.2
-
-  '@xsai/shared-chat@0.1.3':
-    dependencies:
-      '@xsai/shared': 0.2.0-beta.1
 
   '@xsai/shared-chat@0.2.0-beta.1':
     dependencies:
@@ -6154,11 +6150,11 @@ snapshots:
 
   '@xsai/shared@0.2.0-beta.1': {}
 
-  '@xsai/stream-text@0.1.3':
+  '@xsai/stream-text@0.2.0-beta.1':
     dependencies:
       '@xsai/shared-chat': 0.2.0-beta.1
 
-  '@xsai/tool@0.1.3(zod-to-json-schema@3.24.5(zod@3.24.2))':
+  '@xsai/tool@0.2.0-beta.1(zod-to-json-schema@3.24.5(zod@3.24.2))':
     dependencies:
       '@xsai/shared': 0.2.0-beta.1
       '@xsai/shared-chat': 0.2.0-beta.1
@@ -6169,7 +6165,7 @@ snapshots:
       - effect
       - zod-to-json-schema
 
-  '@xsai/utils-chat@0.1.3':
+  '@xsai/utils-chat@0.2.0-beta.1':
     dependencies:
       '@xsai/shared-chat': 0.2.0-beta.1
 
@@ -7231,6 +7227,8 @@ snapshots:
 
   function-bind@1.1.2: {}
 
+  fzf@0.5.2: {}
+
   get-intrinsic@1.3.0:
     dependencies:
       call-bind-apply-helpers: 1.0.2
@@ -7337,6 +7335,20 @@ snapshots:
       html-void-elements: 3.0.0
       mdast-util-to-hast: 13.2.0
       property-information: 6.5.0
+      space-separated-tokens: 2.0.2
+      stringify-entities: 4.0.4
+      zwitch: 2.0.4
+
+  hast-util-to-html@9.0.5:
+    dependencies:
+      '@types/hast': 3.0.4
+      '@types/unist': 3.0.3
+      ccount: 2.0.1
+      comma-separated-tokens: 2.0.3
+      hast-util-whitespace: 3.0.0
+      html-void-elements: 3.0.0
+      mdast-util-to-hast: 13.2.0
+      property-information: 7.0.0
       space-separated-tokens: 2.0.2
       stringify-entities: 4.0.4
       zwitch: 2.0.4
@@ -8369,6 +8381,8 @@ snapshots:
 
   property-information@6.5.0: {}
 
+  property-information@7.0.0: {}
+
   prr@1.0.1:
     optional: true
 
@@ -8725,6 +8739,8 @@ snapshots:
   tinybench@2.9.0: {}
 
   tinyexec@0.3.2: {}
+
+  tinyexec@1.0.1: {}
 
   tinyglobby@0.2.12:
     dependencies:
@@ -9184,10 +9200,6 @@ snapshots:
       strip-ansi: 7.1.0
 
   xml-name-validator@4.0.0: {}
-
-  xsschema@0.1.3(zod-to-json-schema@3.24.5(zod@3.24.2)):
-    optionalDependencies:
-      zod-to-json-schema: 3.24.5(zod@3.24.2)
 
   xsschema@0.2.0-beta.1(zod-to-json-schema@3.24.5(zod@3.24.2)):
     optionalDependencies:
