@@ -14,7 +14,7 @@ import * as z from 'zod'
 async function main() {
   const { call } = composeAgent({
     provider: {
-      baseURL: env.OPENAI_API_BASEURL,
+      baseURL: env.OPENAI_API_BASEURL!,
       apiKey: env.OPENAI_API_KEY,
     },
     tools: [

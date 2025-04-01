@@ -1,4 +1,4 @@
-import type { ProviderOptions } from '@xsai/providers'
+import type { CommonRequestOptions } from '@xsai/shared'
 import type { AssistantMessageResponse, FinishReason, Message, ToolCall, Tool as UpstreamTool, Usage } from '@xsai/shared-chat'
 
 export interface Choice {
@@ -31,14 +31,14 @@ export interface ToolCallFunctionResult<P = any, R = any> {
 }
 
 export interface DefinedTool<P, R> {
-  provider: ProviderOptions
+  provider: Omit<CommonRequestOptions, 'model'>
   tool: Tool
   func: (ctx: InvokeContext<P, R>) => R
   hooks: DefinedToolHooks<P, R>
 }
 
 export interface DefinedToolHooks<P, R> {
-  configureProvider: (provider?: ProviderOptions) => Promise<ProviderOptions | undefined>
+  configureProvider: (provider?: Omit<CommonRequestOptions, 'model'>) => Promise<Omit<CommonRequestOptions, 'model'> | undefined>
   preInvoke: (ctx: PreInvokeContext<P, R>) => Promise<void>
   postInvoke: (ctx: PostInvokeContext<P, R>) => Promise<void>
 }

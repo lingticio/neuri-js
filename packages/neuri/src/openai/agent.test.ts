@@ -105,7 +105,6 @@ describe('composeAgent', async () => {
 
     const { call } = composeAgent({
       provider: {
-        model: 'openai/gpt-4o',
         apiKey: env.OPENAI_API_KEY!,
         baseURL: env.OPENAI_API_BASEURL!,
       },
