@@ -60,7 +60,7 @@ jobs:
         with:
           node-version: 22.x
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
           run_install: false
