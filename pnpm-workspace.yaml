@@ -3,5 +3,7 @@ packages:
   - examples/**
   - '!**/dist/**'
   - docs
+
 onlyBuiltDependencies:
   - esbuild
+  - unrs-resolver

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.4",
   "private": true,
-  "packageManager": "pnpm@10.7.1",
+  "packageManager": "pnpm@10.8.1",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "neuri": "workspace:^",
-    "openai": "^4.91.0",
+    "openai": "^4.95.1",
     "valibot": "^1.0.0",
-    "xsschema": "^0.2.0-beta.2",
-    "zod": "^3.24.2"
+    "xsschema": "^0.2.0-beta.3",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "tsx": "^4.19.3"
