@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^4.12.0
-        version: 4.12.0(@typescript-eslint/utils@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@unocss/eslint-plugin@65.5.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))
+        version: 4.12.0(@typescript-eslint/utils@8.31.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@unocss/eslint-plugin@65.5.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))
       '@antfu/ni':
         specifier: ^24.3.0
         version: 24.3.0
@@ -2010,23 +2010,23 @@ packages:
   '@xsai-ext/providers-cloud@0.2.0-beta.3':
     resolution: {integrity: sha512-A5z3IEOI2B0bDmRc93PgRobBib7fyY/JWJKpvv7fkSbugqFNY40SJu1ae57KXriOJyzeoAZUzNmuiSQenaF2pQ==}
 
-  '@xsai-ext/shared-providers@0.2.0-beta.6':
-    resolution: {integrity: sha512-k1UjAqk7NA0NsJmWAFWYyPoYPiuuvHLHUxiCP5wahwp9xubTAqkdOcZP+bjkBFUtpVkFKW365jJ0tSs6xygorg==}
+  '@xsai-ext/shared-providers@0.2.0':
+    resolution: {integrity: sha512-BSU+hcv5rFnW+c0Oq7fIIqToQyoRar7pLTK20zCfqRsnCr4F4RM6+r0YG3DxLpFZPVtRgG5KbvuWCgyN/3epUQ==}
 
   '@xsai/generate-text@0.2.0-beta.3':
     resolution: {integrity: sha512-dE01PDM3WDsI9FBzCxOyNQ8uqwae5/Y9hU16iO0DX/HAYSE44zgZ51Yaj3nEmf3idfZq66tswBAYh8eOHuA8Zg==}
 
+  '@xsai/shared-chat@0.2.0':
+    resolution: {integrity: sha512-mzTY3ExsUWVKNgTSSGR1G9htfnkmN2l8qsmX02HBJ0Rqj8dneigd6dX5LNRlrUoyddBtOerxblPsHyfXOSWNHQ==}
+
   '@xsai/shared-chat@0.2.0-beta.3':
     resolution: {integrity: sha512-mjgo+YaUwXXxY1Bfvnj2aW3Brhu2Q8gr5SLaIfiOjI0oXuOxN1Fq3GPnBlVBkAzOLEwIQZ82Q2p9zUlBAljm3g==}
 
-  '@xsai/shared-chat@0.2.0-beta.6':
-    resolution: {integrity: sha512-gzeMfPu7NHcHYeg1kIeET99wtrNezMbU6T85yk8xPovqJttcEkxpST0dAvXhPtwCyg4o3SYkKtT2Etl1xm3UEw==}
+  '@xsai/shared@0.2.0':
+    resolution: {integrity: sha512-fFMJ1T/9P4o7iOmLvc4/UIFMy2tYkXUmL8aJWULmV36Ddq/gYYOndBZJZfoy3mNiDtxgDBkmIBMdIOFQu9iamg==}
 
   '@xsai/shared@0.2.0-beta.2':
     resolution: {integrity: sha512-IWMv1lO6BqvX7PiqVlFLuVnF1eXjQ4V0ustTADIk21eacVoaS58lPs+XXnqyy354xX+FQohlPNNKD89lpkRlOQ==}
-
-  '@xsai/shared@0.2.0-beta.6':
-    resolution: {integrity: sha512-mDKSXhQpiYansxwe0+oG20drKkYJrOuQM9fMiThgjNgTPBkGd1CvnwJWSwPZQeHgQ7ytNJ/Vd8P3s1lLUlT1Xg==}
 
   '@xsai/stream-text@0.2.0-beta.3':
     resolution: {integrity: sha512-lIG21bcluBOLatUC6yigkSCB18GcW6hb9vFyj4wiTkzXRB/a4OfUY4lqHsOgpra7p6yLpxjJIPDBY1hBZalTBQ==}
@@ -4606,25 +4606,8 @@ packages:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
 
-  xsschema@0.2.0-beta.3:
-    resolution: {integrity: sha512-ViOZ1a1kAPHvFjDJp4ITeutdlbnEs56lx/NotlvcitwN04eHnU3DhR+P5GvXT7A+69qKrXAx0YrccvmfwGnUGw==}
-    peerDependencies:
-      '@valibot/to-json-schema': ^1.0.0
-      arktype: ^2.1.16
-      effect: ^3.14.5
-      zod-to-json-schema: ^3.24.5
-    peerDependenciesMeta:
-      '@valibot/to-json-schema':
-        optional: true
-      arktype:
-        optional: true
-      effect:
-        optional: true
-      zod-to-json-schema:
-        optional: true
-
-  xsschema@0.2.0-beta.6:
-    resolution: {integrity: sha512-xlGzeFtQV3nVEmrJ9PH3RI3tABDbGfPva9P4NvbFeO3NZjc/dmR4Ne6YFKb7G6DEfaXHaz6R/HSpGXWPgkovNw==}
+  xsschema@0.2.0:
+    resolution: {integrity: sha512-UPPI+jP6pn/49q8w7Faz4CYRn33VvG7ngfNQ79nwqTauFP4/m3VusB095a4d5uZ4/TNip5GDxASpzKDoEouN5Q==}
     peerDependencies:
       '@valibot/to-json-schema': ^1.0.0
       '@zod/mini': ^4.0.0-beta
@@ -4642,6 +4625,23 @@ packages:
       effect:
         optional: true
       zod:
+        optional: true
+      zod-to-json-schema:
+        optional: true
+
+  xsschema@0.2.0-beta.3:
+    resolution: {integrity: sha512-ViOZ1a1kAPHvFjDJp4ITeutdlbnEs56lx/NotlvcitwN04eHnU3DhR+P5GvXT7A+69qKrXAx0YrccvmfwGnUGw==}
+    peerDependencies:
+      '@valibot/to-json-schema': ^1.0.0
+      arktype: ^2.1.16
+      effect: ^3.14.5
+      zod-to-json-schema: ^3.24.5
+    peerDependenciesMeta:
+      '@valibot/to-json-schema':
+        optional: true
+      arktype:
+        optional: true
+      effect:
         optional: true
       zod-to-json-schema:
         optional: true
@@ -4789,7 +4789,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@antfu/eslint-config@4.12.0(@typescript-eslint/utils@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@unocss/eslint-plugin@65.5.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))':
+  '@antfu/eslint-config@4.12.0(@typescript-eslint/utils@8.31.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@unocss/eslint-plugin@65.5.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.13)(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))':
     dependencies:
       '@antfu/install-pkg': 1.0.0
       '@clack/prompts': 0.10.1
@@ -4798,7 +4798,7 @@ snapshots:
       '@stylistic/eslint-plugin': 4.2.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
       '@typescript-eslint/eslint-plugin': 8.30.1(@typescript-eslint/parser@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
       '@typescript-eslint/parser': 8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
-      '@vitest/eslint-plugin': 1.1.43(@typescript-eslint/utils@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))
+      '@vitest/eslint-plugin': 1.1.43(@typescript-eslint/utils@8.31.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))
       ansis: 3.17.0
       cac: 6.7.14
       eslint: 9.25.0(jiti@2.4.2)
@@ -5248,7 +5248,6 @@ snapshots:
     dependencies:
       eslint: 9.25.0(jiti@2.4.2)
       eslint-visitor-keys: 3.4.3
-    optional: true
 
   '@eslint-community/regexpp@4.12.1': {}
 
@@ -5762,7 +5761,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.31.1
       '@typescript-eslint/visitor-keys': 8.31.1
-    optional: true
 
   '@typescript-eslint/type-utils@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
@@ -5777,8 +5775,7 @@ snapshots:
 
   '@typescript-eslint/types@8.30.1': {}
 
-  '@typescript-eslint/types@8.31.1':
-    optional: true
+  '@typescript-eslint/types@8.31.1': {}
 
   '@typescript-eslint/typescript-estree@8.30.1(typescript@5.8.3)':
     dependencies:
@@ -5807,7 +5804,6 @@ snapshots:
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   '@typescript-eslint/utils@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
@@ -5830,7 +5826,6 @@ snapshots:
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   '@typescript-eslint/visitor-keys@8.30.1':
     dependencies:
@@ -5841,7 +5836,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.31.1
       eslint-visitor-keys: 4.2.0
-    optional: true
 
   '@ungap/structured-clone@1.2.1': {}
 
@@ -6120,9 +6114,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/eslint-plugin@1.1.43(@typescript-eslint/utils@8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))':
+  '@vitest/eslint-plugin@1.1.43(@typescript-eslint/utils@8.31.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(less@4.2.0)(tsx@4.19.3)(yaml@2.7.0))':
     dependencies:
-      '@typescript-eslint/utils': 8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.31.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
       eslint: 9.25.0(jiti@2.4.2)
     optionalDependencies:
       typescript: 5.8.3
@@ -6304,39 +6298,39 @@ snapshots:
 
   '@xsai-ext/providers-cloud@0.2.0-beta.3':
     dependencies:
-      '@xsai-ext/shared-providers': 0.2.0-beta.6
-      '@xsai/shared': 0.2.0-beta.6
+      '@xsai-ext/shared-providers': 0.2.0
+      '@xsai/shared': 0.2.0
 
-  '@xsai-ext/shared-providers@0.2.0-beta.6':
+  '@xsai-ext/shared-providers@0.2.0':
     dependencies:
-      '@xsai/shared': 0.2.0-beta.6
+      '@xsai/shared': 0.2.0
 
   '@xsai/generate-text@0.2.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.2.0-beta.6
-      '@xsai/shared-chat': 0.2.0-beta.6
+      '@xsai/shared': 0.2.0
+      '@xsai/shared-chat': 0.2.0
+
+  '@xsai/shared-chat@0.2.0':
+    dependencies:
+      '@xsai/shared': 0.2.0
 
   '@xsai/shared-chat@0.2.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.2.0-beta.6
+      '@xsai/shared': 0.2.0
 
-  '@xsai/shared-chat@0.2.0-beta.6':
-    dependencies:
-      '@xsai/shared': 0.2.0-beta.6
+  '@xsai/shared@0.2.0': {}
 
   '@xsai/shared@0.2.0-beta.2': {}
 
-  '@xsai/shared@0.2.0-beta.6': {}
-
   '@xsai/stream-text@0.2.0-beta.3':
     dependencies:
-      '@xsai/shared-chat': 0.2.0-beta.6
+      '@xsai/shared-chat': 0.2.0
 
   '@xsai/tool@0.2.0-beta.3(zod-to-json-schema@3.24.5(zod@3.24.3))(zod@3.24.3)':
     dependencies:
-      '@xsai/shared': 0.2.0-beta.6
-      '@xsai/shared-chat': 0.2.0-beta.6
-      xsschema: 0.2.0-beta.6(zod-to-json-schema@3.24.5(zod@3.24.3))(zod@3.24.3)
+      '@xsai/shared': 0.2.0
+      '@xsai/shared-chat': 0.2.0
+      xsschema: 0.2.0(zod-to-json-schema@3.24.5(zod@3.24.3))(zod@3.24.3)
     transitivePeerDependencies:
       - '@valibot/to-json-schema'
       - '@zod/mini'
@@ -6347,7 +6341,7 @@ snapshots:
 
   '@xsai/utils-chat@0.2.0-beta.3':
     dependencies:
-      '@xsai/shared-chat': 0.2.0-beta.6
+      '@xsai/shared-chat': 0.2.0
 
   abort-controller@3.0.0:
     dependencies:
@@ -9413,13 +9407,13 @@ snapshots:
 
   xml-name-validator@4.0.0: {}
 
-  xsschema@0.2.0-beta.3(zod-to-json-schema@3.24.5(zod@3.24.3)):
-    optionalDependencies:
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
-
-  xsschema@0.2.0-beta.6(zod-to-json-schema@3.24.5(zod@3.24.3))(zod@3.24.3):
+  xsschema@0.2.0(zod-to-json-schema@3.24.5(zod@3.24.3))(zod@3.24.3):
     optionalDependencies:
       zod: 3.24.3
+      zod-to-json-schema: 3.24.5(zod@3.24.3)
+
+  xsschema@0.2.0-beta.3(zod-to-json-schema@3.24.5(zod@3.24.3)):
+    optionalDependencies:
       zod-to-json-schema: 3.24.5(zod@3.24.3)
 
   yallist@4.0.0: {}
