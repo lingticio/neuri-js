@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.5",
   "private": true,
-  "packageManager": "pnpm@10.8.1",
+  "packageManager": "pnpm@10.10.0",
   "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
   "author": {
     "name": "Lingtic.io Neuri Team",
@@ -43,7 +43,7 @@
     "@antfu/eslint-config": "^4.12.0",
     "@antfu/ni": "^24.3.0",
     "@types/node": "^22.14.1",
-    "@vitest/coverage-v8": "3.1.1",
+    "@vitest/coverage-v8": "3.1.2",
     "bumpp": "^10.1.0",
     "changelogithub": "^13.13.0",
     "eslint": "^9.25.0",
