@@ -48,14 +48,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.8",
-    "@shikijs/core": "^3.2.2",
-    "@shikijs/engine-oniguruma": "^3.2.2",
+    "@guiiai/logg": "^1.0.10",
+    "@shikijs/core": "^3.4.0",
+    "@shikijs/engine-oniguruma": "^3.4.0",
     "@shikijs/vscode-textmate": "^10.0.2",
-    "shiki": "^3.2.2",
-    "tm-grammars": "^1.23.15"
+    "shiki": "^3.4.0",
+    "tm-grammars": "^1.23.18"
   },
   "devDependencies": {
-    "@types/node": "^22.14.1"
+    "@types/node": "^22.15.17"
   }
 }

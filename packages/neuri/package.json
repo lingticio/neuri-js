@@ -52,25 +52,25 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.8",
-    "@xsai/generate-text": "^0.2.0-beta.3",
+    "@guiiai/logg": "^1.0.10",
+    "@xsai/generate-text": "^0.2.1",
     "@xsai/shared": "0.2.0",
-    "@xsai/shared-chat": "^0.2.0-beta.3",
-    "@xsai/stream-text": "^0.2.0-beta.3",
-    "@xsai/tool": "^0.2.0-beta.3",
-    "@xsai/utils-chat": "^0.2.0-beta.3",
+    "@xsai/shared-chat": "^0.2.1",
+    "@xsai/stream-text": "^0.2.1",
+    "@xsai/tool": "^0.2.1",
+    "@xsai/utils-chat": "^0.2.1",
     "defu": "^6.1.4",
     "nanoid": "^5.1.5",
-    "xsschema": "^0.2.0-beta.3"
+    "xsschema": "^0.2.1"
   },
   "devDependencies": {
     "@fetch-mock/vitest": "^0.2.13",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^22.14.1",
-    "@xsai-ext/providers-cloud": "^0.2.0-beta.3",
+    "@types/node": "^22.15.17",
+    "@xsai-ext/providers-cloud": "^0.2.1",
     "fetch-mock": "^12.5.2",
     "json-schema": "^0.4.0",
     "remark": "^15.0.1",
-    "zod": "^3.24.3"
+    "zod": "^3.24.4"
   }
 }
