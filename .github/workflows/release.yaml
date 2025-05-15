@@ -20,39 +20,20 @@ jobs:
     name: Release
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Install Node.js 22.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          # registry-url required. Learn more at
-          # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-          registry-url: 'https://registry.npmjs.org'
-
       - uses: pnpm/action-setup@v4
-        name: Install pnpm
         with:
           run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - uses: actions/setup-node@v4
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
+          node-version: latest
+          registry-url: https://registry.npmjs.org
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install
+        run: pnpm i
 
       - name: Packages build
         run: pnpm run packages:build
