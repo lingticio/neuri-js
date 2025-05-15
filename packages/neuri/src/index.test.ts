@@ -36,7 +36,7 @@ describe('neuri', async () => {
       return await completion?.firstContent()
     })
 
-    expect(name).contains('name')
+    expect(name).contains('Neuri')
   })
 
   it('should work with handleStateless', { timeout: 100000 }, async () => {
