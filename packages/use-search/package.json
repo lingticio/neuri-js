@@ -45,7 +45,8 @@
     "stub": "unbuild --stub",
     "build": "unbuild",
     "package:publish": "pnpm publish --access public --no-git-checks",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   },
   "dependencies": {
     "@guiiai/logg": "^1.0.10",
