@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.5",
   "private": true,
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.11.0",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -16,7 +16,7 @@
   "dependencies": {
     "neuri": "workspace:^",
     "valibot": "^1.1.0",
-    "xsschema": "^0.2.1",
+    "xsschema": "^0.2.2",
     "zod": "^3.24.4"
   },
   "devDependencies": {

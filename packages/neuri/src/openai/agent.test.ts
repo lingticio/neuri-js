@@ -44,7 +44,7 @@ describe('composeAgent', async () => {
                     refusal: null,
                     tool_calls: [
                       {
-                        // index: 0,
+                        index: 0,
                         id: `call_${nanoid()}`,
                         type: 'function',
                         function: {
@@ -53,7 +53,7 @@ describe('composeAgent', async () => {
                         },
                       },
                       {
-                        // index: 1,
+                        index: 1,
                         id: `call_${nanoid()}`,
                         type: 'function',
                         function: {

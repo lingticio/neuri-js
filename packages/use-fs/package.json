@@ -59,8 +59,5 @@
     "neuri": "workspace:*",
     "ofetch": "^1.4.1",
     "zod": "^3.24.4"
-  },
-  "devDependencies": {
-    "@types/node": "^22.15.17"
   }
 }
