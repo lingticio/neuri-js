@@ -55,7 +55,7 @@
   "dependencies": {
     "@guiiai/logg": "^1.0.10",
     "@xsai/generate-text": "^0.2.2",
-    "@xsai/shared": "0.2.0",
+    "@xsai/shared": "0.2.2",
     "@xsai/shared-chat": "^0.2.2",
     "@xsai/stream-text": "^0.2.2",
     "@xsai/tool": "^0.2.2",
