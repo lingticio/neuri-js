@@ -54,23 +54,23 @@
   },
   "dependencies": {
     "@guiiai/logg": "^1.0.10",
-    "@xsai/generate-text": "^0.2.2",
+    "@xsai/generate-text": "^0.3.0-beta.3",
     "@xsai/shared": "0.2.2",
-    "@xsai/shared-chat": "^0.2.2",
-    "@xsai/stream-text": "^0.2.2",
-    "@xsai/tool": "^0.2.2",
-    "@xsai/utils-chat": "^0.2.2",
+    "@xsai/shared-chat": "^0.3.0-beta.3",
+    "@xsai/stream-text": "^0.3.0-beta.3",
+    "@xsai/tool": "^0.3.0-beta.3",
+    "@xsai/utils-chat": "^0.3.0-beta.3",
     "defu": "^6.1.4",
     "nanoid": "^5.1.5",
-    "xsschema": "^0.2.2"
+    "xsschema": "^0.3.0-beta.3"
   },
   "devDependencies": {
     "@fetch-mock/vitest": "^0.2.13",
     "@types/mdast": "^4.0.4",
-    "@xsai-ext/providers-cloud": "^0.2.2",
+    "@xsai-ext/providers-cloud": "^0.3.0-beta.3",
     "fetch-mock": "^12.5.2",
     "json-schema": "^0.4.0",
     "remark": "^15.0.1",
-    "zod": "^3.24.4"
+    "zod": "^3.25.51"
   }
 }
