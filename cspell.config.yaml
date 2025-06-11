@@ -4,6 +4,7 @@ dictionaryDefinitions: []
 dictionaries: []
 words:
   - antfu
+  - attw
   - bumpp
   - changelogithub
   - Cmpl
@@ -26,6 +27,7 @@ words:
   - shikijs
   - Streamable
   - testdata
+  - tsdown
   - typeschema
   - valibot
   - vitepress

@@ -36,10 +36,10 @@ jobs:
         run: pnpm i
 
       - name: Packages build
-        run: pnpm run packages:build
+        run: pnpm run build:packages
 
       - name: Packages publish
-        run: pnpm run packages:publish
+        run: pnpm run publish:packages
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 

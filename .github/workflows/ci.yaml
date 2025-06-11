@@ -78,5 +78,5 @@ jobs:
 
       - name: Build packages
         run: |
-          pnpm run packages:build
-          pnpm run packages:attw
+          pnpm run build:packages
+          pnpm run attw:packages

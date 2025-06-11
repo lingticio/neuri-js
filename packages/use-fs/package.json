@@ -24,20 +24,20 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs"
     },
     "./github": {
-      "types": "./dist/github/index.d.ts",
+      "types": "./dist/github/index.d.mts",
       "import": "./dist/github/index.mjs"
     },
     "./node": {
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/node/index.d.mts",
       "import": "./dist/node/index.mjs"
     }
   },
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.mts",
   "files": [
     "LICENSE",
     "README.md",
@@ -45,10 +45,10 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "unbuild --stub",
-    "stub": "unbuild --stub",
-    "build": "unbuild",
-    "package:publish": "pnpm publish --access public --no-git-checks",
+    "dev": "tsdown",
+    "stub": "tsdown",
+    "build": "tsdown",
+    "publish:package": "pnpm publish --access public --no-git-checks",
     "typecheck": "tsc --noEmit",
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   },

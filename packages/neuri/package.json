@@ -24,20 +24,20 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs"
     },
     "./openai": {
-      "types": "./dist/openai/index.d.ts",
+      "types": "./dist/openai/index.d.mts",
       "import": "./dist/openai/index.mjs"
     },
     "./test": {
-      "types": "./dist/test.d.ts",
+      "types": "./dist/test.d.mts",
       "import": "./dist/test.mjs"
     }
   },
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.mts",
   "files": [
     "LICENSE",
     "README.md",
@@ -45,23 +45,19 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "unbuild --stub",
-    "stub": "unbuild --stub",
-    "build": "unbuild",
-    "package:publish": "pnpm publish --access public --no-git-checks",
+    "dev": "tsdown",
+    "stub": "tsdown",
+    "build": "tsdown",
+    "publish:package": "pnpm publish --access public --no-git-checks",
     "typecheck": "tsc --noEmit",
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.0.10",
     "@xsai/generate-text": "^0.3.0-beta.3",
     "@xsai/shared": "0.2.2",
     "@xsai/shared-chat": "^0.3.0-beta.3",
     "@xsai/stream-text": "^0.3.0-beta.3",
-    "@xsai/tool": "^0.3.0-beta.3",
     "@xsai/utils-chat": "^0.3.0-beta.3",
-    "defu": "^6.1.4",
-    "nanoid": "^5.1.5",
     "xsschema": "^0.3.0-beta.3"
   },
   "devDependencies": {
