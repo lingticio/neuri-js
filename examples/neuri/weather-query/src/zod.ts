@@ -1,5 +1,4 @@
 import { env } from 'node:process'
-
 import {
   composeAgent,
   defineToolFunction,
@@ -8,7 +7,6 @@ import {
   toolFunction,
   user,
 } from 'neuri/openai'
-
 import * as z from 'zod'
 
 async function main() {

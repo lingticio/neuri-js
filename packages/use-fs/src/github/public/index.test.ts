@@ -1,5 +1,6 @@
 import { invoke } from 'neuri/test'
 import { describe, expect, it } from 'vitest'
+
 import { GitHubPublicFileSystem } from '.'
 
 describe('use-fs/github/public', async () => {

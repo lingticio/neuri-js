@@ -1,5 +1,6 @@
 import { env } from 'node:process'
 import { describe, expect, it } from 'vitest'
+
 import { searchGoogleByQuery } from './serpapi'
 
 describe('neuri/use-search/serpapi', () => {

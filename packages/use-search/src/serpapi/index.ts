@@ -1,5 +1,6 @@
 import { defineToolFunction, toolFunction } from 'neuri/openai'
 import { number, object, string } from 'zod'
+
 import { searchGoogleByQuery } from './serpapi'
 
 export async function SerpApi(options: { apiKey: string }) {

@@ -2,6 +2,7 @@ import type { GenerateTextOptions } from '@xsai/generate-text'
 import type { ChatCompletionsResponse, Tool } from './types'
 
 import { chat } from '@xsai/shared-chat'
+
 import { chatCompletionFromResp as chatCmplFromResp } from './completion'
 
 /**

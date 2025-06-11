@@ -1,6 +1,7 @@
-import { newTestInvokeContext } from 'neuri/test'
 import { describe, expect, it } from 'vitest'
 import { object, string } from 'zod'
+
+import { newTestInvokeContext } from '../test'
 import { defineToolFunction, toolFunction } from './tools'
 
 describe('neuri/openai', async () => {

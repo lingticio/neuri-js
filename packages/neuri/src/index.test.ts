@@ -2,6 +2,7 @@ import type { Message } from '@xsai/shared-chat'
 
 import { describe, expect, it } from 'vitest'
 import { object, string } from 'zod'
+
 import { agent, neuri } from '.'
 import { assistant, messages, system, user } from './openai'
 

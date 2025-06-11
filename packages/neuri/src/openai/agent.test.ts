@@ -1,4 +1,5 @@
 import type { ChatCompletionsResponse } from './types'
+
 import { env } from 'node:process'
 import fetchMock, { manageFetchMockGlobally } from '@fetch-mock/vitest'
 import { nanoid } from 'nanoid'

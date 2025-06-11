@@ -1,6 +1,7 @@
 import { env } from 'node:process'
 import { invoke } from 'neuri/test'
 import { describe, expect, it } from 'vitest'
+
 import { SerpApi } from '.'
 
 describe('neuri/use-search/serpapi', () => {

@@ -1,6 +1,8 @@
 import type { ChunkResult } from './stream'
+
 import { env } from 'node:process'
 import { describe, expect, it } from 'vitest'
+
 import { messages, system, user } from './messages'
 import { stream } from './stream'
 

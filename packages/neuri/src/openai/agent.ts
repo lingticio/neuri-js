@@ -1,7 +1,7 @@
 import type { CommonRequestOptions } from '@xsai/shared'
 import type { Message } from '@xsai/shared-chat'
-
 import type { ChatCompletion, DefinedTool } from './types'
+
 import { chatCompletionFromResp, resolveFirstToolCallFromCmpl, resolveToolCallsFromCmpl } from './completion'
 import { generate } from './generate'
 import { invokeFunctionWithTools } from './invoke'

@@ -7,7 +7,6 @@ import {
   toolFunction,
   user,
 } from 'neuri/openai'
-
 import * as v from 'valibot'
 
 async function main() {

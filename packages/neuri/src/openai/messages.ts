@@ -1,5 +1,6 @@
 import type { AssistantMessage, AssistantMessagePart, Message, SystemMessage, SystemMessagePart, ToolCall, ToolMessage, UserMessage, UserMessagePart } from '@xsai/shared-chat'
 import type { ResolvedToolCall } from './types'
+
 import { message } from '@xsai/utils-chat'
 
 export function tool<P = any, R = any>(message: string, toolCall: ResolvedToolCall<P, R>): ToolMessage {
