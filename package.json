@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.8",
   "private": true,
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.12.4",
   "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
   "author": {
     "name": "Lingtic.io Neuri Team",
@@ -45,7 +45,7 @@
     "@arethetypeswrong/cli": "^0.18.2",
     "@arethetypeswrong/core": "^0.18.2",
     "@types/node": "^22.15.31",
-    "@vitest/coverage-v8": "3.1.4",
+    "@vitest/coverage-v8": "3.2.4",
     "bumpp": "^10.1.1",
     "changelogithub": "^13.15.0",
     "eslint": "^9.28.0",
