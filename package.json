@@ -54,7 +54,7 @@
     "typescript": "^5.8.3",
     "unbuild": "3.5.0",
     "unplugin-unused": "^0.5.1",
-    "vite": "^6.3.5",
+    "vite": "^7.0.0",
     "vitest": "^3.2.3"
   },
   "workspaces": [
