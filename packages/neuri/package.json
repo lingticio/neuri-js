@@ -53,20 +53,20 @@
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   },
   "dependencies": {
-    "@xsai/generate-text": "^0.3.0-beta.3",
-    "@xsai/shared": "0.2.2",
-    "@xsai/shared-chat": "^0.3.0-beta.3",
-    "@xsai/stream-text": "^0.3.0-beta.3",
-    "@xsai/utils-chat": "^0.3.0-beta.3",
-    "xsschema": "^0.3.0-beta.3"
+    "@xsai/generate-text": "^0.3.1",
+    "@xsai/shared": "^0.3.1",
+    "@xsai/shared-chat": "^0.3.1",
+    "@xsai/stream-text": "^0.3.1",
+    "@xsai/utils-chat": "^0.3.1",
+    "xsschema": "^0.3.1"
   },
   "devDependencies": {
-    "@fetch-mock/vitest": "^0.2.13",
+    "@fetch-mock/vitest": "^0.2.14",
     "@types/mdast": "^4.0.4",
-    "@xsai-ext/providers-cloud": "^0.3.0-beta.3",
-    "fetch-mock": "^12.5.2",
+    "@xsai-ext/providers-cloud": "^0.3.1",
+    "fetch-mock": "^12.5.3",
     "json-schema": "^0.4.0",
     "remark": "^15.0.1",
-    "zod": "^3.25.61"
+    "zod": "^3.25.76"
   }
 }
