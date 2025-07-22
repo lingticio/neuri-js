@@ -103,11 +103,10 @@ function newNeuriBuilderBuild(cb: () => NeuriBuilderInternal): (options: { provi
   return async (options): Promise<Neuri> => {
     const neuriBuilder = cb()
 
-    const agents = await Promise.all(neuriBuilder.promiseAgents)
-
-    for (const agent of agents) {
+    for (const agent of await Promise.all(neuriBuilder.promiseAgents)) {
       neuriBuilder.agents[agent.name] = agent
     }
+    const agents = Object.values(neuriBuilder.agents)
 
     const neuriInternal: NeuriInternal = {
       agents,
