@@ -18,8 +18,8 @@ export function composeAgent(options: {
       max--
 
       const res = await generate({
-        apiKey: options.provider.apiKey,
-        baseURL: options.provider.baseURL ?? `https://api.openai.com/v1/`,
+        ...options.provider,
+        baseURL: options.provider.baseURL ?? `https://api.openai.com/v1/`, // Just for backward compatibility
         model: callOptions.model,
         messages,
         tools: tools(options.tools),
