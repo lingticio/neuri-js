@@ -129,7 +129,7 @@ importers:
         version: 0.3.1
       xsschema:
         specifier: ^0.3.1
-        version: 0.3.1(zod-to-json-schema@3.24.6(zod@3.25.76))(zod@3.25.76)
+        version: 0.3.1(zod-to-json-schema@3.24.6(zod@4.0.14))(zod@4.0.14)
     devDependencies:
       '@fetch-mock/vitest':
         specifier: ^0.2.14
@@ -150,8 +150,8 @@ importers:
         specifier: ^15.0.1
         version: 15.0.1
       zod:
-        specifier: ^3.25.76
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.14
 
   packages/use-fs:
     dependencies:
@@ -174,8 +174,8 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
       zod:
-        specifier: ^3.25.76
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.14
 
   packages/use-search:
     dependencies:
@@ -201,11 +201,11 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       zod:
-        specifier: ^3.25.76
-        version: 3.25.76
+        specifier: ^4.0.0
+        version: 4.0.14
       zod-to-json-schema:
         specifier: ^3.24.6
-        version: 3.24.6(zod@3.25.76)
+        version: 3.24.6(zod@4.0.14)
 
 packages:
 
@@ -4372,6 +4372,9 @@ packages:
 
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+  zod@4.0.14:
+    resolution: {integrity: sha512-nGFJTnJN6cM2v9kXL+SOBq3AtjQby3Mv5ySGFof5UGRHrRioSJ5iG680cYNjE/yWk671nROcpPj4hAS8nyLhSw==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -8882,6 +8885,11 @@ snapshots:
       zod: 3.25.76
       zod-to-json-schema: 3.24.6(zod@3.25.76)
 
+  xsschema@0.3.1(zod-to-json-schema@3.24.6(zod@4.0.14))(zod@4.0.14):
+    optionalDependencies:
+      zod: 4.0.14
+      zod-to-json-schema: 3.24.6(zod@4.0.14)
+
   y18n@5.0.8: {}
 
   yallist@4.0.0: {}
@@ -8912,7 +8920,14 @@ snapshots:
   zod-to-json-schema@3.24.6(zod@3.25.76):
     dependencies:
       zod: 3.25.76
+    optional: true
+
+  zod-to-json-schema@3.24.6(zod@4.0.14):
+    dependencies:
+      zod: 4.0.14
 
   zod@3.25.76: {}
+
+  zod@4.0.14: {}
 
   zwitch@2.0.4: {}
