@@ -24,7 +24,8 @@ export function resolveFirstTextContentFromChatCmpl(chatCompletion?: ChatComplet
     return ''
 
   const message = chatCompletion.choices[0].message
-  return message.content ?? ''
+  // TODO: we need a context to text util function for this
+  return (message.content as string) ?? ''
 }
 
 export function resolveToolCallsFromCmpl(chatCompletion?: ChatCompletionsResponse): ToolCall[][] {

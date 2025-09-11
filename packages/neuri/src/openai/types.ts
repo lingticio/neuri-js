@@ -1,10 +1,10 @@
 import type { CommonRequestOptions } from '@xsai/shared'
-import type { AssistantMessageResponse, FinishReason, Message, ToolCall, Tool as UpstreamTool, Usage } from '@xsai/shared-chat'
+import type { AssistantMessage, FinishReason, Message, ToolCall, Tool as UpstreamTool, Usage } from '@xsai/shared-chat'
 
 export interface Choice {
   finish_reason: FinishReason
   index: number
-  message: AssistantMessageResponse
+  message: AssistantMessage
 }
 
 export interface ChatCompletionsResponse {

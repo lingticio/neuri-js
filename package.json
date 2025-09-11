@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.2.1",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.1",
   "description": "Simple and easy agent framework, include various of structured data manipulation, agent and function compositing, code editing, fs and more!",
   "author": {
     "name": "Lingtic.io Neuri Team",
@@ -40,21 +40,21 @@
     "changelogithub": "changelogithub"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.0.0",
+    "@antfu/eslint-config": "^5.3.0",
     "@antfu/ni": "^25.0.0",
     "@arethetypeswrong/cli": "^0.18.2",
     "@arethetypeswrong/core": "^0.18.2",
-    "@types/node": "^22.16.4",
+    "@types/node": "^24.3.1",
     "@vitest/coverage-v8": "3.2.4",
-    "bumpp": "^10.2.0",
+    "bumpp": "^10.2.3",
     "changelogithub": "^13.16.0",
-    "eslint": "^9.31.0",
+    "eslint": "^9.35.0",
     "eslint-plugin-import-x": "^4.16.1",
-    "tsdown": "^0.13.0",
-    "typescript": "^5.8.3",
+    "tsdown": "^0.15.0",
+    "typescript": "^5.9.2",
     "unbuild": "3.6.0",
-    "unplugin-unused": "^0.5.1",
-    "vite": "^7.0.5",
+    "unplugin-unused": "^0.5.3",
+    "vite": "^7.1.5",
     "vitest": "^3.2.4"
   },
   "workspaces": [

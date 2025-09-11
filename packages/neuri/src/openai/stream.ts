@@ -1,8 +1,8 @@
-import type { StreamTextOptions, StreamTextChunkResult as XSAIChunkResult } from '@xsai/stream-text'
+import type { StreamTextEvent, StreamTextOptions } from '@xsai/stream-text'
 
 import { streamText } from '@xsai/stream-text'
 
-export interface ChunkResult extends XSAIChunkResult {
+export type ChunkResult = StreamTextEvent & {
   textPart: () => string
 }
 
@@ -86,7 +86,7 @@ export async function stream(params: StreamTextOptions): Promise<StreamResponse>
     })
   })
 
-  const chunkStreamHooks: PipeHook<XSAIChunkResult, ChunkResult>[] = []
+  const chunkStreamHooks: PipeHook<StreamTextEvent, ChunkResult>[] = []
   const accumulatedChunks = new Promise<ChunkResult[]>((resolve) => {
     const chunks: ChunkResult[] = []
     chunkStreamHooks.push({
@@ -105,16 +105,19 @@ export async function stream(params: StreamTextOptions): Promise<StreamResponse>
       textStreamHooks,
     ),
     chunkStream: () => asyncIteratorFromReadableStream(
-      res.chunkStream,
-      async (value: XSAIChunkResult): Promise<ChunkResult> => {
+      res.fullStream,
+      async (value: StreamTextEvent): Promise<ChunkResult> => {
         return {
           ...value,
           textPart: () => {
-            if (value.choices.length === 0) {
-              return ''
+            switch (value.type) {
+              case 'text-delta':
+                return value.text
+              case 'reasoning-delta':
+                return value.text
+              default:
+                return ''
             }
-
-            return value.choices[0].delta.content || ''
           },
         }
       },

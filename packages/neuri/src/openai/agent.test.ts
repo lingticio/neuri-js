@@ -42,10 +42,8 @@ describe('composeAgent', async () => {
                   message: {
                     role: 'assistant',
                     content: '',
-                    refusal: null,
                     tool_calls: [
                       {
-                        index: 0,
                         id: `call_${nanoid()}`,
                         type: 'function',
                         function: {
@@ -54,7 +52,6 @@ describe('composeAgent', async () => {
                         },
                       },
                       {
-                        index: 1,
                         id: `call_${nanoid()}`,
                         type: 'function',
                         function: {
@@ -90,7 +87,6 @@ describe('composeAgent', async () => {
                 message: {
                   role: 'assistant',
                   content: 'The weather is sunny and the temperature is 20.',
-                  refusal: null,
                 },
               },
             ],
