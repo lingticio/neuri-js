@@ -28,7 +28,7 @@ jobs:
           echo "${{ github.event.number }}" > pr_num
 
       - name: Upload PR artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: pr-num
           path: ./pr_num
@@ -58,7 +58,7 @@ jobs:
         run: pnpm build:docs
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docs-${{ matrix.os }}-build
           path: docs/.vitepress/dist
