@@ -55,7 +55,7 @@
   "dependencies": {
     "@xsai/generate-text": "^0.4.0-beta.3",
     "@xsai/shared": "^0.4.0-beta.3",
-    "@xsai/shared-chat": "^0.4.0-beta.3",
+    "@xsai/shared-chat": "^0.4.0-beta.10",
     "@xsai/stream-text": "^0.4.0-beta.3",
     "@xsai/utils-chat": "^0.4.0-beta.3",
     "xsschema": "^0.4.0-beta.3"
