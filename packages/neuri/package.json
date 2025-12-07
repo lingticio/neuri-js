@@ -63,7 +63,7 @@
   "devDependencies": {
     "@fetch-mock/vitest": "^0.2.15",
     "@types/mdast": "^4.0.4",
-    "@xsai-ext/providers-cloud": "^0.4.0-beta.3",
+    "@xsai-ext/providers-cloud": "^0.4.0-beta.10",
     "fetch-mock": "^12.5.4",
     "json-schema": "^0.4.0",
     "nanoid": "^5.1.5",
