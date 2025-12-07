@@ -138,8 +138,8 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       '@xsai-ext/providers-cloud':
-        specifier: ^0.4.0-beta.3
-        version: 0.4.0-beta.5
+        specifier: ^0.4.0-beta.10
+        version: 0.4.0-beta.10
       fetch-mock:
         specifier: ^12.5.4
         version: 12.6.0
@@ -2095,17 +2095,20 @@ packages:
   '@vueuse/shared@12.5.0':
     resolution: {integrity: sha512-vMpcL1lStUU6O+kdj6YdHDixh0odjPAUM15uJ9f7MY781jcYkIwFA4iv2EfoIPO6vBmvutI1HxxAwmf0cx5ISQ==}
 
-  '@xsai-ext/providers-cloud@0.4.0-beta.5':
-    resolution: {integrity: sha512-8CV+F62W+GLMseqgX44y9alcw7FSYUwgRnKHdoHUV/w+GuZp5NS73AkFzYm9+98FzNr/8vic6MjhTaBnJyReFg==}
+  '@xsai-ext/providers-cloud@0.4.0-beta.10':
+    resolution: {integrity: sha512-Y9jz2PjEsSQxJC4NpVDMzGA2VJoZ1Nkww9N0Hl2qtcynjwzdFeeyuSRXnTxcBjb0K3RagmiLXTx1VftdBKgCJw==}
 
-  '@xsai-ext/shared-providers@0.4.0-beta.5':
-    resolution: {integrity: sha512-FntXIaqEDjNX2kkiqyQEJtJSsfVoVBdVtx5nRVQhIZbPbYy4tZUgIKolzPuzt4JllEmpxcwSR6smKISpuw886A==}
+  '@xsai-ext/shared-providers@0.4.0-beta.10':
+    resolution: {integrity: sha512-L5w0RO3lBi+ZdlOMXzUSSEBGmHrdZHNBaYUYm0UYIAZ8IRHWcv/YETd6DdlF6idhHSRJfxMNNO3EerL+EWQknw==}
 
   '@xsai/generate-text@0.4.0-beta.5':
     resolution: {integrity: sha512-3kUROwRy6cEItBgK9xfSaiUChIwSJwFlcOkVM/yUKr9Ov4E42dVEJvN3gbsDJdQ2BA2qH6Z2Xhl6bTtzLh/Hhg==}
 
   '@xsai/shared-chat@0.4.0-beta.5':
     resolution: {integrity: sha512-BWnGwPpUy4wH+EjbCN4SAwWcZVbZUYN/vbYelbr+GYlunqk/YuTJIDekUyEnxm9MNgADfA5wukakvqr2g2s0wA==}
+
+  '@xsai/shared@0.4.0-beta.10':
+    resolution: {integrity: sha512-PWqktpzSQGQwqn4JsUpAmkNrP48/uL4pjNR9sjLugmw71hHpXcAeppGKLokiPusl2BnDvAW2kDSJRzNPBHSejw==}
 
   '@xsai/shared@0.4.0-beta.5':
     resolution: {integrity: sha512-6oLyXkN8WoXoufNuIVFMrJyhJEEkWnGEi44v5SBd2fnBU7Wx4nT9ZRJT0A+Yfvx2pYWYqgHUQ9KVnG+DFT3VxQ==}
@@ -6421,14 +6424,14 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@xsai-ext/providers-cloud@0.4.0-beta.5':
+  '@xsai-ext/providers-cloud@0.4.0-beta.10':
     dependencies:
-      '@xsai-ext/shared-providers': 0.4.0-beta.5
-      '@xsai/shared': 0.4.0-beta.5
+      '@xsai-ext/shared-providers': 0.4.0-beta.10
+      '@xsai/shared': 0.4.0-beta.10
 
-  '@xsai-ext/shared-providers@0.4.0-beta.5':
+  '@xsai-ext/shared-providers@0.4.0-beta.10':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.5
+      '@xsai/shared': 0.4.0-beta.10
 
   '@xsai/generate-text@0.4.0-beta.5':
     dependencies:
@@ -6438,6 +6441,8 @@ snapshots:
   '@xsai/shared-chat@0.4.0-beta.5':
     dependencies:
       '@xsai/shared': 0.4.0-beta.5
+
+  '@xsai/shared@0.4.0-beta.10': {}
 
   '@xsai/shared@0.4.0-beta.5': {}
 
