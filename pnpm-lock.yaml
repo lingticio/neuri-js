@@ -7,7 +7,7 @@ settings:
 catalogs:
   default:
     '@antfu/eslint-config':
-      specifier: ^6.0.0
+      specifier: ^6.5.1
       version: 6.5.1
     '@antfu/ni':
       specifier: ^28.0.0
@@ -22,19 +22,19 @@ catalogs:
       specifier: ^0.2.18
       version: 0.2.18
     '@guiiai/logg':
-      specifier: ^1.1.0
+      specifier: ^1.2.6
       version: 1.2.6
     '@types/mdast':
       specifier: ^4.0.4
       version: 4.0.4
     '@types/node':
-      specifier: ^24.3.1
+      specifier: ^24.10.2
       version: 24.10.2
     '@unocss/eslint-config':
-      specifier: ^66.5.1
+      specifier: ^66.5.10
       version: 66.5.10
     '@unocss/eslint-plugin':
-      specifier: ^66.5.1
+      specifier: ^66.5.10
       version: 66.5.10
     '@vitest/coverage-v8':
       specifier: 4.0.15
@@ -58,7 +58,7 @@ catalogs:
       specifier: ^0.4.0-beta.3
       version: 0.4.0-beta.10
     bumpp:
-      specifier: ^10.2.3
+      specifier: ^10.3.2
       version: 10.3.2
     changelogithub:
       specifier: ^14.0.0
@@ -67,16 +67,16 @@ catalogs:
       specifier: ^6.1.4
       version: 6.1.4
     eslint:
-      specifier: ^9.35.0
+      specifier: ^9.39.1
       version: 9.39.1
     eslint-plugin-import-x:
       specifier: ^4.16.1
       version: 4.16.1
     execa:
-      specifier: ^9.6.0
-      version: 9.6.0
+      specifier: ^9.6.1
+      version: 9.6.1
     fetch-mock:
-      specifier: ^12.5.4
+      specifier: ^12.6.0
       version: 12.6.0
     ignore:
       specifier: ^7.0.5
@@ -85,10 +85,10 @@ catalogs:
       specifier: ^0.4.0
       version: 0.4.0
     nanoid:
-      specifier: ^5.1.5
+      specifier: ^5.1.6
       version: 5.1.6
     ofetch:
-      specifier: ^1.4.1
+      specifier: ^1.5.1
       version: 1.5.1
     remark:
       specifier: ^15.0.1
@@ -100,22 +100,25 @@ catalogs:
       specifier: ^0.17.0
       version: 0.17.2
     tsx:
-      specifier: ^4.20.5
+      specifier: ^4.21.0
       version: 4.21.0
     typescript:
-      specifier: ^5.9.2
+      specifier: ^5.9.3
       version: 5.9.3
     unbuild:
       specifier: 3.6.1
       version: 3.6.1
     unocss:
-      specifier: ^66.5.1
+      specifier: ^66.5.10
       version: 66.5.10
     unplugin-unused:
       specifier: ^0.5.6
       version: 0.5.6
+    valibot:
+      specifier: ^1.2.0
+      version: 1.2.0
     vite:
-      specifier: ^7.1.5
+      specifier: ^7.2.7
       version: 7.2.7
     vite-plugin-inspect:
       specifier: ^11.3.3
@@ -124,20 +127,20 @@ catalogs:
       specifier: ^1.6.4
       version: 1.6.4
     vitest:
-      specifier: ^4.0.0
+      specifier: ^4.0.15
       version: 4.0.15
     vue:
-      specifier: ^3.5.21
+      specifier: ^3.5.25
       version: 3.5.25
     xsschema:
       specifier: ^0.4.0-beta.10
       version: 0.4.0-beta.10
     zod:
-      specifier: ^4.1.7
+      specifier: ^4.1.13
       version: 4.1.13
     zod-to-json-schema:
-      specifier: ^3.24.6
-      version: 3.24.6
+      specifier: ^3.25.0
+      version: 3.25.0
 
 importers:
 
@@ -236,7 +239,7 @@ importers:
         version: 1.2.0(typescript@5.9.3)
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.0-beta.10(zod-to-json-schema@3.24.6(zod@4.1.13))(zod@4.1.13)
+        version: 0.4.0-beta.10(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13)
       zod:
         specifier: 'catalog:'
         version: 4.1.13
@@ -264,7 +267,7 @@ importers:
         version: 0.4.0-beta.10
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.0-beta.10(zod-to-json-schema@3.24.6(zod@4.1.13))(zod@4.1.13)
+        version: 0.4.0-beta.10(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13)
     devDependencies:
       '@fetch-mock/vitest':
         specifier: 'catalog:'
@@ -301,7 +304,7 @@ importers:
         version: 6.1.4
       execa:
         specifier: 'catalog:'
-        version: 9.6.0
+        version: 9.6.1
       ignore:
         specifier: 'catalog:'
         version: 7.0.5
@@ -325,7 +328,7 @@ importers:
         version: 6.1.4
       execa:
         specifier: 'catalog:'
-        version: 9.6.0
+        version: 9.6.1
       ignore:
         specifier: 'catalog:'
         version: 7.0.5
@@ -343,7 +346,7 @@ importers:
         version: 4.1.13
       zod-to-json-schema:
         specifier: 'catalog:'
-        version: 3.24.6(zod@4.1.13)
+        version: 3.25.0(zod@4.1.13)
 
 packages:
 
@@ -2680,6 +2683,10 @@ packages:
     resolution: {integrity: sha512-jpWzZ1ZhwUmeWRhS7Qv3mhpOhLfwI+uAX4e5fOcXqwMR7EcJ0pj2kV1CVzHVMX/LphnKWD3LObjZCoJ71lKpHw==}
     engines: {node: ^18.19.0 || >=20.5.0}
 
+  execa@9.6.1:
+    resolution: {integrity: sha512-9Be3ZoN4LmYR90tUoVu2te2BsbzHfhJyfEiAVfz7N5/zv+jduIfLrV2xdQXOHbaD6KgpGdO9PRPM1Y4Q9QkPkA==}
+    engines: {node: ^18.19.0 || >=20.5.0}
+
   expect-type@1.3.0:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
@@ -4469,10 +4476,10 @@ packages:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
 
-  zod-to-json-schema@3.24.6:
-    resolution: {integrity: sha512-h/z3PKvcTcTetyjl1fkj79MHNEjm+HpD6NXheWjzOekY7kV+lwDYnHw+ivHkijnCSMz1yJaWBD9vu/Fcmk+vEg==}
+  zod-to-json-schema@3.25.0:
+    resolution: {integrity: sha512-HvWtU2UG41LALjajJrML6uQejQhNJx+JBO9IflpSja4R03iNWfKXrj6W2h7ljuLyc1nKS+9yDyL/9tD1U/yBnQ==}
     peerDependencies:
-      zod: ^3.24.1
+      zod: ^3.25 || ^4
 
   zod@4.1.13:
     resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
@@ -6907,6 +6914,21 @@ snapshots:
       strip-final-newline: 4.0.0
       yoctocolors: 2.1.1
 
+  execa@9.6.1:
+    dependencies:
+      '@sindresorhus/merge-streams': 4.0.0
+      cross-spawn: 7.0.6
+      figures: 6.1.0
+      get-stream: 9.0.1
+      human-signals: 8.0.1
+      is-plain-obj: 4.1.0
+      is-stream: 4.0.1
+      npm-run-path: 6.0.0
+      pretty-ms: 9.2.0
+      signal-exit: 4.1.0
+      strip-final-newline: 4.0.0
+      yoctocolors: 2.1.1
+
   expect-type@1.3.0: {}
 
   exsolve@1.0.8: {}
@@ -8860,10 +8882,10 @@ snapshots:
 
   xml-name-validator@4.0.0: {}
 
-  xsschema@0.4.0-beta.10(zod-to-json-schema@3.24.6(zod@4.1.13))(zod@4.1.13):
+  xsschema@0.4.0-beta.10(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13):
     optionalDependencies:
       zod: 4.1.13
-      zod-to-json-schema: 3.24.6(zod@4.1.13)
+      zod-to-json-schema: 3.25.0(zod@4.1.13)
 
   y18n@5.0.8: {}
 
@@ -8892,7 +8914,7 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod-to-json-schema@3.24.6(zod@4.1.13):
+  zod-to-json-schema@3.25.0(zod@4.1.13):
     dependencies:
       zod: 4.1.13
 
