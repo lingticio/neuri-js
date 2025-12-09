@@ -112,7 +112,7 @@ catalogs:
       specifier: ^66.5.1
       version: 66.5.10
     unplugin-unused:
-      specifier: ^0.5.3
+      specifier: ^0.5.6
       version: 0.5.6
     valibot:
       specifier: ^1.1.0
