@@ -53,21 +53,21 @@
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   },
   "dependencies": {
-    "@xsai/generate-text": "^0.4.0-beta.3",
-    "@xsai/shared": "^0.4.0-beta.3",
-    "@xsai/shared-chat": "^0.4.0-beta.10",
-    "@xsai/stream-text": "^0.4.0-beta.3",
-    "@xsai/utils-chat": "^0.4.0-beta.3",
-    "xsschema": "^0.4.0-beta.10"
+    "@xsai/generate-text": "catalog:",
+    "@xsai/shared": "catalog:",
+    "@xsai/shared-chat": "catalog:",
+    "@xsai/stream-text": "catalog:",
+    "@xsai/utils-chat": "catalog:",
+    "xsschema": "catalog:"
   },
   "devDependencies": {
-    "@fetch-mock/vitest": "^0.2.15",
-    "@types/mdast": "^4.0.4",
-    "@xsai-ext/providers-cloud": "^0.4.0-beta.10",
-    "fetch-mock": "^12.5.4",
-    "json-schema": "^0.4.0",
-    "nanoid": "^5.1.5",
-    "remark": "^15.0.1",
-    "zod": "^4.1.7"
+    "@fetch-mock/vitest": "catalog:",
+    "@types/mdast": "catalog:",
+    "@xsai-ext/providers-cloud": "catalog:",
+    "fetch-mock": "catalog:",
+    "json-schema": "catalog:",
+    "nanoid": "catalog:",
+    "remark": "catalog:",
+    "zod": "catalog:"
   }
 }

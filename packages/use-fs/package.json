@@ -53,12 +53,12 @@
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   },
   "dependencies": {
-    "@guiiai/logg": "^1.1.0",
-    "defu": "^6.1.4",
-    "execa": "^9.6.0",
-    "ignore": "^7.0.5",
+    "@guiiai/logg": "catalog:",
+    "defu": "catalog:",
+    "execa": "catalog:",
+    "ignore": "catalog:",
     "neuri": "workspace:*",
-    "ofetch": "^1.4.1",
-    "zod": "^4.1.7"
+    "ofetch": "catalog:",
+    "zod": "catalog:"
   }
 }

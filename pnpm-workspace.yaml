@@ -7,3 +7,49 @@ packages:
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
+catalog:
+  '@antfu/eslint-config': ^6.0.0
+  '@antfu/ni': ^27.0.0
+  '@arethetypeswrong/cli': ^0.18.2
+  '@arethetypeswrong/core': ^0.18.2
+  '@fetch-mock/vitest': ^0.2.15
+  '@guiiai/logg': ^1.1.0
+  '@types/mdast': ^4.0.4
+  '@types/node': ^24.3.1
+  '@unocss/eslint-config': ^66.5.1
+  '@unocss/eslint-plugin': ^66.5.1
+  '@vitest/coverage-v8': 4.0.15
+  '@xsai-ext/providers-cloud': ^0.4.0-beta.10
+  '@xsai/generate-text': ^0.4.0-beta.3
+  '@xsai/shared': ^0.4.0-beta.3
+  '@xsai/shared-chat': ^0.4.0-beta.10
+  '@xsai/stream-text': ^0.4.0-beta.3
+  '@xsai/utils-chat': ^0.4.0-beta.3
+  bumpp: ^10.2.3
+  changelogithub: ^14.0.0
+  defu: ^6.1.4
+  eslint: ^9.35.0
+  eslint-plugin-import-x: ^4.16.1
+  execa: ^9.6.0
+  fetch-mock: ^12.5.4
+  ignore: ^7.0.5
+  json-schema: ^0.4.0
+  nanoid: ^5.1.5
+  ofetch: ^1.4.1
+  remark: ^15.0.1
+  serpapi: ^2.2.1
+  tsdown: ^0.17.0
+  tsx: ^4.20.5
+  typescript: ^5.9.2
+  unbuild: 3.6.1
+  unocss: ^66.5.1
+  unplugin-unused: ^0.5.3
+  valibot: ^1.1.0
+  vite: ^7.1.5
+  vite-plugin-inspect: ^11.3.3
+  vitepress: ^1.6.4
+  vitest: ^4.0.0
+  vue: ^3.5.21
+  xsschema: ^0.4.0-beta.10
+  zod: ^4.1.7
+  zod-to-json-schema: ^3.24.6

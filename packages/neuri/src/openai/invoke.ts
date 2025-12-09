@@ -14,7 +14,7 @@ export function resolvedToolCall<P = any, R = any>(toolCall: ToolCall | null | u
   return {
     tool: foundTool.tool,
     toolCall,
-    arguments: JSON.parse(toolCall.function.arguments),
+    arguments: JSON.parse(toolCall.function.arguments || '{}'),
     provider: foundTool.provider,
     func: foundTool.func,
     hooks: foundTool.hooks,

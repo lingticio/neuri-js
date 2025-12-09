@@ -15,11 +15,11 @@
   },
   "dependencies": {
     "neuri": "workspace:^",
-    "valibot": "^1.1.0",
-    "xsschema": "^0.4.0-beta.3",
-    "zod": "^4.1.7"
+    "valibot": "catalog:",
+    "xsschema": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "tsx": "^4.20.5"
+    "tsx": "catalog:"
   }
 }

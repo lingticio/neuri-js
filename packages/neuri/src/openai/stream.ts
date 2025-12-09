@@ -1,3 +1,4 @@
+import type { WithUnknown } from '@xsai/shared'
 import type { StreamTextEvent, StreamTextOptions } from '@xsai/stream-text'
 
 import { streamText } from '@xsai/stream-text'
@@ -74,7 +75,7 @@ async function* asyncIteratorFromReadableStream<T, F = Uint8Array>(res: Readable
  * @param params - The parameters to stream the completion response.
  * @returns The completion response stream.
  */
-export async function stream(params: StreamTextOptions): Promise<StreamResponse> {
+export async function stream(params: WithUnknown<StreamTextOptions>): Promise<StreamResponse> {
   const res = await streamText(params)
 
   const textStreamHooks: PipeHook<string, string>[] = []
