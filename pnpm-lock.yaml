@@ -49,8 +49,8 @@ catalogs:
       specifier: ^0.4.0-beta.10
       version: 0.4.0-beta.10
     '@xsai/shared-chat':
-      specifier: ^0.4.0-beta.10
-      version: 0.4.0-beta.10
+      specifier: ^0.4.0-beta.11
+      version: 0.4.0-beta.11
     '@xsai/stream-text':
       specifier: ^0.4.0-beta.10
       version: 0.4.0-beta.10
@@ -258,7 +258,7 @@ importers:
         version: 0.4.0-beta.10
       '@xsai/shared-chat':
         specifier: 'catalog:'
-        version: 0.4.0-beta.10
+        version: 0.4.0-beta.11
       '@xsai/stream-text':
         specifier: 'catalog:'
         version: 0.4.0-beta.10
@@ -1939,11 +1939,14 @@ packages:
   '@xsai/generate-text@0.4.0-beta.10':
     resolution: {integrity: sha512-NWZQPCfsSFSU11l4iun6KYQZtZoOtRGP7s08Ug81tKVM+beLYhJWAgJUCaKzlV8aTcmRrljaIHUedJ/XwTg4yg==}
 
-  '@xsai/shared-chat@0.4.0-beta.10':
-    resolution: {integrity: sha512-M/Y7QeMDKL2O8UZTr7IEPlI4kt232BDKGEQDyp8ZqRztwdw24EbuuPO8DY8VGy36qR8niLUcHil9nkJInjzEfg==}
+  '@xsai/shared-chat@0.4.0-beta.11':
+    resolution: {integrity: sha512-fadumU2kEyE7Fl1rGEGsNiqYsBuksYdi6ZmVDjy1GK+5uxi4EfeEgQCP4IqmveWvcu7ecBNpeXOKucJZmAul9Q==}
 
   '@xsai/shared@0.4.0-beta.10':
     resolution: {integrity: sha512-PWqktpzSQGQwqn4JsUpAmkNrP48/uL4pjNR9sjLugmw71hHpXcAeppGKLokiPusl2BnDvAW2kDSJRzNPBHSejw==}
+
+  '@xsai/shared@0.4.0-beta.11':
+    resolution: {integrity: sha512-JX1APAVPFvPuwSjkg2Yut2TyToaWxZR4RKrrh5uxWPe7I7n8q+D8S2O4zQE++0OgKLRSuaB5GjrOOso1hrthJg==}
 
   '@xsai/stream-text@0.4.0-beta.10':
     resolution: {integrity: sha512-Q4Ja/466UzOoDebdNKN749ZrtAXdzO8hHGTkC6ymnJU+E1EWXTFXFBhxFDOmHAU2vHAQOT7iMqtqup8c0ybB2Q==}
@@ -4080,6 +4083,7 @@ packages:
   tsdown@0.17.4:
     resolution: {integrity: sha512-z+kNuv1rwM1POQIufDUVrdNc/uGy0ueRVafCyDH39IdHxin4JXgB8DNGSPoqdIpcOpqUoRbNreK8NxENFmlhKw==}
     engines: {node: '>=20.19.0'}
+    deprecated: Including an unexpected breaking change (copy behavior)
     hasBin: true
     peerDependencies:
       '@arethetypeswrong/core': ^0.18.1
@@ -5965,22 +5969,24 @@ snapshots:
   '@xsai/generate-text@0.4.0-beta.10':
     dependencies:
       '@xsai/shared': 0.4.0-beta.10
-      '@xsai/shared-chat': 0.4.0-beta.10
+      '@xsai/shared-chat': 0.4.0-beta.11
 
-  '@xsai/shared-chat@0.4.0-beta.10':
+  '@xsai/shared-chat@0.4.0-beta.11':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.10
+      '@xsai/shared': 0.4.0-beta.11
 
   '@xsai/shared@0.4.0-beta.10': {}
+
+  '@xsai/shared@0.4.0-beta.11': {}
 
   '@xsai/stream-text@0.4.0-beta.10':
     dependencies:
       '@xsai/shared': 0.4.0-beta.10
-      '@xsai/shared-chat': 0.4.0-beta.10
+      '@xsai/shared-chat': 0.4.0-beta.11
 
   '@xsai/utils-chat@0.4.0-beta.10':
     dependencies:
-      '@xsai/shared-chat': 0.4.0-beta.10
+      '@xsai/shared-chat': 0.4.0-beta.11
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
