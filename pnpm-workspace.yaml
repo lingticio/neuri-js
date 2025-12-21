@@ -21,7 +21,7 @@ catalog:
   '@vitest/coverage-v8': 4.0.16
   '@xsai-ext/providers-cloud': ^0.4.0-beta.11
   '@xsai/generate-text': ^0.4.0-beta.10
-  '@xsai/shared': ^0.4.0-beta.10
+  '@xsai/shared': ^0.4.0-beta.11
   '@xsai/shared-chat': ^0.4.0-beta.11
   '@xsai/stream-text': ^0.4.0-beta.10
   '@xsai/utils-chat': ^0.4.0-beta.10
