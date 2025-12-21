@@ -40,8 +40,8 @@ catalogs:
       specifier: 4.0.15
       version: 4.0.15
     '@xsai-ext/providers-cloud':
-      specifier: ^0.4.0-beta.10
-      version: 0.4.0-beta.10
+      specifier: ^0.4.0-beta.11
+      version: 0.4.0-beta.11
     '@xsai/generate-text':
       specifier: ^0.4.0-beta.10
       version: 0.4.0-beta.10
@@ -277,7 +277,7 @@ importers:
         version: 4.0.4
       '@xsai-ext/providers-cloud':
         specifier: 'catalog:'
-        version: 0.4.0-beta.10
+        version: 0.4.0-beta.11
       fetch-mock:
         specifier: 'catalog:'
         version: 12.6.0
@@ -1930,11 +1930,11 @@ packages:
   '@vueuse/shared@12.5.0':
     resolution: {integrity: sha512-vMpcL1lStUU6O+kdj6YdHDixh0odjPAUM15uJ9f7MY781jcYkIwFA4iv2EfoIPO6vBmvutI1HxxAwmf0cx5ISQ==}
 
-  '@xsai-ext/providers-cloud@0.4.0-beta.10':
-    resolution: {integrity: sha512-Y9jz2PjEsSQxJC4NpVDMzGA2VJoZ1Nkww9N0Hl2qtcynjwzdFeeyuSRXnTxcBjb0K3RagmiLXTx1VftdBKgCJw==}
+  '@xsai-ext/providers-cloud@0.4.0-beta.11':
+    resolution: {integrity: sha512-KGs60vWCqXTDmfdjTZWkvX+YcFM3F8ejqe7MKJR0wbIyP4eYOFXprgmjMgsUwWGf/dG1OA0HdzQTX+JZlpi3qw==}
 
-  '@xsai-ext/shared-providers@0.4.0-beta.10':
-    resolution: {integrity: sha512-L5w0RO3lBi+ZdlOMXzUSSEBGmHrdZHNBaYUYm0UYIAZ8IRHWcv/YETd6DdlF6idhHSRJfxMNNO3EerL+EWQknw==}
+  '@xsai-ext/shared-providers@0.4.0-beta.11':
+    resolution: {integrity: sha512-LbmT5jwDvGbIVcxzT10+MVkj9y2NhH1H3pP7740n9rCEH2/oPqoOcmGx67XyfqHSDQPT3WHpKY/bllmd2QxVHA==}
 
   '@xsai/generate-text@0.4.0-beta.10':
     resolution: {integrity: sha512-NWZQPCfsSFSU11l4iun6KYQZtZoOtRGP7s08Ug81tKVM+beLYhJWAgJUCaKzlV8aTcmRrljaIHUedJ/XwTg4yg==}
@@ -1944,6 +1944,9 @@ packages:
 
   '@xsai/shared@0.4.0-beta.10':
     resolution: {integrity: sha512-PWqktpzSQGQwqn4JsUpAmkNrP48/uL4pjNR9sjLugmw71hHpXcAeppGKLokiPusl2BnDvAW2kDSJRzNPBHSejw==}
+
+  '@xsai/shared@0.4.0-beta.11':
+    resolution: {integrity: sha512-JX1APAVPFvPuwSjkg2Yut2TyToaWxZR4RKrrh5uxWPe7I7n8q+D8S2O4zQE++0OgKLRSuaB5GjrOOso1hrthJg==}
 
   '@xsai/stream-text@0.4.0-beta.10':
     resolution: {integrity: sha512-Q4Ja/466UzOoDebdNKN749ZrtAXdzO8hHGTkC6ymnJU+E1EWXTFXFBhxFDOmHAU2vHAQOT7iMqtqup8c0ybB2Q==}
@@ -4080,6 +4083,7 @@ packages:
   tsdown@0.17.4:
     resolution: {integrity: sha512-z+kNuv1rwM1POQIufDUVrdNc/uGy0ueRVafCyDH39IdHxin4JXgB8DNGSPoqdIpcOpqUoRbNreK8NxENFmlhKw==}
     engines: {node: '>=20.19.0'}
+    deprecated: Including an unexpected breaking change (copy behavior)
     hasBin: true
     peerDependencies:
       '@arethetypeswrong/core': ^0.18.1
@@ -5953,14 +5957,14 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@xsai-ext/providers-cloud@0.4.0-beta.10':
+  '@xsai-ext/providers-cloud@0.4.0-beta.11':
     dependencies:
-      '@xsai-ext/shared-providers': 0.4.0-beta.10
-      '@xsai/shared': 0.4.0-beta.10
+      '@xsai-ext/shared-providers': 0.4.0-beta.11
+      '@xsai/shared': 0.4.0-beta.11
 
-  '@xsai-ext/shared-providers@0.4.0-beta.10':
+  '@xsai-ext/shared-providers@0.4.0-beta.11':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.10
+      '@xsai/shared': 0.4.0-beta.11
 
   '@xsai/generate-text@0.4.0-beta.10':
     dependencies:
@@ -5972,6 +5976,8 @@ snapshots:
       '@xsai/shared': 0.4.0-beta.10
 
   '@xsai/shared@0.4.0-beta.10': {}
+
+  '@xsai/shared@0.4.0-beta.11': {}
 
   '@xsai/stream-text@0.4.0-beta.10':
     dependencies:
