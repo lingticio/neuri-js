@@ -46,8 +46,8 @@ catalogs:
       specifier: ^0.4.0-beta.10
       version: 0.4.0-beta.10
     '@xsai/shared':
-      specifier: ^0.4.0-beta.10
-      version: 0.4.0-beta.10
+      specifier: ^0.4.0-beta.11
+      version: 0.4.0-beta.11
     '@xsai/shared-chat':
       specifier: ^0.4.0-beta.11
       version: 0.4.0-beta.11
@@ -255,7 +255,7 @@ importers:
         version: 0.4.0-beta.10
       '@xsai/shared':
         specifier: 'catalog:'
-        version: 0.4.0-beta.10
+        version: 0.4.0-beta.11
       '@xsai/shared-chat':
         specifier: 'catalog:'
         version: 0.4.0-beta.11
@@ -1947,9 +1947,6 @@ packages:
 
   '@xsai/shared-chat@0.4.0-beta.11':
     resolution: {integrity: sha512-fadumU2kEyE7Fl1rGEGsNiqYsBuksYdi6ZmVDjy1GK+5uxi4EfeEgQCP4IqmveWvcu7ecBNpeXOKucJZmAul9Q==}
-
-  '@xsai/shared@0.4.0-beta.10':
-    resolution: {integrity: sha512-PWqktpzSQGQwqn4JsUpAmkNrP48/uL4pjNR9sjLugmw71hHpXcAeppGKLokiPusl2BnDvAW2kDSJRzNPBHSejw==}
 
   '@xsai/shared@0.4.0-beta.11':
     resolution: {integrity: sha512-JX1APAVPFvPuwSjkg2Yut2TyToaWxZR4RKrrh5uxWPe7I7n8q+D8S2O4zQE++0OgKLRSuaB5GjrOOso1hrthJg==}
@@ -5983,20 +5980,18 @@ snapshots:
 
   '@xsai/generate-text@0.4.0-beta.10':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.10
+      '@xsai/shared': 0.4.0-beta.11
       '@xsai/shared-chat': 0.4.0-beta.11
 
   '@xsai/shared-chat@0.4.0-beta.11':
     dependencies:
       '@xsai/shared': 0.4.0-beta.11
 
-  '@xsai/shared@0.4.0-beta.10': {}
-
   '@xsai/shared@0.4.0-beta.11': {}
 
   '@xsai/stream-text@0.4.0-beta.10':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.10
+      '@xsai/shared': 0.4.0-beta.11
       '@xsai/shared-chat': 0.4.0-beta.11
 
   '@xsai/utils-chat@0.4.0-beta.10':
