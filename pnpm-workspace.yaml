@@ -50,6 +50,6 @@ catalog:
   vitepress: ^1.6.4
   vitest: ^4.0.15
   vue: ^3.5.25
-  xsschema: ^0.4.0-beta.10
+  xsschema: ^0.4.0-beta.11
   zod: ^4.1.13
   zod-to-json-schema: ^3.25.0
