@@ -133,8 +133,8 @@ catalogs:
       specifier: ^3.5.25
       version: 3.5.25
     xsschema:
-      specifier: ^0.4.0-beta.10
-      version: 0.4.0-beta.10
+      specifier: ^0.4.0-beta.11
+      version: 0.4.0-beta.11
     zod:
       specifier: ^4.1.13
       version: 4.1.13
@@ -239,7 +239,7 @@ importers:
         version: 1.2.0(typescript@5.9.3)
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.0-beta.10(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13)
+        version: 0.4.0-beta.11(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13)
       zod:
         specifier: 'catalog:'
         version: 4.1.13
@@ -267,7 +267,7 @@ importers:
         version: 0.4.0-beta.10
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.0-beta.10(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13)
+        version: 0.4.0-beta.11(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13)
     devDependencies:
       '@fetch-mock/vitest':
         specifier: 'catalog:'
@@ -4435,15 +4435,15 @@ packages:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
 
-  xsschema@0.4.0-beta.10:
-    resolution: {integrity: sha512-DwX5fvSP6nwQkKO8ltTzJu4qPm78RWF2J/D1CRoCas9sGf01EkmtDFWiu4j+wxw4f5XQOmgZdkRqy9T/5N747Q==}
+  xsschema@0.4.0-beta.11:
+    resolution: {integrity: sha512-AGD9QizVdl/9sQsKKD0+p21I7erRNwpJWvesxGhhggCC6bZOJIfFUk+rtCZnbzZ3GB/WEm464ar8MQE4ndtn8Q==}
     peerDependencies:
       '@valibot/to-json-schema': ^1.0.0
       arktype: ^2.1.20
       effect: ^3.16.0
       sury: ^10.0.0
       zod: ^3.25.0 || ^4.0.0
-      zod-to-json-schema: ^3.24.5
+      zod-to-json-schema: ^3.25.0
     peerDependenciesMeta:
       '@valibot/to-json-schema':
         optional: true
@@ -8910,7 +8910,7 @@ snapshots:
 
   xml-name-validator@4.0.0: {}
 
-  xsschema@0.4.0-beta.10(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13):
+  xsschema@0.4.0-beta.11(zod-to-json-schema@3.25.0(zod@4.1.13))(zod@4.1.13):
     optionalDependencies:
       zod: 4.1.13
       zod-to-json-schema: 3.25.0(zod@4.1.13)
