@@ -49,8 +49,8 @@ catalogs:
       specifier: ^0.4.0-beta.12
       version: 0.4.0-beta.12
     '@xsai/shared-chat':
-      specifier: ^0.4.0-beta.11
-      version: 0.4.0-beta.11
+      specifier: ^0.4.0-beta.12
+      version: 0.4.0-beta.12
     '@xsai/stream-text':
       specifier: ^0.4.0-beta.12
       version: 0.4.0-beta.12
@@ -258,7 +258,7 @@ importers:
         version: 0.4.0-beta.12
       '@xsai/shared-chat':
         specifier: 'catalog:'
-        version: 0.4.0-beta.11
+        version: 0.4.0-beta.12
       '@xsai/stream-text':
         specifier: 'catalog:'
         version: 0.4.0-beta.12
@@ -1978,9 +1978,6 @@ packages:
 
   '@xsai/generate-text@0.4.0-beta.12':
     resolution: {integrity: sha512-0mLltfM+4bc+ZdJt2Yi/lxAiVupkjVSyiQoSG8GA+E0d4PQB7Pxx9GV4KIudFF4oyyR2+mhXxgTt7JYEk8quZQ==}
-
-  '@xsai/shared-chat@0.4.0-beta.11':
-    resolution: {integrity: sha512-fadumU2kEyE7Fl1rGEGsNiqYsBuksYdi6ZmVDjy1GK+5uxi4EfeEgQCP4IqmveWvcu7ecBNpeXOKucJZmAul9Q==}
 
   '@xsai/shared-chat@0.4.0-beta.12':
     resolution: {integrity: sha512-ytRDbknNWLc1T1KZ9vvJWRF20UtLa/6QW6UZn0Qq9d32jwrJqIDREoFJaIrFX7CfOhD9wR9jjBARen6OcVKXKA==}
@@ -6070,10 +6067,6 @@ snapshots:
       '@xsai/shared': 0.4.0-beta.12
       '@xsai/shared-chat': 0.4.0-beta.12
 
-  '@xsai/shared-chat@0.4.0-beta.11':
-    dependencies:
-      '@xsai/shared': 0.4.0-beta.12
-
   '@xsai/shared-chat@0.4.0-beta.12':
     dependencies:
       '@xsai/shared': 0.4.0-beta.12
@@ -6087,7 +6080,7 @@ snapshots:
 
   '@xsai/utils-chat@0.4.0-beta.10':
     dependencies:
-      '@xsai/shared-chat': 0.4.0-beta.11
+      '@xsai/shared-chat': 0.4.0-beta.12
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
