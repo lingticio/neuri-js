@@ -43,8 +43,8 @@ catalogs:
       specifier: ^0.4.0-beta.11
       version: 0.4.0-beta.11
     '@xsai/generate-text':
-      specifier: ^0.4.0-beta.11
-      version: 0.4.0-beta.11
+      specifier: ^0.4.0-beta.12
+      version: 0.4.0-beta.12
     '@xsai/shared':
       specifier: ^0.4.0-beta.11
       version: 0.4.0-beta.11
@@ -252,7 +252,7 @@ importers:
     dependencies:
       '@xsai/generate-text':
         specifier: 'catalog:'
-        version: 0.4.0-beta.11
+        version: 0.4.0-beta.12
       '@xsai/shared':
         specifier: 'catalog:'
         version: 0.4.0-beta.11
@@ -1976,14 +1976,20 @@ packages:
   '@xsai-ext/shared-providers@0.4.0-beta.11':
     resolution: {integrity: sha512-LbmT5jwDvGbIVcxzT10+MVkj9y2NhH1H3pP7740n9rCEH2/oPqoOcmGx67XyfqHSDQPT3WHpKY/bllmd2QxVHA==}
 
-  '@xsai/generate-text@0.4.0-beta.11':
-    resolution: {integrity: sha512-AaVkIrxIMAIwF3rhiZY2vU2KZ6H2LkW2RnDsBN7Vw1asXUyX6K+dhAgB2SGRkKBsOLYRHke2ZY6rWX4+oSM1IQ==}
+  '@xsai/generate-text@0.4.0-beta.12':
+    resolution: {integrity: sha512-0mLltfM+4bc+ZdJt2Yi/lxAiVupkjVSyiQoSG8GA+E0d4PQB7Pxx9GV4KIudFF4oyyR2+mhXxgTt7JYEk8quZQ==}
 
   '@xsai/shared-chat@0.4.0-beta.11':
     resolution: {integrity: sha512-fadumU2kEyE7Fl1rGEGsNiqYsBuksYdi6ZmVDjy1GK+5uxi4EfeEgQCP4IqmveWvcu7ecBNpeXOKucJZmAul9Q==}
 
+  '@xsai/shared-chat@0.4.0-beta.12':
+    resolution: {integrity: sha512-ytRDbknNWLc1T1KZ9vvJWRF20UtLa/6QW6UZn0Qq9d32jwrJqIDREoFJaIrFX7CfOhD9wR9jjBARen6OcVKXKA==}
+
   '@xsai/shared@0.4.0-beta.11':
     resolution: {integrity: sha512-JX1APAVPFvPuwSjkg2Yut2TyToaWxZR4RKrrh5uxWPe7I7n8q+D8S2O4zQE++0OgKLRSuaB5GjrOOso1hrthJg==}
+
+  '@xsai/shared@0.4.0-beta.12':
+    resolution: {integrity: sha512-45qSpEL1T0cH7X3No3u7gHIBle3anVvEMx1sWk20QSYaIKzv+sUcY+sFdVbmm2QKZbJvgD7S41RLJCay36fphQ==}
 
   '@xsai/stream-text@0.4.0-beta.11':
     resolution: {integrity: sha512-PL8D8vwcRJESMKj3qbtLVs/ccuESNWevU5frInRxnrsUQr04/2CqzFpNR/+iRKi+kYlhIvuY2kKJlhDNQvAdJw==}
@@ -6062,16 +6068,22 @@ snapshots:
     dependencies:
       '@xsai/shared': 0.4.0-beta.11
 
-  '@xsai/generate-text@0.4.0-beta.11':
+  '@xsai/generate-text@0.4.0-beta.12':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.11
-      '@xsai/shared-chat': 0.4.0-beta.11
+      '@xsai/shared': 0.4.0-beta.12
+      '@xsai/shared-chat': 0.4.0-beta.12
 
   '@xsai/shared-chat@0.4.0-beta.11':
     dependencies:
       '@xsai/shared': 0.4.0-beta.11
 
+  '@xsai/shared-chat@0.4.0-beta.12':
+    dependencies:
+      '@xsai/shared': 0.4.0-beta.12
+
   '@xsai/shared@0.4.0-beta.11': {}
+
+  '@xsai/shared@0.4.0-beta.12': {}
 
   '@xsai/stream-text@0.4.0-beta.11':
     dependencies:
