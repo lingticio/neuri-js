@@ -55,7 +55,7 @@ catalogs:
       specifier: ^0.4.0
       version: 0.4.0
     '@xsai/utils-chat':
-      specifier: ^0.4.0-beta.10
+      specifier: ^0.4.0
       version: 0.4.0
     bumpp:
       specifier: ^10.3.2
