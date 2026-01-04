@@ -133,8 +133,8 @@ catalogs:
       specifier: ^3.5.26
       version: 3.5.26
     xsschema:
-      specifier: ^0.4.0-beta.13
-      version: 0.4.0-beta.13
+      specifier: ^0.4.0
+      version: 0.4.0
     zod:
       specifier: ^4.2.1
       version: 4.2.1
@@ -239,7 +239,7 @@ importers:
         version: 1.2.0(typescript@5.9.3)
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.0-beta.13(zod-to-json-schema@3.25.1(zod@4.2.1))(zod@4.2.1)
+        version: 0.4.0(zod-to-json-schema@3.25.1(zod@4.2.1))(zod@4.2.1)
       zod:
         specifier: 'catalog:'
         version: 4.2.1
@@ -267,7 +267,7 @@ importers:
         version: 0.4.0-beta.10
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.0-beta.13(zod-to-json-schema@3.25.1(zod@4.2.1))(zod@4.2.1)
+        version: 0.4.0(zod-to-json-schema@3.25.1(zod@4.2.1))(zod@4.2.1)
     devDependencies:
       '@fetch-mock/vitest':
         specifier: 'catalog:'
@@ -4507,8 +4507,8 @@ packages:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
 
-  xsschema@0.4.0-beta.13:
-    resolution: {integrity: sha512-gw44icHZnuaY/LqI7aKcHz4rWHI/HmpQJicnZ0+hTYWeJlhwVWzaOaguQTV6QecmAeqwOU5pmClYaFy/9dmMzw==}
+  xsschema@0.4.0:
+    resolution: {integrity: sha512-9RzRUDT+CsvYvJdXMUu1A1j8/N0gz2QqijOQB/DtDgy64h5rlVAfTaWpqjUZtcUOPv/n0Mn8zDwzRTUP76y0yA==}
     peerDependencies:
       '@valibot/to-json-schema': ^1.0.0
       arktype: ^2.1.20
@@ -9058,7 +9058,7 @@ snapshots:
 
   xml-name-validator@4.0.0: {}
 
-  xsschema@0.4.0-beta.13(zod-to-json-schema@3.25.1(zod@4.2.1))(zod@4.2.1):
+  xsschema@0.4.0(zod-to-json-schema@3.25.1(zod@4.2.1))(zod@4.2.1):
     optionalDependencies:
       zod: 4.2.1
       zod-to-json-schema: 3.25.1(zod@4.2.1)
