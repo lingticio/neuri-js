@@ -23,7 +23,7 @@ catalog:
   '@xsai/generate-text': ^0.4.0-beta.12
   '@xsai/shared': ^0.4.0-beta.12
   '@xsai/shared-chat': ^0.4.0-beta.12
-  '@xsai/stream-text': ^0.4.0-beta.12
+  '@xsai/stream-text': ^0.4.0
   '@xsai/utils-chat': ^0.4.0-beta.10
   bumpp: ^10.3.2
   changelogithub: ^14.0.0
