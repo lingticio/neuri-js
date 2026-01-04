@@ -97,8 +97,8 @@ catalogs:
       specifier: ^2.2.1
       version: 2.2.1
     tsdown:
-      specifier: ^0.18.3
-      version: 0.18.3
+      specifier: ^0.18.4
+      version: 0.18.4
     tsx:
       specifier: ^4.21.0
       version: 4.21.0
@@ -178,7 +178,7 @@ importers:
         version: 4.16.1(@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.2(jiti@2.6.1))
       tsdown:
         specifier: 'catalog:'
-        version: 0.18.3(@arethetypeswrong/core@0.18.2)(synckit@0.11.11)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.18.4(@arethetypeswrong/core@0.18.2)(synckit@0.11.11)(typescript@5.9.3)(unplugin-unused@0.5.6)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -4150,8 +4150,8 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  tsdown@0.18.3:
-    resolution: {integrity: sha512-OVFzktKDTglFAUh/WO8WamBUbZoBlJ9m7NgZZrVyIKe32BfXBeRZ+soFFpuOGVP8g8OU4tOLOpTyPTELWvcTFw==}
+  tsdown@0.18.4:
+    resolution: {integrity: sha512-J/tRS6hsZTkvqmt4+xdELUCkQYDuUCXgBv0fw3ImV09WPGbEKfsPD65E+WUjSu3E7Z6tji9XZ1iWs8rbGqB/ZA==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -8606,7 +8606,7 @@ snapshots:
       picomatch: 4.0.3
       typescript: 5.9.3
 
-  tsdown@0.18.3(@arethetypeswrong/core@0.18.2)(synckit@0.11.11)(typescript@5.9.3)(unplugin-unused@0.5.6):
+  tsdown@0.18.4(@arethetypeswrong/core@0.18.2)(synckit@0.11.11)(typescript@5.9.3)(unplugin-unused@0.5.6):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
