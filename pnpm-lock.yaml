@@ -43,8 +43,8 @@ catalogs:
       specifier: ^0.4.0-beta.12
       version: 0.4.0-beta.12
     '@xsai/generate-text':
-      specifier: ^0.4.0
-      version: 0.4.0
+      specifier: ^0.4.1
+      version: 0.4.1
     '@xsai/shared':
       specifier: ^0.4.0
       version: 0.4.0
@@ -252,7 +252,7 @@ importers:
     dependencies:
       '@xsai/generate-text':
         specifier: 'catalog:'
-        version: 0.4.0
+        version: 0.4.1
       '@xsai/shared':
         specifier: 'catalog:'
         version: 0.4.0
@@ -2012,18 +2012,26 @@ packages:
 
   '@xsai-ext/providers-cloud@0.4.0-beta.12':
     resolution: {integrity: sha512-9caAXaVgcPD8m3cURJjEokGIT6TSsKWD7Ug8oWmaCDGGJBS4HynYuTZ2OZk1Umotp7AN/6jnrR/D1uf00YwasQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@xsai-ext/shared-providers@0.4.0-beta.12':
     resolution: {integrity: sha512-ME9L8BtapghM0W2SiTdulq0IvU3WR0h7dZ3k1bg/eXag2XUdbh1jy0zYY3oGmpMBmKXO8JXcArS1mq87gpsK0A==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
-  '@xsai/generate-text@0.4.0':
-    resolution: {integrity: sha512-zNJVMJdmE73kkAyw4MjlwoAADSYpTAPXZp4kK0h7J75iwiQaTgPNRwrjaNm/xyaFOG2KBvcfmCMZgz+Il91e0A==}
+  '@xsai/generate-text@0.4.1':
+    resolution: {integrity: sha512-FGqo19K0aNxn3hOW+zW43xvVq/ukg353PhcQowNt/AGa1snsjNTsbw+9aBXLSdFLINH3sjd/q4rsyg2Ld7GoxQ==}
 
   '@xsai/shared-chat@0.4.0':
     resolution: {integrity: sha512-drsThk0RL737z+TZu461cv85ZFPwqRsMmnxsOfl/P+hqCHu7eOAm85LDyPXL3rC2a6YiZGNQDcI92+wNQ4vaNw==}
 
+  '@xsai/shared-chat@0.4.1':
+    resolution: {integrity: sha512-6pyjFs9oKi2jSjtZBk4QNF5RM5b63aUrSJ8e46xvaeMIpsK6hec3ay7X4r81annhb/HpMNOQrfbxCQsTcWalhA==}
+
   '@xsai/shared@0.4.0':
     resolution: {integrity: sha512-RUkHutaib4/LvwdFT59Vtbq9Nycjr273ehuSVVs8NXH5BmqRk4+QwC+Ioyw282cuQAUQd1ESVqMNxY4f4DtV/Q==}
+
+  '@xsai/shared@0.4.1':
+    resolution: {integrity: sha512-WptfJwv0ajc22UNvMgSbM2wCtJDWok6x3svljETMc3ycknHE3w5XQ6whbASdbeDJomb/MtGhFhaHYVQZQnqHIw==}
 
   '@xsai/stream-text@0.4.0':
     resolution: {integrity: sha512-Di9Wi00KHIk/IxegVQDVGCPIeqgWG14WQQ8eVXd4ysZjVaBqttS4oyju2b8Wy7BXoEwu97iUU1an4XIOlq0Gzw==}
@@ -6013,16 +6021,22 @@ snapshots:
     dependencies:
       '@xsai/shared': 0.4.0
 
-  '@xsai/generate-text@0.4.0':
+  '@xsai/generate-text@0.4.1':
     dependencies:
-      '@xsai/shared': 0.4.0
-      '@xsai/shared-chat': 0.4.0
+      '@xsai/shared': 0.4.1
+      '@xsai/shared-chat': 0.4.1
 
   '@xsai/shared-chat@0.4.0':
     dependencies:
       '@xsai/shared': 0.4.0
 
+  '@xsai/shared-chat@0.4.1':
+    dependencies:
+      '@xsai/shared': 0.4.1
+
   '@xsai/shared@0.4.0': {}
+
+  '@xsai/shared@0.4.1': {}
 
   '@xsai/stream-text@0.4.0':
     dependencies:
