@@ -8,7 +8,7 @@ onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
 catalog:
-  '@antfu/eslint-config': ^6.7.3
+  '@antfu/eslint-config': ^7.0.1
   '@antfu/ni': ^28.1.0
   '@arethetypeswrong/cli': ^0.18.2
   '@arethetypeswrong/core': ^0.18.2
