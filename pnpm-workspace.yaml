@@ -18,7 +18,7 @@ catalog:
   '@types/node': ^24.10.7
   '@unocss/eslint-config': ^66.5.12
   '@unocss/eslint-plugin': ^66.5.12
-  '@vitest/coverage-v8': 4.0.16
+  '@vitest/coverage-v8': 4.0.17
   '@xsai-ext/providers-cloud': ^0.4.0-beta.12
   '@xsai/generate-text': ^0.4.1
   '@xsai/shared': ^0.4.1
