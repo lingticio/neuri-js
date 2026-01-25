@@ -46,8 +46,8 @@ catalogs:
       specifier: ^0.4.1
       version: 0.4.1
     '@xsai/shared':
-      specifier: ^0.4.1
-      version: 0.4.1
+      specifier: ^0.4.2
+      version: 0.4.2
     '@xsai/shared-chat':
       specifier: ^0.4.1
       version: 0.4.1
@@ -255,7 +255,7 @@ importers:
         version: 0.4.1
       '@xsai/shared':
         specifier: 'catalog:'
-        version: 0.4.1
+        version: 0.4.2
       '@xsai/shared-chat':
         specifier: 'catalog:'
         version: 0.4.1
@@ -1967,8 +1967,8 @@ packages:
   '@xsai/shared-chat@0.4.1':
     resolution: {integrity: sha512-6pyjFs9oKi2jSjtZBk4QNF5RM5b63aUrSJ8e46xvaeMIpsK6hec3ay7X4r81annhb/HpMNOQrfbxCQsTcWalhA==}
 
-  '@xsai/shared@0.4.1':
-    resolution: {integrity: sha512-WptfJwv0ajc22UNvMgSbM2wCtJDWok6x3svljETMc3ycknHE3w5XQ6whbASdbeDJomb/MtGhFhaHYVQZQnqHIw==}
+  '@xsai/shared@0.4.2':
+    resolution: {integrity: sha512-K1rKoJ/Ge+IIvcazkph5oF6kRgfLNvLYHQ+Fcug0KbmViwTu3F/xekYN/XtX/KuvcmLoCdGMnVAkFeOMTjWBDw==}
 
   '@xsai/stream-text@0.4.1':
     resolution: {integrity: sha512-Eq+b3knPB0YEpL6lnW08RZETEgCm07Q1XaP6YUO4Y81FF0q8dztyLXxtmAck1t7GV5eI7fTBRMxP6iQzwabomA==}
@@ -5937,26 +5937,26 @@ snapshots:
   '@xsai-ext/providers-cloud@0.4.0-beta.12':
     dependencies:
       '@xsai-ext/shared-providers': 0.4.0-beta.12
-      '@xsai/shared': 0.4.1
+      '@xsai/shared': 0.4.2
 
   '@xsai-ext/shared-providers@0.4.0-beta.12':
     dependencies:
-      '@xsai/shared': 0.4.1
+      '@xsai/shared': 0.4.2
 
   '@xsai/generate-text@0.4.1':
     dependencies:
-      '@xsai/shared': 0.4.1
+      '@xsai/shared': 0.4.2
       '@xsai/shared-chat': 0.4.1
 
   '@xsai/shared-chat@0.4.1':
     dependencies:
-      '@xsai/shared': 0.4.1
+      '@xsai/shared': 0.4.2
 
-  '@xsai/shared@0.4.1': {}
+  '@xsai/shared@0.4.2': {}
 
   '@xsai/stream-text@0.4.1':
     dependencies:
-      '@xsai/shared': 0.4.1
+      '@xsai/shared': 0.4.2
       '@xsai/shared-chat': 0.4.1
 
   '@xsai/utils-chat@0.4.0':
