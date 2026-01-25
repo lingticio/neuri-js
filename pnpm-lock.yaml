@@ -49,8 +49,8 @@ catalogs:
       specifier: ^0.4.2
       version: 0.4.2
     '@xsai/shared-chat':
-      specifier: ^0.4.1
-      version: 0.4.1
+      specifier: ^0.4.2
+      version: 0.4.2
     '@xsai/stream-text':
       specifier: ^0.4.1
       version: 0.4.1
@@ -258,7 +258,7 @@ importers:
         version: 0.4.2
       '@xsai/shared-chat':
         specifier: 'catalog:'
-        version: 0.4.1
+        version: 0.4.2
       '@xsai/stream-text':
         specifier: 'catalog:'
         version: 0.4.1
@@ -1964,8 +1964,8 @@ packages:
   '@xsai/generate-text@0.4.1':
     resolution: {integrity: sha512-FGqo19K0aNxn3hOW+zW43xvVq/ukg353PhcQowNt/AGa1snsjNTsbw+9aBXLSdFLINH3sjd/q4rsyg2Ld7GoxQ==}
 
-  '@xsai/shared-chat@0.4.1':
-    resolution: {integrity: sha512-6pyjFs9oKi2jSjtZBk4QNF5RM5b63aUrSJ8e46xvaeMIpsK6hec3ay7X4r81annhb/HpMNOQrfbxCQsTcWalhA==}
+  '@xsai/shared-chat@0.4.2':
+    resolution: {integrity: sha512-omRPgbdOO5wLuQuvjs4H18o5OmsZL22F3Ed6D5mXN1rN7uIH8dVVaRV7A0BT3xjJKFQS5edDbRmeka4D60HzuA==}
 
   '@xsai/shared@0.4.2':
     resolution: {integrity: sha512-K1rKoJ/Ge+IIvcazkph5oF6kRgfLNvLYHQ+Fcug0KbmViwTu3F/xekYN/XtX/KuvcmLoCdGMnVAkFeOMTjWBDw==}
@@ -5946,9 +5946,9 @@ snapshots:
   '@xsai/generate-text@0.4.1':
     dependencies:
       '@xsai/shared': 0.4.2
-      '@xsai/shared-chat': 0.4.1
+      '@xsai/shared-chat': 0.4.2
 
-  '@xsai/shared-chat@0.4.1':
+  '@xsai/shared-chat@0.4.2':
     dependencies:
       '@xsai/shared': 0.4.2
 
@@ -5957,11 +5957,11 @@ snapshots:
   '@xsai/stream-text@0.4.1':
     dependencies:
       '@xsai/shared': 0.4.2
-      '@xsai/shared-chat': 0.4.1
+      '@xsai/shared-chat': 0.4.2
 
   '@xsai/utils-chat@0.4.0':
     dependencies:
-      '@xsai/shared-chat': 0.4.1
+      '@xsai/shared-chat': 0.4.2
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
