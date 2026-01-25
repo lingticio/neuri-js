@@ -43,8 +43,8 @@ catalogs:
       specifier: ^0.4.0-beta.12
       version: 0.4.0-beta.12
     '@xsai/generate-text':
-      specifier: ^0.4.1
-      version: 0.4.1
+      specifier: ^0.4.2
+      version: 0.4.2
     '@xsai/shared':
       specifier: ^0.4.2
       version: 0.4.2
@@ -252,7 +252,7 @@ importers:
     dependencies:
       '@xsai/generate-text':
         specifier: 'catalog:'
-        version: 0.4.1
+        version: 0.4.2
       '@xsai/shared':
         specifier: 'catalog:'
         version: 0.4.2
@@ -1961,11 +1961,14 @@ packages:
     resolution: {integrity: sha512-ME9L8BtapghM0W2SiTdulq0IvU3WR0h7dZ3k1bg/eXag2XUdbh1jy0zYY3oGmpMBmKXO8JXcArS1mq87gpsK0A==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
-  '@xsai/generate-text@0.4.1':
-    resolution: {integrity: sha512-FGqo19K0aNxn3hOW+zW43xvVq/ukg353PhcQowNt/AGa1snsjNTsbw+9aBXLSdFLINH3sjd/q4rsyg2Ld7GoxQ==}
+  '@xsai/generate-text@0.4.2':
+    resolution: {integrity: sha512-8VyRhyQOvG8YkEo1b93mPoaXDA6Schqs9sB37ll0I92WKVSMvxcKxfehGAXLApIuC3jMe6cORwI44jgzloBoaQ==}
 
   '@xsai/shared-chat@0.4.1':
     resolution: {integrity: sha512-6pyjFs9oKi2jSjtZBk4QNF5RM5b63aUrSJ8e46xvaeMIpsK6hec3ay7X4r81annhb/HpMNOQrfbxCQsTcWalhA==}
+
+  '@xsai/shared-chat@0.4.2':
+    resolution: {integrity: sha512-omRPgbdOO5wLuQuvjs4H18o5OmsZL22F3Ed6D5mXN1rN7uIH8dVVaRV7A0BT3xjJKFQS5edDbRmeka4D60HzuA==}
 
   '@xsai/shared@0.4.2':
     resolution: {integrity: sha512-K1rKoJ/Ge+IIvcazkph5oF6kRgfLNvLYHQ+Fcug0KbmViwTu3F/xekYN/XtX/KuvcmLoCdGMnVAkFeOMTjWBDw==}
@@ -5943,12 +5946,16 @@ snapshots:
     dependencies:
       '@xsai/shared': 0.4.2
 
-  '@xsai/generate-text@0.4.1':
+  '@xsai/generate-text@0.4.2':
     dependencies:
       '@xsai/shared': 0.4.2
-      '@xsai/shared-chat': 0.4.1
+      '@xsai/shared-chat': 0.4.2
 
   '@xsai/shared-chat@0.4.1':
+    dependencies:
+      '@xsai/shared': 0.4.2
+
+  '@xsai/shared-chat@0.4.2':
     dependencies:
       '@xsai/shared': 0.4.2
 
