@@ -55,8 +55,8 @@ catalogs:
       specifier: ^0.4.2
       version: 0.4.2
     '@xsai/utils-chat':
-      specifier: ^0.4.0
-      version: 0.4.0
+      specifier: ^0.4.2
+      version: 0.4.2
     bumpp:
       specifier: ^10.4.0
       version: 10.4.0
@@ -264,7 +264,7 @@ importers:
         version: 0.4.2
       '@xsai/utils-chat':
         specifier: 'catalog:'
-        version: 0.4.0
+        version: 0.4.2
       xsschema:
         specifier: 'catalog:'
         version: 0.4.2(zod-to-json-schema@3.25.1(zod@4.3.5))(zod@4.3.5)
@@ -1973,8 +1973,8 @@ packages:
   '@xsai/stream-text@0.4.2':
     resolution: {integrity: sha512-zOcZp3B6tPwthlR+BiNjO9Ax6r4CMkKrJa9FEIHrddMeeJGqXAWZH6sNLCBAS/Q7Vob5r4OM+4MELohzyXndGg==}
 
-  '@xsai/utils-chat@0.4.0':
-    resolution: {integrity: sha512-64LbmXJyvcllPhkwVIoIqvUBJv79ZHygBeRUT8SlaB0gr0i0JTKffjGrKHoex/BFsqC3Q5nkEs8EB3EXGGuqMA==}
+  '@xsai/utils-chat@0.4.2':
+    resolution: {integrity: sha512-505YKMT6xU8xVWpcGdC3qRe7jGnNViOjENUs4HwK+xGEXeaUTdfOxhg8KgiQ07YOZhzvHBSKsQIBFJrk7YkYdg==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -5962,7 +5962,7 @@ snapshots:
       '@xsai/shared': 0.4.2
       '@xsai/shared-chat': 0.4.2
 
-  '@xsai/utils-chat@0.4.0':
+  '@xsai/utils-chat@0.4.2':
     dependencies:
       '@xsai/shared-chat': 0.4.2
 
