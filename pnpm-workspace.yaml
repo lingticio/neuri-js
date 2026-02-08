@@ -28,7 +28,7 @@ catalog:
   bumpp: ^10.4.0
   changelogithub: ^14.0.0
   defu: ^6.1.4
-  eslint: ^9.39.2
+  eslint: ^10.0.0
   eslint-plugin-import-x: ^4.16.1
   execa: ^9.6.1
   fetch-mock: ^12.6.0
