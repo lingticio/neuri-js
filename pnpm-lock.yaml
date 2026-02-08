@@ -52,8 +52,8 @@ catalogs:
       specifier: ^0.4.2
       version: 0.4.2
     '@xsai/stream-text':
-      specifier: ^0.4.2
-      version: 0.4.2
+      specifier: ^0.4.3
+      version: 0.4.3
     '@xsai/utils-chat':
       specifier: ^0.4.2
       version: 0.4.2
@@ -261,7 +261,7 @@ importers:
         version: 0.4.2
       '@xsai/stream-text':
         specifier: 'catalog:'
-        version: 0.4.2
+        version: 0.4.3
       '@xsai/utils-chat':
         specifier: 'catalog:'
         version: 0.4.2
@@ -2053,8 +2053,8 @@ packages:
   '@xsai/shared@0.4.3':
     resolution: {integrity: sha512-yrpwOigtriiGvE+gnpwVBqc9G9ZCQ6OPTow419ArROaSJ/JuMwyc5CJzKOAxpEsZmXpyN3yBCbzQlZIQjheBuQ==}
 
-  '@xsai/stream-text@0.4.2':
-    resolution: {integrity: sha512-zOcZp3B6tPwthlR+BiNjO9Ax6r4CMkKrJa9FEIHrddMeeJGqXAWZH6sNLCBAS/Q7Vob5r4OM+4MELohzyXndGg==}
+  '@xsai/stream-text@0.4.3':
+    resolution: {integrity: sha512-GztZsrZDxSxzni04gRyJC5bUnQqnEtoVK6nWyAIpWNO4c7fi1zXCTV2z57DbPMPei+blsHCoG6zEUvoQ+ooMoA==}
 
   '@xsai/utils-chat@0.4.2':
     resolution: {integrity: sha512-505YKMT6xU8xVWpcGdC3qRe7jGnNViOjENUs4HwK+xGEXeaUTdfOxhg8KgiQ07YOZhzvHBSKsQIBFJrk7YkYdg==}
@@ -4060,7 +4060,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -6101,7 +6101,7 @@ snapshots:
 
   '@xsai-ext/shared-providers@0.4.0-beta.12':
     dependencies:
-      '@xsai/shared': 0.4.2
+      '@xsai/shared': 0.4.3
 
   '@xsai/generate-text@0.4.3':
     dependencies:
@@ -6120,10 +6120,10 @@ snapshots:
 
   '@xsai/shared@0.4.3': {}
 
-  '@xsai/stream-text@0.4.2':
+  '@xsai/stream-text@0.4.3':
     dependencies:
-      '@xsai/shared': 0.4.2
-      '@xsai/shared-chat': 0.4.2
+      '@xsai/shared': 0.4.3
+      '@xsai/shared-chat': 0.4.3
 
   '@xsai/utils-chat@0.4.2':
     dependencies:
