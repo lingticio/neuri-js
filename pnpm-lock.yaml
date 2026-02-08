@@ -55,8 +55,8 @@ catalogs:
       specifier: ^0.4.2
       version: 0.4.2
     '@xsai/utils-chat':
-      specifier: ^0.4.2
-      version: 0.4.2
+      specifier: ^0.4.3
+      version: 0.4.3
     bumpp:
       specifier: ^10.4.0
       version: 10.4.0
@@ -264,7 +264,7 @@ importers:
         version: 0.4.2
       '@xsai/utils-chat':
         specifier: 'catalog:'
-        version: 0.4.2
+        version: 0.4.3
       xsschema:
         specifier: 'catalog:'
         version: 0.4.2(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6)
@@ -2056,8 +2056,8 @@ packages:
   '@xsai/stream-text@0.4.2':
     resolution: {integrity: sha512-zOcZp3B6tPwthlR+BiNjO9Ax6r4CMkKrJa9FEIHrddMeeJGqXAWZH6sNLCBAS/Q7Vob5r4OM+4MELohzyXndGg==}
 
-  '@xsai/utils-chat@0.4.2':
-    resolution: {integrity: sha512-505YKMT6xU8xVWpcGdC3qRe7jGnNViOjENUs4HwK+xGEXeaUTdfOxhg8KgiQ07YOZhzvHBSKsQIBFJrk7YkYdg==}
+  '@xsai/utils-chat@0.4.3':
+    resolution: {integrity: sha512-dIr9y987NkL15u9KE0LxnovmVesTTDXaMXVQP9p6OHnG3H46drMGhDdzLZAsGhROcsqijD90nXYGafTc6BZ/fg==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -4060,7 +4060,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -6101,7 +6101,7 @@ snapshots:
 
   '@xsai-ext/shared-providers@0.4.0-beta.12':
     dependencies:
-      '@xsai/shared': 0.4.2
+      '@xsai/shared': 0.4.3
 
   '@xsai/generate-text@0.4.3':
     dependencies:
@@ -6125,9 +6125,9 @@ snapshots:
       '@xsai/shared': 0.4.2
       '@xsai/shared-chat': 0.4.2
 
-  '@xsai/utils-chat@0.4.2':
+  '@xsai/utils-chat@0.4.3':
     dependencies:
-      '@xsai/shared-chat': 0.4.2
+      '@xsai/shared-chat': 0.4.3
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
