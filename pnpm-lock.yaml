@@ -133,8 +133,8 @@ catalogs:
       specifier: ^3.5.27
       version: 3.5.27
     xsschema:
-      specifier: ^0.4.2
-      version: 0.4.2
+      specifier: ^0.4.3
+      version: 0.4.3
     zod:
       specifier: ^4.3.6
       version: 4.3.6
@@ -239,7 +239,7 @@ importers:
         version: 1.2.0(typescript@5.9.3)
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.2(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6)
+        version: 0.4.3(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6)
       zod:
         specifier: 'catalog:'
         version: 4.3.6
@@ -267,7 +267,7 @@ importers:
         version: 0.4.2
       xsschema:
         specifier: 'catalog:'
-        version: 0.4.2(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6)
+        version: 0.4.3(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6)
     devDependencies:
       '@fetch-mock/vitest':
         specifier: 'catalog:'
@@ -4060,7 +4060,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -4472,8 +4472,8 @@ packages:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
 
-  xsschema@0.4.2:
-    resolution: {integrity: sha512-UzPpssR8EJfSKWCdN0nHTfR+zfk6ASCznkVOQwv14EU3hVDOaGijR3sDVkkyJd+QEX9weD0J7n/lYYqaBzAqwA==}
+  xsschema@0.4.3:
+    resolution: {integrity: sha512-8MFtONewz49S+R5ZfOGfJzEaPAmJ+Gw1ILjvuerYG0mOMVYe7OrsVQNlpiUTct4L3toAJAKD5NMwmCfmTIGYHQ==}
     peerDependencies:
       '@valibot/to-json-schema': ^1.0.0
       arktype: ^2.1.20
@@ -8926,7 +8926,7 @@ snapshots:
 
   xml-name-validator@4.0.0: {}
 
-  xsschema@0.4.2(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6):
+  xsschema@0.4.3(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6):
     optionalDependencies:
       zod: 4.3.6
       zod-to-json-schema: 3.25.1(zod@4.3.6)
