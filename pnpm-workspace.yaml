@@ -25,7 +25,7 @@ catalog:
   '@xsai/shared-chat': ^0.4.2
   '@xsai/stream-text': ^0.4.2
   '@xsai/utils-chat': ^0.4.2
-  bumpp: ^10.4.0
+  bumpp: ^11.1.0
   changelogithub: ^14.0.0
   defu: ^6.1.4
   eslint: ^9.39.2
