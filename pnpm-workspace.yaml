@@ -30,7 +30,7 @@ catalog:
   defu: ^6.1.4
   eslint: ^9.39.2
   eslint-plugin-import-x: ^4.16.1
-  execa: ^9.6.1
+  execa: ^10.0.1
   fetch-mock: ^12.6.0
   ignore: ^7.0.5
   json-schema: ^0.4.0
