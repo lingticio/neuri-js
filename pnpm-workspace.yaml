@@ -11,7 +11,7 @@ catalog:
   '@antfu/eslint-config': ^7.2.0
   '@antfu/ni': ^28.2.0
   '@arethetypeswrong/cli': ^0.18.2
-  '@arethetypeswrong/core': ^0.18.2
+  '@arethetypeswrong/core': ^0.18.5
   '@fetch-mock/vitest': ^0.2.18
   '@guiiai/logg': ^1.2.11
   '@types/mdast': ^4.0.4
