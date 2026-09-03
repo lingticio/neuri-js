@@ -9,7 +9,7 @@ onlyBuiltDependencies:
   - unrs-resolver
 catalog:
   '@antfu/eslint-config': ^7.2.0
-  '@antfu/ni': ^28.2.0
+  '@antfu/ni': ^30.5.0
   '@arethetypeswrong/cli': ^0.18.2
   '@arethetypeswrong/core': ^0.18.2
   '@fetch-mock/vitest': ^0.2.18
