@@ -8,16 +8,16 @@ onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
 catalog:
-  '@antfu/eslint-config': ^7.2.0
-  '@antfu/ni': ^28.2.0
+  '@antfu/eslint-config': ^7.7.3
+  '@antfu/ni': ^28.3.0
   '@arethetypeswrong/cli': ^0.18.2
   '@arethetypeswrong/core': ^0.18.2
   '@fetch-mock/vitest': ^0.2.18
   '@guiiai/logg': ^1.2.11
   '@types/mdast': ^4.0.4
-  '@types/node': ^24.10.9
-  '@unocss/eslint-config': ^66.6.0
-  '@unocss/eslint-plugin': ^66.6.0
+  '@types/node': ^24.13.3
+  '@unocss/eslint-config': ^66.10.0
+  '@unocss/eslint-plugin': ^66.10.0
   '@vitest/coverage-v8': 4.0.18
   '@xsai-ext/providers-cloud': ^0.4.0-beta.12
   '@xsai/generate-text': ^0.4.3
@@ -25,31 +25,31 @@ catalog:
   '@xsai/shared-chat': ^0.4.2
   '@xsai/stream-text': ^0.4.2
   '@xsai/utils-chat': ^0.4.2
-  bumpp: ^10.4.0
+  bumpp: ^10.4.1
   changelogithub: ^14.0.0
   defu: ^6.1.4
-  eslint: ^9.39.2
-  eslint-plugin-import-x: ^4.16.1
+  eslint: ^9.39.5
+  eslint-plugin-import-x: ^4.17.1
   execa: ^9.6.1
   fetch-mock: ^12.6.0
-  ignore: ^7.0.5
+  ignore: ^7.0.8
   json-schema: ^0.4.0
   nanoid: ^5.1.6
   ofetch: ^1.5.1
   remark: ^15.0.1
   serpapi: ^2.2.1
   tsdown: ^0.20.1
-  tsx: ^4.21.0
+  tsx: ^4.23.13
   typescript: ^5.9.3
   unbuild: 3.6.1
-  unocss: ^66.6.0
+  unocss: ^66.10.0
   unplugin-unused: ^0.5.7
   valibot: ^1.2.0
   vite: ^7.3.1
-  vite-plugin-inspect: ^11.3.3
+  vite-plugin-inspect: ^11.4.1
   vitepress: ^1.6.4
   vitest: ^4.0.18
-  vue: ^3.5.27
+  vue: ^3.5.42
   xsschema: ^0.4.2
-  zod: ^4.3.6
-  zod-to-json-schema: ^3.25.1
+  zod: ^4.5.4
+  zod-to-json-schema: ^3.25.2
