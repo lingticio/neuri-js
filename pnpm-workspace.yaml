@@ -15,7 +15,7 @@ catalog:
   '@fetch-mock/vitest': ^0.2.18
   '@guiiai/logg': ^1.2.11
   '@types/mdast': ^4.0.4
-  '@types/node': ^24.10.9
+  '@types/node': ^26.6.6
   '@unocss/eslint-config': ^66.6.0
   '@unocss/eslint-plugin': ^66.6.0
   '@vitest/coverage-v8': 4.0.18
